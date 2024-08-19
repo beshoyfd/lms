@@ -2,8 +2,14 @@
     "name": "spondonit/lms-service",
     "description": "'Service Provider for Infix Lms application'",
     "type": "library",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./../service"
+        }
+    ],
     "require": {
-        "spondonit/service": "dev-master"
+        "spondonit/service": "*"
     },
     "license": "MIT",
     "authors": [

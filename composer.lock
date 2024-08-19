@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bf56d081d551cd5a7ebcf92ca5103f6",
+    "content-hash": "a1a02d26bdfeb1f61b466d7670c9b433",
     "packages": [
         {
             "name": "amazonpaymentservices/aps-php-sdk",
@@ -340,16 +340,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.320.2",
+            "version": "3.320.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "dbae075b861316237d63418715f8bf4bfdd9d33d"
+                "reference": "afe137e61b0b536c93a71ce3bb3cdac2e92ae789"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dbae075b861316237d63418715f8bf4bfdd9d33d",
-                "reference": "dbae075b861316237d63418715f8bf4bfdd9d33d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/afe137e61b0b536c93a71ce3bb3cdac2e92ae789",
+                "reference": "afe137e61b0b536c93a71ce3bb3cdac2e92ae789",
                 "shasum": ""
             },
             "require": {
@@ -432,9 +432,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.320.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.320.3"
             },
-            "time": "2024-08-16T18:06:17+00:00"
+            "time": "2024-08-19T18:05:46+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -2916,16 +2916,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.368.0",
+            "version": "v0.369.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "edc08087aa3ca63d3b74f24d59f1d2caab39b5d9"
+                "reference": "002f610e4c3acf0636b4fb1f46314a2097e1c8b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/edc08087aa3ca63d3b74f24d59f1d2caab39b5d9",
-                "reference": "edc08087aa3ca63d3b74f24d59f1d2caab39b5d9",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/002f610e4c3acf0636b4fb1f46314a2097e1c8b4",
+                "reference": "002f610e4c3acf0636b4fb1f46314a2097e1c8b4",
                 "shasum": ""
             },
             "require": {
@@ -2954,9 +2954,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.368.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.369.0"
             },
-            "time": "2024-07-11T01:08:44+00:00"
+            "time": "2024-08-14T20:31:16+00:00"
         },
         {
             "name": "google/auth",
@@ -6204,16 +6204,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "3.1.55",
+            "version": "3.1.56",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SpartnerNL/Laravel-Excel.git",
-                "reference": "6d9d791dcdb01a9b6fd6f48d46f0d5fff86e6260"
+                "reference": "0381d0225b42c3f328d90f0dd05ca071fca3953f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/6d9d791dcdb01a9b6fd6f48d46f0d5fff86e6260",
-                "reference": "6d9d791dcdb01a9b6fd6f48d46f0d5fff86e6260",
+                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/0381d0225b42c3f328d90f0dd05ca071fca3953f",
+                "reference": "0381d0225b42c3f328d90f0dd05ca071fca3953f",
                 "shasum": ""
             },
             "require": {
@@ -6269,7 +6269,7 @@
             ],
             "support": {
                 "issues": "https://github.com/SpartnerNL/Laravel-Excel/issues",
-                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.55"
+                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.56"
             },
             "funding": [
                 {
@@ -6281,7 +6281,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-20T08:27:10+00:00"
+            "time": "2024-08-19T09:40:43+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -12350,7 +12350,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/ar-php",
-                "reference": "83a5ad7fab2e353d3a36f0ade36dfb0f2209d127"
+                "reference": "a536d169f4850950d4ad200c91d96f92d66c8578"
             },
             "require": {
                 "php": "^7.4|^8.0"
@@ -12378,7 +12378,6 @@
             "description": "contribution to Ar-PHP Library, namespace-psr4 added",
             "homepage": "https://github.com/spn4/ar-php",
             "transport-options": {
-                "symlink": true,
                 "relative": true
             }
         },
@@ -12388,10 +12387,10 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/lms-service",
-                "reference": "5f830c5134b561df4edde1b5a6c5ee7cf6b97d37"
+                "reference": "7ef77212fed1d76a5d0098fbaac940ba157c3f02"
             },
             "require": {
-                "spondonit/service": "dev-master"
+                "spondonit/service": "*"
             },
             "type": "library",
             "extra": {
@@ -12417,7 +12416,6 @@
             ],
             "description": "'Service Provider for Infix Lms application'",
             "transport-options": {
-                "symlink": true,
                 "relative": true
             }
         },
@@ -12427,7 +12425,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/mobilpay",
-                "reference": "c3eb10cb65db1d5b06444996e12e61b807509930"
+                "reference": "ec9e578d1d7db631814b1f75c392df39aafb13f3"
             },
             "require": {
                 "illuminate/support": "5.* || 6.* || 7.* || 8.* || 9.* || 10.*",
@@ -12464,23 +12462,16 @@
             ],
             "description": "Laravel 10 mobilpay wrapper around omnipay with omnipay-mobilpay driver",
             "transport-options": {
-                "symlink": true,
                 "relative": true
             }
         },
         {
             "name": "spondonit/omnipay-mobilpay",
-            "version": "v1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aoradev44/omnipay-mobilpay.git",
-                "reference": "0191944fa654ad88a7334e13ea292fd84bebbbb7"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aoradev44/omnipay-mobilpay/zipball/0191944fa654ad88a7334e13ea292fd84bebbbb7",
-                "reference": "0191944fa654ad88a7334e13ea292fd84bebbbb7",
-                "shasum": ""
+                "type": "path",
+                "url": "./packages/spondonit/omnipay-mobilpay",
+                "reference": "6fd3965a7892b7f9b1d8ccfe2da40d1306eebed3"
             },
             "require": {
                 "omnipay/common": "^3.0.0",
@@ -12496,7 +12487,6 @@
                     "Omnipay\\MobilPay\\": "src/BusinessMastery/Mobilpay"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -12517,26 +12507,18 @@
                 "payment",
                 "purchase"
             ],
-            "support": {
-                "source": "https://github.com/aoradev44/omnipay-mobilpay/tree/v1.0.3"
-            },
-            "time": "2023-11-02T11:38:41+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "spondonit/service",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.com/spn4/service.git",
-                "reference": "db39aec1cd58b52fbb1c6b23f158e53051e2929f"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/spn4%2Fservice/repository/archive.zip?sha=db39aec1cd58b52fbb1c6b23f158e53051e2929f",
-                "reference": "db39aec1cd58b52fbb1c6b23f158e53051e2929f",
-                "shasum": ""
+                "type": "path",
+                "url": "./packages/spondonit/service",
+                "reference": "cbd9ca9c4b4813754c82ee314e0ddf6df2479683"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -12546,14 +12528,13 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "helpers/helper.php"
-                ],
                 "psr-4": {
                     "SpondonIt\\Service\\": "src/"
-                }
+                },
+                "files": [
+                    "helpers/helper.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -12564,11 +12545,9 @@
                 }
             ],
             "description": "Basic Service Provider for Spondonit application",
-            "support": {
-                "issues": "https://gitlab.com/spn4/service/-/issues",
-                "source": "https://gitlab.com/spn4/service/-/tree/v4.0.53"
-            },
-            "time": "2024-03-18T12:58:24+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "starkbank/ecdsa",
@@ -18967,10 +18946,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "paytm/js-checkout": 20,
-        "spondonit/ar-php": 20,
-        "spondonit/lms-service": 20,
-        "spondonit/mobilpay": 20
+        "paytm/js-checkout": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
