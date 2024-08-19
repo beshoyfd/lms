@@ -8,7 +8,7 @@ pass: secretpass
 
 ----------------------------------
 ### requirements
-PHP 8.1 CLI & FPM
+PHP 8.2 CLI & FPM
 
 Composer version: 2.7.1
 
