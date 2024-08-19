@@ -7,6 +7,29 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/spondonit/lms-service",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "./packages/spondonit/mobilpay",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "./packages/spondonit/ar-php",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": "^8.1",
         "ext-json": "*",
@@ -75,9 +98,9 @@
         "spatie/laravel-sluggable": "^3.4",
         "spatie/laravel-translatable": "6.5.1",
         "spatie/valuestore": "^1.2",
-        "spondonit/ar-php": "^1.0",
-        "spondonit/lms-service": "^2.0",
-        "spondonit/mobilpay": "^1.0",
+        "spondonit/ar-php": "@dev",
+        "spondonit/lms-service": "@dev",
+        "spondonit/mobilpay": "@dev",
         "stevebauman/location": "^6.3",
         "toshy/bunnynet-php": "^3.3",
         "unicodeveloper/laravel-paystack": "^1.0",
