@@ -152,6 +152,7 @@
   'Mode of Delivery' => 'طريقة التسليم',
   'Show Mode of Delivery' => 'عرض نمط التسليم',
   'Show Overview Video' => 'عرض الفيديو الخاص بك',
+  'Show Time Table' => 'هل للكورس جدول مواعيد؟',
   'VdoCipher Video' => 'فيديو VdoCipher',
   'What Wil Learn' => 'ماذا سيتعلم',
   'Key Point' => 'نقطة المفتاح',

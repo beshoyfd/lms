@@ -906,7 +906,98 @@
                             </div>
                         </div>
                     @endif
+
+                    <hr>
+
                     <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="checkbox_wrap d-flex align-items-center">
+                                <label for="show_time_table" class="switch_toggle me-2">
+                                    <input type="checkbox" id="show_time_table" value="1"
+                                           name="show_time_table">
+                                    <i class="slider round"></i>
+                                </label>
+                                <label
+                                    class="mb-0">{{ __('courses.Show Time Table') }}</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-25" id="timeTable" style="display:none">
+                        <div id="timetable-container">
+                            <div class="row timetable-entry">
+                                <div class="col-xl-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="primary_input mb-25">
+                                                <label class="primary_input_label d-flex" for="start_date">Start
+                                                    Date</label>
+                                                <input class="primary_input_field form-control"
+                                                       name="timetable[start_date][]" type="date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="primary_input mb-25">
+                                                <label class="primary_input_label d-flex" for="end_date">End
+                                                    Date</label>
+                                                <input class="primary_input_field form-control"
+                                                       name="timetable[end_date][]" type="date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="primary_input mb-25">
+                                        <label class="primary_input_label d-flex" for="duration">Duration</label>
+                                        <input class="primary_input_field form-control"
+                                               name="timetable[durations][]" placeholder="4 days" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="primary_input mb-25">
+                                                <label class="primary_input_label d-flex" for="start_time">Start
+                                                    Time</label>
+                                                <input class="primary_input_field form-control"
+                                                       name="timetable[start_time][]" type="time">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="primary_input mb-25">
+                                                <label class="primary_input_label d-flex" for="end_time">End
+                                                    Time</label>
+                                                <input class="primary_input_field form-control"
+                                                       name="timetable[end_time][]" type="time">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="primary_input mb-25">
+                                        <label class="primary_input_label d-flex" for="duration">PDUs</label>
+                                        <input class="primary_input_field form-control"
+                                               name="timetable[pdus][]"
+                                               placeholder="16 hourse" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12">
+                                    <span style="cursor: pointer" class="remove-timetable badge badge-sm bg-danger">Remove -</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="button" id="add-timetable" style="display:none" class="btn btn-primary btn-sm">Add Another Timetable
+                    </button>
+
+                    <div class="row mt-20">
 
                         <div class="col-xl-12">
                             <div class="primary_input mb-25">
@@ -1073,4 +1164,36 @@
 
         </script>
     @endif
+
+    <script>
+        $(document).ready(function () {
+
+            let show_time_table = $('#show_time_table');
+            let timeTable = $('#timeTable');
+            show_time_table.change(function () {
+                if (show_time_table.is(':checked')) {
+                    timeTable.show();
+                    $('#add-timetable').show();
+                } else {
+                    timeTable.hide();
+                    $('#add-timetable').hide();
+                }
+            });
+
+            $('#add-timetable').click(function () {
+                // Clone the first timetable entry and clear its input fields
+                var newTimetable = $('.timetable-entry:first').clone();
+                newTimetable.find('input').val(''); // Clear the values of the cloned inputs
+                $('#timetable-container').append(newTimetable);
+            });
+
+            // Function to remove a timetable entry
+            $(document).on('click', '.remove-timetable', function () {
+                // Prevent removing the last remaining timetable entry
+                if ($('.timetable-entry').length > 1) {
+                    $(this).closest('.timetable-entry').remove();
+                }
+            });
+        });
+    </script>
 @endpush
