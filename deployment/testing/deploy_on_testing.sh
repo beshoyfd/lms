@@ -6,14 +6,14 @@
 #alias php="/www/server/php/83/bin/php"
 
 echo php -v
-pwd
+rm -rf ./error_log
 
 composer install --ignore-platform-reqs --no-interaction --optimize-autoloader
 composer dump-autoload
 
 rm -rf ./bootstrap/cache/*
 
-php artisan env:decrypt --env=testing -key=$LARAVEL_ENV_ENCRYPTION_KEY
+php artisan env:decrypt --env=testing --key=$LARAVEL_ENV_ENCRYPTION_KEY
 
 php artisan down --retry=60  --secret="1630542a-246b-4b66-afa1-dd72a4c43515"
 
@@ -40,13 +40,14 @@ rm -rf ./postcss.config.js
 rm -rf ./.htmlhintrc
 rm -rf ./.prettierignore
 rm -rf ./.prettierrc.json
+rm -rf ./update.html
 
 rm -rf ./tests
 #rm -rf ./etc
 #rm -rf ./resources/assets
 
 
-mv -f ./.env.testing ./.env
+#mv -f ./.env.testing ./.env
 
 #rm -rf ./public/index.php
 #cp -rf ./public/* $APP_PUBLIC_DIR
