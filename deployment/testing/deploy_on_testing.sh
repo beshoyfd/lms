@@ -13,7 +13,9 @@ composer dump-autoload
 
 rm -rf ./bootstrap/cache/*
 
-php artisan env:decrypt --env=testing --key=$LARAVEL_ENV_ENCRYPTION_KEY && rm -rf ./.env.testing.encrypted
+rm -rf ./.env
+
+php artisan env:decrypt --env=testing --key=$LARAVEL_ENV_ENCRYPTION_KEY && mv -f ./.env.testing ./.env && rm -rf ./.env.testing.encrypted
 
 php artisan down --retry=60  --secret="1630542a-246b-4b66-afa1-dd72a4c43515"
 
@@ -49,7 +51,7 @@ rm -rf ./tests
 
 
 
-mv -f ./.env.testing ./.env
+
 
 #rm -rf ./public/index.php
 #cp -rf ./public/* $APP_PUBLIC_DIR
