@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{__('membership.Membership')}}
+    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('membership.Membership')}}
 @endsection
 @section('css') @endsection
 
