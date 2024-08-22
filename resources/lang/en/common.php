@@ -1,5 +1,5 @@
 <?php
-    return [    "Login" => "Login",
+return ["Login" => "Login",
     "Menu" => "Menu",
     "View Profile" => "View Profile",
     "My Profile" => "My Profile",
@@ -170,6 +170,10 @@
     "Available" => "Available",
     "Issue Date" => "Issue Date",
     "Duration" => "Duration",
+    "Start Time" => "Start Time",
+    'End Time' => 'End Time',
+    "PDUs" => "PDUs",
+    "Add time table" => "Add time table",
     "Change" => "Change",
     "Deactivate" => "Deactivate",
     "Yes" => "Yes",
@@ -734,8 +738,9 @@
     "updated_successfully" => "Updated successfully",
     "success" => "Success",
     "Values" => "Values",
-    'choose_institute'=>'Choose Institute',
-    'Every'=>'Every',
-    'CVV'=>'CVV'
+    'choose_institute' => 'Choose Institute',
+    'Every' => 'Every',
+    'CVV' => 'CVV',
+    "Timetable id has been stored"=>"Timetable ID has been stored, You can buy, add to cart now."
 ]
 ?>

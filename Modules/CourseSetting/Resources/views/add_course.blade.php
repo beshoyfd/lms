@@ -933,16 +933,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="primary_input mb-25">
-                                                <label class="primary_input_label d-flex" for="start_date">Start
-                                                    Date</label>
+                                                <label class="primary_input_label d-flex" for="start_date">{{__('common.Start Date')}}</label>
                                                 <input class="primary_input_field form-control"
                                                        name="timetable[start_date][]" type="date">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="primary_input mb-25">
-                                                <label class="primary_input_label d-flex" for="end_date">End
-                                                    Date</label>
+                                                <label class="primary_input_label d-flex" for="end_date">{{__('common.End Date')}}</label>
                                                 <input class="primary_input_field form-control"
                                                        name="timetable[end_date][]" type="date">
                                             </div>
@@ -951,7 +949,7 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="primary_input mb-25">
-                                        <label class="primary_input_label d-flex" for="duration">Duration</label>
+                                        <label class="primary_input_label d-flex" for="duration">{{__('common.Duration')}}</label>
                                         <input class="primary_input_field form-control"
                                                name="timetable[durations][]" placeholder="4 days" type="text">
                                     </div>
@@ -961,16 +959,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="primary_input mb-25">
-                                                <label class="primary_input_label d-flex" for="start_time">Start
-                                                    Time</label>
+                                                <label class="primary_input_label d-flex" for="start_time">{{__('common.Start Time')}}</label>
                                                 <input class="primary_input_field form-control"
                                                        name="timetable[start_time][]" type="time">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="primary_input mb-25">
-                                                <label class="primary_input_label d-flex" for="end_time">End
-                                                    Time</label>
+                                                <label class="primary_input_label d-flex" for="end_time">{{__('common.End Time')}}</label>
                                                 <input class="primary_input_field form-control"
                                                        name="timetable[end_time][]" type="time">
                                             </div>
@@ -979,7 +975,7 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="primary_input mb-25">
-                                        <label class="primary_input_label d-flex" for="duration">PDUs</label>
+                                        <label class="primary_input_label d-flex" for="duration">{{__('common.PDUs')}}</label>
                                         <input class="primary_input_field form-control"
                                                name="timetable[pdus][]"
                                                placeholder="16 hourse" type="text">
@@ -987,14 +983,14 @@
                                 </div>
 
                                 <div class="col-xl-12">
-                                    <span style="cursor: pointer" class="remove-timetable badge badge-sm bg-danger">Remove -</span>
+                                    <span style="cursor: pointer" class="remove-timetable badge badge-sm bg-danger">{{__('common.Remove')}} -</span>
                                 </div>
                             </div>
 
                         </div>
                     </div>
 
-                    <button type="button" id="add-timetable" style="display:none" class="btn btn-primary btn-sm">Add Another Timetable
+                    <button type="button" id="add-timetable" style="display:none" class="btn btn-primary btn-sm">{{__('common.Add time table')}}
                     </button>
 
                     <div class="row mt-20">
@@ -1181,15 +1177,12 @@
             });
 
             $('#add-timetable').click(function () {
-                // Clone the first timetable entry and clear its input fields
                 var newTimetable = $('.timetable-entry:first').clone();
-                newTimetable.find('input').val(''); // Clear the values of the cloned inputs
+                newTimetable.find('input').val('');
                 $('#timetable-container').append(newTimetable);
             });
 
-            // Function to remove a timetable entry
             $(document).on('click', '.remove-timetable', function () {
-                // Prevent removing the last remaining timetable entry
                 if ($('.timetable-entry').length > 1) {
                     $(this).closest('.timetable-entry').remove();
                 }

@@ -1106,11 +1106,13 @@
             </div>
 
             <!-- -->
-            <h3 class="mb-2 text-black">Course Time Table</h3>
+            @if($course->timeTables && count($course->timeTables))
+                <h4 class="font_22 f_w_700 mb_20">{{__('courses.Course Time Table')}}</h4>
+            <div id="msg" class="alert alert-success" style="display:none"></div>
             <div class="col-12">
                 <div class="quiz-slider owl-carousel">
                         @foreach($course->timeTables as $timeTable)
-                            <div class="quiz-item w-100 mt-0">
+                            <div class="quiz-item w-100 mt-0" id="timeTableCard">
                                 <div class="quiz-item-lession border">
 
                                     <div class="d-flex justify-content-around">
@@ -1124,7 +1126,7 @@
                                                 </g>
                                             </svg>
 
-                                            <p>Duration<br>
+                                            <p>{{__('common.Duration')}}<br>
                                                 {{$timeTable->duration}}
                                             </p>
 
@@ -1144,7 +1146,7 @@
                                                 </g>
                                             </svg>
 
-                                        <p>PDUs<br>
+                                        <p>{{__('common.PDUs')}}<br>
                                             {{$timeTable->pdus}}
                                         </p>
                                         </p>
@@ -1167,7 +1169,7 @@
                                             </svg>
 
                                             <p>
-                                            Time:
+                                            {{__('common.Time')}}:
                                             <br>
                                             {{$timeTable->start_time}} -
                                             <br>
@@ -1196,7 +1198,7 @@
                                             </svg>
 
                                         <p>
-                                            Date:
+                                            {{__('common.Date')}}::
                                             <br>
                                             {{$timeTable->start_date}} -
                                             <br>
@@ -1206,9 +1208,9 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <a href="#" class="theme_btn text-center mt-10" style="margin-top: 3em;padding: 8px 24px !important;">
-                                            Register
-                                        </a>
+                                        <button type="button" onclick="chooseTimeTable('{{$timeTable->id}}', this)" class="theme_btn timeBtns btn-sm text-center mt-10" style="margin-top: 3em;padding: 8px 24px !important;">
+                                            {{__('common.Choose')}}
+                                        </button>
                                     </div>
 
 
@@ -1258,9 +1260,34 @@
 
                     });
                 })();
+
+                function chooseTimeTable(id, btn) {
+
+                    $('.timeBtns').each(function() {
+                        $(this).find('.fa-check').remove();
+                        $(this).removeAttr('disabled');
+                    });
+
+                    $(btn).append('<i class="fa fa-check"></i>');
+                    $(btn).attr('disabled', true);
+
+                    $.ajax({
+                        url: "{{ route('storeTimeTableId') }}",
+                        method: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            timeTableId: id
+                        },
+                        success: function(response) {
+                            $('#msg').show();
+                            $('#msg').html(response.message);
+                        },
+                    });
+
+                }
+
             </script>
-
-
+            @endif
             <!-- -->
 
         </div>
