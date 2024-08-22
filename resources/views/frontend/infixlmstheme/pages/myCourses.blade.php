@@ -101,11 +101,6 @@
                 let course_id = $(this).data('course_id');
                 $('#cpd_course_id').val(course_id);
             })
-
-            function showTimeTable(id){
-                alert(id);
-            }
-
         })
     </script>
 @endsection
