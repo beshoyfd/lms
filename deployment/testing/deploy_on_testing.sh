@@ -49,10 +49,6 @@ rm -rf ./tests
 #rm -rf ./resources/assets
 
 
-
-
-
-
 #rm -rf ./public/index.php
 #cp -rf ./public/* $APP_PUBLIC_DIR
 #cp -rf ./deployment/production/public/* $APP_PUBLIC_DIR
