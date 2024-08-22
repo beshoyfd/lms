@@ -17,7 +17,7 @@ class CreateGeneralSettingsTable extends Migration
     {
         Schema::create('general_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('site_title')->nullable()->default('Infix LMS');
+            $table->string('site_title')->nullable()->default('FOL EDU');
             $table->longText('company_info')->nullable();
             $table->string('zip_code')->nullable();
             $table->string('vat_number')->nullable();
@@ -90,7 +90,7 @@ class CreateGeneralSettingsTable extends Migration
         DB::table('general_settings')->insert([
             [
                 'id' => 1,
-                'site_title' => 'Infix LMS',
+                'site_title' => 'FOL EDU',
                 'address' => '89/2 Panthapath, Dhaka 1215, Bangladesh',
                 'phone' => '+8801841412141',
                 'email' => 'domain@lms.com',
