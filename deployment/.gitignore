@@ -1,0 +1,4 @@
+run_encrypt.sh
+production/deploy_on_production.sh
+testing/deploy_on_testing.sh
+!.gitignore
