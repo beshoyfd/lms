@@ -1,3 +1,4 @@
+<!-- frontend2 -->
 <!doctype html>
 <html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="en" itemscope
       itemtype="{{url('/')}}">
@@ -40,7 +41,6 @@
     @endif
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="{{ Settings('site_name')  }}">
-
     <meta itemprop="image" content="{{asset(Settings('logo') )}}">
     @if(routeIs('frontendHomePage'))
         <meta itemprop="description" content="{{ Settings('meta_description')  }}">
@@ -57,12 +57,7 @@
         <meta itemprop="keywords" content="{{ $course->meta_keywords }}">
     @endif
     <meta itemprop="author" content="{{Settings('site_name')}}">
-
-    <!-- Facebook Meta Tags -->
-
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset(Settings('favicon') )}}">
-    <!-- Place favicon.ico in the root directory -->
 
     @if(!empty(Settings('facebook_pixel')))
         <!-- Facebook Pixel Code -->
@@ -102,9 +97,6 @@
     <input type="hidden" name="chat_settings" id="chat_settings" value="{{ env('BROADCAST_DRIVER') }}">
     <input type="hidden" name="slider_transition_time" id="slider_transition_time"
            value="{{Settings('slider_transition_time')?Settings('slider_transition_time'):5}}">
-
-
-
     <link rel="icon" type="image/png" href="/public/frontend2/app-icons/icon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="/public/frontend2/app-icons/icon-180x180.png">
 
@@ -124,116 +116,12 @@
     <!-- Font icons -->
     <link rel="stylesheet" href="/public/frontend2/icons/around-icons.min.css">
 
-    <!-- Theme styles + Bootstrap -->
     <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css">
 
-    <!-- Page loading styles -->
-    <style>
-        .page-loading {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-transition: all .4s .2s ease-in-out;
-            transition: all .4s .2s ease-in-out;
-            background-color: #fff;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 9999;
-        }
-        [data-bs-theme="dark"] .page-loading {
-            background-color: #121519;
-        }
-        .page-loading.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .page-loading-inner {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-            -webkit-transition: opacity .2s ease-in-out;
-            transition: opacity .2s ease-in-out;
-            opacity: 0;
-        }
-        .page-loading.active > .page-loading-inner {
-            opacity: 1;
-        }
-        .page-loading-inner > span {
-            display: block;
-            font-family: "Inter", sans-serif;
-            font-size: 1rem;
-            font-weight: normal;
-            color: #6f788b;
-        }
-        [data-bs-theme="dark"] .page-loading-inner > span {
-            color: #fff;
-            opacity: .6;
-        }
-        .page-spinner {
-            display: inline-block;
-            width: 2.75rem;
-            height: 2.75rem;
-            margin-bottom: .75rem;
-            vertical-align: text-bottom;
-            background-color: #d7dde2;
-            border-radius: 50%;
-            opacity: 0;
-            -webkit-animation: spinner .75s linear infinite;
-            animation: spinner .75s linear infinite;
-        }
-        [data-bs-theme="dark"] .page-spinner {
-            background-color: rgba(255,255,255,.25);
-        }
-        @-webkit-keyframes spinner {
-            0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                -webkit-transform: none;
-                transform: none;
-            }
-        }
-        @keyframes spinner {
-            0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                -webkit-transform: none;
-                transform: none;
-            }
-        }
-        .text-orange {
-            --ar-text-opacity: 1;
-            color: rgb(251, 68, 0) !important;
-        }
-    </style>
-
-    <!-- Page loading scripts -->
-    <script>
-        (function () {
-            window.onload = function () {
-                const preloader = document.querySelector('.page-loading')
-                preloader.classList.remove('active')
-                setTimeout(function () {
-                    preloader.remove()
-                }, 1500)
-            }
-        })()
-    </script>
+    @yield('css')
+    @stack('css')
 
 </head>
 
-<body>
 
