@@ -2775,6 +2775,7 @@ if (!function_exists('getPriceAsNumber')) {
 if (!function_exists('currentTheme')) {
     function currentTheme()
     {
+        return 'custom';
         if (app()->bound('getSetting')) {
             return Settings('frontend_active_theme');
         } else {
