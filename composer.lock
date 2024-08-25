@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1a02d26bdfeb1f61b466d7670c9b433",
+    "content-hash": "22480165af4fa04470351b5a7662ee04",
     "packages": [
         {
             "name": "amazonpaymentservices/aps-php-sdk",
@@ -12346,7 +12346,7 @@
         },
         {
             "name": "spondonit/ar-php",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/ar-php",
@@ -12383,7 +12383,7 @@
         },
         {
             "name": "spondonit/lms-service",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/lms-service",
@@ -12421,7 +12421,7 @@
         },
         {
             "name": "spondonit/mobilpay",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/mobilpay",
@@ -12467,7 +12467,7 @@
         },
         {
             "name": "spondonit/omnipay-mobilpay",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/omnipay-mobilpay",
@@ -12513,7 +12513,7 @@
         },
         {
             "name": "spondonit/service",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/service",
