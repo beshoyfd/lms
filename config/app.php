@@ -199,6 +199,8 @@ return [
         App\Providers\RepositoryServiceProvider::class,
 //        Aorabook\Pagebuilder\ServiceProvider::class,
 //        Aorabook\Optionbuilder\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+
 
     ],
 
@@ -258,6 +260,7 @@ return [
         'PaytmWallet' => Anand\LaravelPaytmWallet\Facades\PaytmWallet::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
     'debug_blacklist' => [
         '_COOKIE' => array_keys($_COOKIE),

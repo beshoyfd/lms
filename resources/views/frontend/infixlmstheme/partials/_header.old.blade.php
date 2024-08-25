@@ -23,8 +23,8 @@
     <title>
         @yield('title')
     </title>
-    @if(!empty(Settings('google_analytics') ))
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+@if(!empty(Settings('google_analytics') ))
+    <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id={{Settings('google_analytics') }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -37,8 +37,8 @@
 
             gtag('config', '{{Settings('google_analytics') }}');
         </script>
-    @endif
-    <!-- Google / Search Engine Tags -->
+@endif
+<!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="{{ Settings('site_name')  }}">
 
     <meta itemprop="image" content="{{asset(Settings('logo') )}}">
@@ -64,8 +64,56 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{asset(Settings('favicon') )}}">
     <!-- Place favicon.ico in the root directory -->
 
+
+    <x-frontend-dynamic-style-color/>
+    <x-backend-dynamic-color/>
+
+    @if(isRtl())
+        <link rel="stylesheet"
+              href="{{ asset('public/frontend/infixlmstheme') }}/css/bootstrap.rtl.min.css{{assetVersion()}} ">
+    @else
+        <link rel="stylesheet"
+              href="{{ asset('public/frontend/infixlmstheme') }}/css/bootstrap.min.css{{assetVersion()}} ">
+    @endif
+
+    <link rel="stylesheet" href="{{asset('public/backend/css/themify-icons.css')}}{{assetVersion()}}"/>
+    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme') }}/css/notification.css{{assetVersion()}}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme/css/mega_menu.css') }}">
+
+    <link href="{{asset('public/backend/css/summernote-bs4.min.css')}}{{assetVersion()}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/css/preloader.css')}}{{assetVersion()}}"/>
+
+    @if(str_contains(request()->url(), 'chat'))
+        <link rel="stylesheet" href="{{asset('public/backend/css/jquery-ui.css')}}{{assetVersion()}}"/>
+        <link rel="stylesheet" href="{{asset('public/backend/vendors/select2/select2.css')}}{{assetVersion()}}"/>
+        <link rel="stylesheet" href="{{asset('public/chat/css/style-student.css')}}{{assetVersion()}}">
+    @endif
+
+    @if(auth()->check() && auth()->user()->role_id == 3 && !str_contains(request()->url(), 'chat'))
+        <link rel="stylesheet" href="{{asset('public/chat/css/notification.css')}}{{assetVersion()}}">
+    @endif
+
+    @if(isModuleActive("WhatsappSupport"))
+        <link rel="stylesheet" href="{{ asset('public/whatsapp-support/style.css') }}{{assetVersion()}}">
+    @endif
+    <script>
+        window.Laravel = {
+            "baseUrl": '{{ url('/') }}' + '/',
+            "current_path_without_domain": '{{request()->path()}}',
+            "csrfToken": '{{csrf_token()}}',
+        }
+    </script>
+
+
+    <script>
+        window._locale = '{{ app()->getLocale() }}';
+        window._translations = {!! $jsonLang??''!!};
+
+    </script>
+
+
     @if(!empty(Settings('facebook_pixel')))
-        <!-- Facebook Pixel Code -->
+    <!-- Facebook Pixel Code -->
         <script>
             !function (f, b, e, v, n, t, s) {
                 if (f.fbq) return;
@@ -103,137 +151,24 @@
     <input type="hidden" name="slider_transition_time" id="slider_transition_time"
            value="{{Settings('slider_transition_time')?Settings('slider_transition_time'):5}}">
 
+    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme') }}/css/app.css{{assetVersion()}}"
+          media="screen,print">
 
+    @if(isRtl())
+        <link rel="stylesheet"
+              href="{{ asset('public/frontend/infixlmstheme') }}/css/frontend_style_rtl.css{{assetVersion()}}"
+              media="screen,print">
+    @else
+        <link rel="stylesheet"
+              href="{{ asset('public/frontend/infixlmstheme') }}/css/frontend_style.css{{assetVersion()}}"
+              media="screen,print">
+    @endif
+    <script src="{{asset('public/frontend/infixlmstheme')}}/js/common.js{{assetVersion()}}"></script>
+    @yield('css')
 
-    <link rel="icon" type="image/png" href="/public/frontend2/app-icons/icon-32x32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="/public/frontend2/app-icons/icon-180x180.png">
-
-    <!-- Theme switcher (color modes) -->
-    <script src="/public/frontend2/js/theme-switcher.js"></script>
-
-    <!-- Import Google font (Inter) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" id="google-font">
-
-    <!-- Vendor styles -->
-    <link rel="stylesheet" media="screen" href="/public/frontend2/vendor/aos/dist/aos.css">
-    <link rel="stylesheet" media="screen" href="/public/frontend2/vendor/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" media="screen" href="/public/frontend2/vendor/img-comparison-slider/dist/styles.css">
-
-    <!-- Font icons -->
-    <link rel="stylesheet" href="/public/frontend2/icons/around-icons.min.css">
-
-    <!-- Theme styles + Bootstrap -->
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
-
-    <!-- Page loading styles -->
-    <style>
-        .page-loading {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-transition: all .4s .2s ease-in-out;
-            transition: all .4s .2s ease-in-out;
-            background-color: #fff;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 9999;
-        }
-        [data-bs-theme="dark"] .page-loading {
-            background-color: #121519;
-        }
-        .page-loading.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .page-loading-inner {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-            -webkit-transition: opacity .2s ease-in-out;
-            transition: opacity .2s ease-in-out;
-            opacity: 0;
-        }
-        .page-loading.active > .page-loading-inner {
-            opacity: 1;
-        }
-        .page-loading-inner > span {
-            display: block;
-            font-family: "Inter", sans-serif;
-            font-size: 1rem;
-            font-weight: normal;
-            color: #6f788b;
-        }
-        [data-bs-theme="dark"] .page-loading-inner > span {
-            color: #fff;
-            opacity: .6;
-        }
-        .page-spinner {
-            display: inline-block;
-            width: 2.75rem;
-            height: 2.75rem;
-            margin-bottom: .75rem;
-            vertical-align: text-bottom;
-            background-color: #d7dde2;
-            border-radius: 50%;
-            opacity: 0;
-            -webkit-animation: spinner .75s linear infinite;
-            animation: spinner .75s linear infinite;
-        }
-        [data-bs-theme="dark"] .page-spinner {
-            background-color: rgba(255,255,255,.25);
-        }
-        @-webkit-keyframes spinner {
-            0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                -webkit-transform: none;
-                transform: none;
-            }
-        }
-        @keyframes spinner {
-            0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                -webkit-transform: none;
-                transform: none;
-            }
-        }
-        .text-orange {
-            --ar-text-opacity: 1;
-            color: rgb(251, 68, 0) !important;
-        }
-    </style>
-
-    <!-- Page loading scripts -->
-    <script>
-        (function () {
-            window.onload = function () {
-                const preloader = document.querySelector('.page-loading')
-                preloader.classList.remove('active')
-                setTimeout(function () {
-                    preloader.remove()
-                }, 1500)
-            }
-        })()
-    </script>
-
+    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme/css/custom.css') }}">
 </head>
 
 <body>
 
+@include('secret_login')
