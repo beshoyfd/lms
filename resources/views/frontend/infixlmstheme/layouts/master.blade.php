@@ -1,14 +1,24 @@
 @include(theme('partials._header'))
+@include('secret_login')
+
+@if(Settings('preloader_status'))
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+        <div class="page-loading-inner">
+            <div class="page-spinner"></div>
+            <span>Loading...</span>
+        </div>
+    </div>
+@endif
+
+
+<!-- Page wrapper -->
+<main class="page-wrapper">
+
 @include(theme('partials._menu'))
 
-<input type="hidden" name="base_url" class="base_url" value="{{url('/')}}">
-<input type="hidden" name="csrf_token" class="csrf_token" value="{{csrf_token()}}">
-@if(auth()->check())
-    <input type="hidden" name="balance" class="user_balance" value="{{auth()->user()->balance}}">
-@endif
-<input type="hidden" name="currency_symbol" class="currency_symbol" value="{{Settings('currency_symbol') }}">
-<input type="hidden" name="app_debug" class="app_debug" value="{{env('APP_DEBUG') }}">
-@include('preloader')
 @yield('mainContent')
+
+</main>
 
 @include(theme('partials._footer'))
