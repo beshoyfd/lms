@@ -115,6 +115,7 @@
 
     <!-- Font icons -->
     <link rel="stylesheet" href="/public/frontend2/icons/around-icons.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
     <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
     <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css">
