@@ -2567,6 +2567,12 @@ class WebsiteController extends Controller
         }
     }
 
+    public function storeTimeTableId(Request $request)
+    {
+        $request->session()->put('selectedTimeTableId', $request->input('timeTableId'));
+        return response()->json(['message' => __('common.Timetable id has been stored')]);
+    }
+
     public function continueCourse($slug)
     {
         try {

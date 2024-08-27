@@ -23,6 +23,7 @@ use Modules\CourseSetting\Entities\Course;
 use Modules\CourseSetting\Entities\CourseEnrolled;
 use Modules\CourseSetting\Entities\CourseExercise;
 use Modules\CourseSetting\Entities\CourseLevel;
+use Modules\CourseSetting\Entities\CourseTimeTable;
 use Modules\CourseSetting\Entities\Lesson;
 use Modules\CourseSetting\Entities\SchoolSubject;
 use Modules\Forum\Services\ForumService;
@@ -425,6 +426,43 @@ class CourseSettingController extends Controller
                 $course->image = $imageUrl;
                 $course->thumbnail = $imageUrl;
             }
+
+            if ($request->timetable && is_array($request->timetable)) {
+                foreach ($request->timetable['start_date'] as $index => $startDate) {
+                    $endDate = null;
+                    $startTime = null;
+                    $endTime = null;
+                    $duration = null;
+                    $pdus = null;
+
+                    if (array_key_exists('end_date', $request->timetable)) {
+                        $endDate = $request->timetable['end_date'][$index];
+                    }
+                    if (array_key_exists('start_time', $request->timetable)) {
+                        $startTime = $request->timetable['start_time'][$index];
+                    }
+                    if (array_key_exists('end_time', $request->timetable)) {
+                        $endTime = $request->timetable['end_time'][$index];
+                    }
+                    if (array_key_exists('durations', $request->timetable)) {
+                        $duration = $request->timetable['durations'][$index];
+                    }
+                    if (array_key_exists('pdus', $request->timetable)) {
+                        $pdus = $request->timetable['pdus'][$index];
+                    }
+
+                    CourseTimeTable::query()->create([
+                        'course_id' => $course->id,
+                        'start_date' => $startDate,
+                        'end_date' => $endDate,
+                        'start_time' => $startTime,
+                        'end_time' => $endTime,
+                        'duration' => $duration,
+                        'pdus' => $pdus,
+                    ]);
+                }
+            }
+
             $course->save();
 
 

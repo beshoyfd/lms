@@ -18,6 +18,17 @@
         }
     @endphp
 
+    <style>
+        .quiz-item-lession {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 10px 1px rgb(0 0 0 / 10%);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+
         <!-- course_details::start  -->
     <div class="course__details">
         <div class="container">
@@ -1093,6 +1104,192 @@
                     </div>
                 </div>
             </div>
+
+            <!-- -->
+            @if($course->timeTables && count($course->timeTables))
+                <h4 class="font_22 f_w_700 mb_20">{{__('courses.Course Time Table')}}</h4>
+            <div id="msg" class="alert alert-success" style="display:none"></div>
+            <div class="col-12">
+                <div class="quiz-slider owl-carousel">
+                        @foreach($course->timeTables as $timeTable)
+                            <div class="quiz-item w-100 mt-0" id="timeTableCard">
+                                <div class="quiz-item-lession border">
+
+                                    <div class="d-flex justify-content-around">
+                                        <p class="fw-bold text-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.833" height="25.833" viewBox="0 0 50.833 50.833">
+                                                <g id="hourglass" transform="translate(-108 -188)">
+                                                    <g id="timer" transform="translate(108 188)">
+                                                        <path id="Vector" d="M7.763-.75H21.488c4,0,6.933,1.667,8.054,4.572,1.162,3.011.073,6.728-2.708,9.249l-9.846,8.947,9.847,8.949c2.78,2.52,3.868,6.237,2.707,9.248-1.121,2.906-4.056,4.572-8.054,4.572H7.763c-4,0-6.933-1.667-8.054-4.572-1.162-3.011-.073-6.728,2.708-9.249l9.846-8.947L2.416,13.07c-2.78-2.52-3.868-6.237-2.707-9.248C.83.917,3.766-.75,7.763-.75Zm6.862,20.622L24.7,10.719c1.789-1.621,2.561-3.987,1.879-5.753-.632-1.637-2.439-2.539-5.089-2.539H7.763c-2.65,0-4.458.9-5.089,2.539-.682,1.767.091,4.132,1.878,5.752Zm6.862,21.738c2.65,0,4.458-.9,5.089-2.539.682-1.767-.091-4.132-1.878-5.752L14.625,24.165,4.553,33.319c-1.789,1.621-2.561,3.987-1.879,5.753.632,1.637,2.439,2.539,5.089,2.539Z" transform="translate(10.791 3.398)" fill="#292d32"/>
+                                                        <path id="Vector-2" data-name="Vector" d="M0,0H50.833V50.833H0Z" fill="none" opacity="0"/>
+                                                    </g>
+                                                </g>
+                                            </svg>
+
+                                            <p>{{__('common.Duration')}}<br>
+                                                {{$timeTable->duration}}
+                                            </p>
+
+                                        </p>
+                                        <p class="fw-bold text-center">
+
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.1" height="25.594" viewBox="0 0 57.1 70.594">
+                                                <g id="Stopwatch" transform="translate(-210.5 65.429)">
+                                                    <path id="Path_34799" data-name="Path 34799" d="M225.051-2.373a27.188,27.188,0,0,0,5.021.473,27.043,27.043,0,0,0,27.05-27.05A27.043,27.043,0,0,0,230.072-56a27.882,27.882,0,0,0-5.072.473A27.047,27.047,0,0,1,246.978-28.95,27.073,27.073,0,0,1,225.051-2.373Z" transform="translate(8.978 5.564)" fill="#e9e9e9"/>
+                                                    <path id="Path_34800" data-name="Path 34800" d="M239.9-29.278l-.056.061" transform="translate(19.23 24.019)" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                                    <path id="Path_34801" data-name="Path 34801" d="M249.58-4.025A26.985,26.985,0,0,1,239.05-1.9,27.049,27.049,0,0,1,212-28.95,27.049,27.049,0,0,1,239.05-56,27.049,27.049,0,0,1,266.1-28.95a27.033,27.033,0,0,1-1.063,7.535" transform="translate(0 5.564)" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                                    <rect id="Rectangle_1105" data-name="Rectangle 1105" width="9" height="3" transform="translate(234.274 -63.929)" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                                    <line id="Line_153" data-name="Line 153" y2="9" transform="translate(239.274 -61.929)" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                                    <line id="Line_154" data-name="Line 154" y1="6" x2="4" transform="translate(259.274 -48.929)" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                                    <line id="Line_155" data-name="Line 155" y1="15" transform="translate(239.274 -37.929)" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+                                                </g>
+                                            </svg>
+
+                                        <p>{{__('common.PDUs')}}<br>
+                                            {{$timeTable->pdus}}
+                                        </p>
+                                        </p>
+                                    </div>
+
+
+
+
+                                    <div class="d-flex justify-content-around mt-5">
+                                        <p class="fw-bold text-center">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.084" height="25.084" viewBox="0 0 51.084 51.084">
+                                                <g id="clock" transform="translate(-172 -188)">
+                                                    <g id="clock-2" data-name="clock" transform="translate(172 188)">
+                                                        <path id="Vector" d="M22.131-.75A22.881,22.881,0,1,1-.75,22.131,22.907,22.907,0,0,1,22.131-.75Zm0,42.57A19.689,19.689,0,1,0,2.443,22.131,19.711,19.711,0,0,0,22.131,41.82Z" transform="translate(3.411 3.411)" fill="#292d32"/>
+                                                        <path id="Vector-2" data-name="Vector" d="M9.529,18.769a1.589,1.589,0,0,1-.817-.226l-6.6-3.938A6.3,6.3,0,0,1-.75,9.573V.846a1.6,1.6,0,0,1,3.193,0V9.573a3.141,3.141,0,0,0,1.3,2.288l6.6,3.94a1.6,1.6,0,0,1-.82,2.967Z" transform="translate(23.908 15.139)" fill="#292d32"/>
+                                                        <path id="Vector-3" data-name="Vector" d="M0,0H51.084V51.084H0Z" fill="none" opacity="0"/>
+                                                    </g>
+                                                </g>
+                                            </svg>
+
+                                            <p>
+                                            {{__('common.Time')}}:
+                                            <br>
+                                            {{$timeTable->start_time}} -
+                                            <br>
+                                            {{$timeTable->end_time}}
+                                        </p>
+                                        </p>
+
+                                        <p class="fw-bold text-center">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.549" height="25.549" viewBox="0 0 51.549 51.549">
+                                                <g id="calender" transform="translate(-492 -188)">
+                                                    <g id="calendar" transform="translate(492 188)">
+                                                        <path id="Vector" d="M.861,8.915A1.611,1.611,0,0,1-.75,7.3V.861a1.611,1.611,0,1,1,3.222,0V7.3A1.611,1.611,0,0,1,.861,8.915Z" transform="translate(16.322 3.435)" fill="#292d32"/>
+                                                        <path id="Vector-2" data-name="Vector" d="M.861,8.915A1.611,1.611,0,0,1-.75,7.3V.861a1.611,1.611,0,1,1,3.222,0V7.3A1.611,1.611,0,0,1,.861,8.915Z" transform="translate(33.505 3.435)" fill="#292d32"/>
+                                                        <path id="Vector-3" data-name="Vector" d="M37.375,2.472H.861a1.611,1.611,0,1,1,0-3.222H37.375a1.611,1.611,0,1,1,0,3.222Z" transform="translate(6.657 18.663)" fill="#292d32"/>
+                                                        <path id="Vector-4" data-name="Vector" d="M11.6-.75H28.783c4.08,0,7.232,1.167,9.369,3.468,1.978,2.13,2.981,5.119,2.981,8.882V29.857c0,3.764-1,6.752-2.981,8.882-2.137,2.3-5.289,3.468-9.369,3.468H11.6c-4.08,0-7.232-1.167-9.369-3.468C.253,36.609-.75,33.621-.75,29.857V11.6c0-3.764,1-6.752,2.981-8.882C4.368.417,7.52-.75,11.6-.75ZM28.783,38.986c3.148,0,5.506-.82,7.008-2.439,1.407-1.515,2.12-3.766,2.12-6.69V11.6c0-2.924-.713-5.175-2.12-6.69-1.5-1.618-3.86-2.439-7.008-2.439H11.6c-3.148,0-5.506.82-7.008,2.439-1.407,1.515-2.12,3.766-2.12,6.69V29.857c0,2.924.713,5.175,2.12,6.69,1.5,1.618,3.86,2.439,7.008,2.439Z" transform="translate(5.583 6.657)" fill="#292d32"/>
+                                                        <path id="Vector-5" data-name="Vector" d="M0,0H51.549V51.549H0Z" fill="none" opacity="0"/>
+                                                        <path id="Vector-6" data-name="Vector" d="M1.662,3.8H1.642a2.148,2.148,0,0,1,0-4.3h.019a2.148,2.148,0,1,1,0,4.3Z" transform="translate(32.068 27.778)" fill="#292d32"/>
+                                                        <path id="Vector-7" data-name="Vector" d="M1.662,3.8H1.642a2.148,2.148,0,0,1,0-4.3h.019a2.148,2.148,0,1,1,0,4.3Z" transform="translate(32.068 34.222)" fill="#292d32"/>
+                                                        <path id="Vector-8" data-name="Vector" d="M1.662,3.8H1.642a2.148,2.148,0,0,1,0-4.3h.019a2.148,2.148,0,1,1,0,4.3Z" transform="translate(24.123 27.778)" fill="#292d32"/>
+                                                        <path id="Vector-9" data-name="Vector" d="M1.662,3.8H1.642a2.148,2.148,0,0,1,0-4.3h.019a2.148,2.148,0,1,1,0,4.3Z" transform="translate(24.123 34.222)" fill="#292d32"/>
+                                                        <path id="Vector-10" data-name="Vector" d="M1.662,3.8H1.642a2.148,2.148,0,0,1,0-4.3h.019a2.148,2.148,0,1,1,0,4.3Z" transform="translate(16.173 27.778)" fill="#292d32"/>
+                                                        <path id="Vector-11" data-name="Vector" d="M1.662,3.8H1.642a2.148,2.148,0,0,1,0-4.3h.019a2.148,2.148,0,1,1,0,4.3Z" transform="translate(16.173 34.222)" fill="#292d32"/>
+                                                    </g>
+                                                </g>
+                                            </svg>
+
+                                        <p>
+                                            {{__('common.Date')}}::
+                                            <br>
+                                            {{$timeTable->start_date}} -
+                                            <br>
+                                            {{$timeTable->end_date}}
+                                        </p>
+                                        </p>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="button" onclick="chooseTimeTable('{{$timeTable->id}}', this)" class="theme_btn timeBtns btn-sm text-center mt-10" style="margin-top: 3em;padding: 8px 24px !important;">
+                                            {{__('common.Choose')}}
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        @endforeach
+                </div>
+            </div>
+            <script>
+
+                (function () {
+                    'use strict'
+                    jQuery(document).ready(function () {
+                        const rtl = $("html").attr("dir");
+                        const navLeft =
+                            '<svg width="23" height="19" viewBox="0 0 23 19" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8.3125 0.625244L0.499998 8.43778V10.6253L8.3125 18.4378L10.5313 16.2503L5.40625 11.094H22.8125V7.96903H5.40625L10.5625 2.81275L8.3125 0.625244Z" fill="currentColor"/></svg>';
+                        const navRight =
+                            '<svg width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.1875 17.8125L23 9.99996V7.81245L15.1875 -8.7738e-05L12.9687 2.18742L18.0937 7.3437H0.6875L0.6875 10.4687H18.0937L12.9375 15.625L15.1875 17.8125Z" fill="currentColor"/></svg>'
+                        $('.quiz-slider').owlCarousel({
+                            nav: false,
+                            rtl: rtl === 'rtl',
+                            navText: [navLeft, navRight],
+                            dots: true,
+                            lazyLoad: true,
+                            autoplay: true,
+                            autoplayHoverPause: true,
+                            loop: true,
+                            margin: 24,
+                            responsive: {
+                                0: {
+                                    items: 1
+                                },
+                                480: {
+                                    items: 1
+                                },
+                                768: {
+                                    items: 2
+                                },
+                                922: {
+                                    items: 3
+                                },
+                                1200: {
+                                    items: 3
+                                }
+                            }
+                        });
+
+                    });
+                })();
+
+                function chooseTimeTable(id, btn) {
+
+                    $('.timeBtns').each(function() {
+                        $(this).find('.fa-check').remove();
+                        $(this).removeAttr('disabled');
+                    });
+
+                    $(btn).append('<i class="fa fa-check"></i>');
+                    $(btn).attr('disabled', true);
+
+                    $.ajax({
+                        url: "{{ route('storeTimeTableId') }}",
+                        method: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            timeTableId: id
+                        },
+                        success: function(response) {
+                            $('#msg').show();
+                            $('#msg').html(response.message);
+                        },
+                    });
+
+                }
+
+            </script>
+            @endif
+            <!-- -->
+
         </div>
     </div>
 

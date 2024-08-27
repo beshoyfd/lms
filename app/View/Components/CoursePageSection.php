@@ -86,12 +86,12 @@ class CoursePageSection extends Component
         }
 
 
-        $category = $this->request->category;
+        $category = $this->request->category_id;
         if (empty($category)) {
             $category = '';
         } else {
-            $categories = explode(',', $category);
-            $query->whereIn('category_id', $categories);
+            //$categories = explode(',', $category);
+            $query->where('category_id', $category);
         }
 
         $subCategory = $this->request->get('sub-category');
@@ -137,7 +137,7 @@ class CoursePageSection extends Component
             }
         }
 
-        $courses = $query->paginate(itemsGridSize());
+        $courses = $query->paginate($this->request->pg_size ?? itemsGridSize());
         $total = $courses->total();
         $levels = CourseLevel::getAllActiveData();
         return view(theme('components.course-page-section'), compact('levels', 'mode', 'category', 'level', 'order', 'language', 'type', 'total', 'courses'));

@@ -1,3 +1,4 @@
+<!-- frontend2 -->
 <!doctype html>
 <html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="en" itemscope
       itemtype="{{url('/')}}">
@@ -40,7 +41,6 @@
     @endif
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="{{ Settings('site_name')  }}">
-
     <meta itemprop="image" content="{{asset(Settings('logo') )}}">
     @if(routeIs('frontendHomePage'))
         <meta itemprop="description" content="{{ Settings('meta_description')  }}">
@@ -57,60 +57,7 @@
         <meta itemprop="keywords" content="{{ $course->meta_keywords }}">
     @endif
     <meta itemprop="author" content="{{Settings('site_name')}}">
-
-    <!-- Facebook Meta Tags -->
-
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset(Settings('favicon') )}}">
-    <!-- Place favicon.ico in the root directory -->
-
-
-    <x-frontend-dynamic-style-color/>
-    <x-backend-dynamic-color/>
-
-    @if(isRtl())
-        <link rel="stylesheet"
-              href="{{ asset('public/frontend/infixlmstheme') }}/css/bootstrap.rtl.min.css{{assetVersion()}} ">
-    @else
-        <link rel="stylesheet"
-              href="{{ asset('public/frontend/infixlmstheme') }}/css/bootstrap.min.css{{assetVersion()}} ">
-    @endif
-
-    <link rel="stylesheet" href="{{asset('public/backend/css/themify-icons.css')}}{{assetVersion()}}"/>
-    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme') }}/css/notification.css{{assetVersion()}}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme/css/mega_menu.css') }}">
-
-    <link href="{{asset('public/backend/css/summernote-bs4.min.css')}}{{assetVersion()}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('public/css/preloader.css')}}{{assetVersion()}}"/>
-
-    @if(str_contains(request()->url(), 'chat'))
-        <link rel="stylesheet" href="{{asset('public/backend/css/jquery-ui.css')}}{{assetVersion()}}"/>
-        <link rel="stylesheet" href="{{asset('public/backend/vendors/select2/select2.css')}}{{assetVersion()}}"/>
-        <link rel="stylesheet" href="{{asset('public/chat/css/style-student.css')}}{{assetVersion()}}">
-    @endif
-
-    @if(auth()->check() && auth()->user()->role_id == 3 && !str_contains(request()->url(), 'chat'))
-        <link rel="stylesheet" href="{{asset('public/chat/css/notification.css')}}{{assetVersion()}}">
-    @endif
-
-    @if(isModuleActive("WhatsappSupport"))
-        <link rel="stylesheet" href="{{ asset('public/whatsapp-support/style.css') }}{{assetVersion()}}">
-    @endif
-    <script>
-        window.Laravel = {
-            "baseUrl": '{{ url('/') }}' + '/',
-            "current_path_without_domain": '{{request()->path()}}',
-            "csrfToken": '{{csrf_token()}}',
-        }
-    </script>
-
-
-    <script>
-        window._locale = '{{ app()->getLocale() }}';
-        window._translations = {!! $jsonLang??''!!};
-
-    </script>
-
 
     @if(!empty(Settings('facebook_pixel')))
         <!-- Facebook Pixel Code -->
@@ -150,25 +97,32 @@
     <input type="hidden" name="chat_settings" id="chat_settings" value="{{ env('BROADCAST_DRIVER') }}">
     <input type="hidden" name="slider_transition_time" id="slider_transition_time"
            value="{{Settings('slider_transition_time')?Settings('slider_transition_time'):5}}">
+    <link rel="icon" type="image/png" href="/public/frontend2/app-icons/icon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/public/frontend2/app-icons/icon-180x180.png">
 
-    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme') }}/css/app.css{{assetVersion()}}"
-          media="screen,print">
+    <!-- Theme switcher (color modes) -->
+    <script src="/public/frontend2/js/theme-switcher.js"></script>
 
-    @if(isRtl())
-        <link rel="stylesheet"
-              href="{{ asset('public/frontend/infixlmstheme') }}/css/frontend_style_rtl.css{{assetVersion()}}"
-              media="screen,print">
-    @else
-        <link rel="stylesheet"
-              href="{{ asset('public/frontend/infixlmstheme') }}/css/frontend_style.css{{assetVersion()}}"
-              media="screen,print">
-    @endif
-    <script src="{{asset('public/frontend/infixlmstheme')}}/js/common.js{{assetVersion()}}"></script>
+    <!-- Import Google font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" id="google-font">
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" media="screen" href="/public/frontend2/vendor/aos/dist/aos.css">
+    <link rel="stylesheet" media="screen" href="/public/frontend2/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" media="screen" href="/public/frontend2/vendor/img-comparison-slider/dist/styles.css">
+
+    <!-- Font icons -->
+    <link rel="stylesheet" href="/public/frontend2/icons/around-icons.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+
+    <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css">
+
     @yield('css')
+    @stack('css')
 
-    <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme/css/custom.css') }}">
 </head>
 
-<body>
 
-@include('secret_login')

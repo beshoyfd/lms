@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1a02d26bdfeb1f61b466d7670c9b433",
+    "content-hash": "22480165af4fa04470351b5a7662ee04",
     "packages": [
         {
             "name": "amazonpaymentservices/aps-php-sdk",
@@ -12346,11 +12346,11 @@
         },
         {
             "name": "spondonit/ar-php",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/ar-php",
-                "reference": "a536d169f4850950d4ad200c91d96f92d66c8578"
+                "reference": "14ac2f7f6a0a05a7ead402d17105db1853e7de25"
             },
             "require": {
                 "php": "^7.4|^8.0"
@@ -12383,11 +12383,11 @@
         },
         {
             "name": "spondonit/lms-service",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/lms-service",
-                "reference": "7ef77212fed1d76a5d0098fbaac940ba157c3f02"
+                "reference": "e2d4183e08c62097a0a680ff61b2ec9f81894d8b"
             },
             "require": {
                 "spondonit/service": "*"
@@ -12421,11 +12421,11 @@
         },
         {
             "name": "spondonit/mobilpay",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/mobilpay",
-                "reference": "ec9e578d1d7db631814b1f75c392df39aafb13f3"
+                "reference": "4d622fca346dbec166be44e78820c85872224296"
             },
             "require": {
                 "illuminate/support": "5.* || 6.* || 7.* || 8.* || 9.* || 10.*",
@@ -12467,11 +12467,11 @@
         },
         {
             "name": "spondonit/omnipay-mobilpay",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/omnipay-mobilpay",
-                "reference": "6fd3965a7892b7f9b1d8ccfe2da40d1306eebed3"
+                "reference": "22df3a1232831b0de640f00058cc0eb2e567fd4f"
             },
             "require": {
                 "omnipay/common": "^3.0.0",
@@ -12513,11 +12513,11 @@
         },
         {
             "name": "spondonit/service",
-            "version": "dev-master",
+            "version": "dev-course_time_table",
             "dist": {
                 "type": "path",
                 "url": "./packages/spondonit/service",
-                "reference": "cbd9ca9c4b4813754c82ee314e0ddf6df2479683"
+                "reference": "717395583acea2d94910b0ac88f3839e15e36ada"
             },
             "type": "library",
             "extra": {
@@ -16503,26 +16503,27 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.9.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e"
+                "reference": "5ffe7db6c80f441f150fc88008d64e64af66634b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
-                "reference": "848d8125239d7dbf8ab25cb7f054f1a630e68c2e",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/5ffe7db6c80f441f150fc88008d64e64af66634b",
+                "reference": "5ffe7db6c80f441f150fc88008d64e64af66634b",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0"
+                "php": "^5.3.3 || ^7.0 || ^8.0"
             },
             "require-dev": {
                 "ext-intl": "*",
                 "phpunit/phpunit": "^4.8.35 || ^5.7",
                 "squizlabs/php_codesniffer": "^2.9.2"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -16551,10 +16552,10 @@
             ],
             "support": {
                 "issues": "https://github.com/fzaninotto/Faker/issues",
-                "source": "https://github.com/fzaninotto/Faker/tree/v1.9.2"
+                "source": "https://github.com/fzaninotto/Faker/tree/master"
             },
             "abandoned": true,
-            "time": "2020-12-11T09:56:16+00:00"
+            "time": "2020-12-11T09:59:14+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",

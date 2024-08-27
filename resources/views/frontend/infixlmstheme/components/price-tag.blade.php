@@ -1,21 +1,6 @@
-<div>
-    @if(showEcommerce())
-        <span class="prise_tag">
+@if(showEcommerce())
 
-               @if ((int)$discount!=0)
-                <span class="prev_prise">
-                  {{getPriceFormat($price)}}
-                  </span>
-            @endif
+    <span class="me-2">{{getPriceFormat($discount)}}</span>
+    <del class="fs-sm text-body-secondary">{{getPriceFormat($price)}}</del>
 
-              <span>
-            @if ((int)$discount!=0)
-                      {{getPriceFormat($discount)}}
-                  @else
-                      {{getPriceFormat($price)}}
-                  @endif
-
-          </span>
-</span>
-    @endif
-</div>
+@endif

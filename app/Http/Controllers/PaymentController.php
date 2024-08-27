@@ -706,6 +706,7 @@ class PaymentController extends Controller
             $enroll = new CourseEnrolled();
             $instractor = (isModuleActive('Organization') && $course->isOrganizationCourse()) ? $course->courseOrganization() : User::find($cart->instructor_id);
             $enroll->user_id = $user->id;
+            $enroll->time_table_id = \session('selectedTimeTableId');
             $enroll->tracking = $checkout_info->tracking;
             $enroll->course_id = $course->id;
             $enroll->purchase_price = $itemPrice;
