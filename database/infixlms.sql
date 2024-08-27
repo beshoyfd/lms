@@ -1363,7 +1363,7 @@ INSERT INTO `front_pages` (`id`, `name`, `title`, `sub_title`, `details`, `slug`
 
 CREATE TABLE `general_settings` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `site_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'Infix LMS',
+  `site_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'FOL EDU',
   `company_info` longtext COLLATE utf8mb4_unicode_ci,
   `zip_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vat_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1432,7 +1432,7 @@ CREATE TABLE `general_settings` (
 --
 
 INSERT INTO `general_settings` (`id`, `site_title`, `company_info`, `zip_code`, `vat_number`, `address`, `phone`, `email`, `currency_id`, `logo`, `logo2`, `favicon`, `system_version`, `active_status`, `website_url`, `ttl_rtl`, `phone_number_privacy`, `language_id`, `date_format_id`, `software_version`, `mail_signature`, `mail_header`, `mail_footer`, `mail_protocol`, `time_zone_id`, `country_id`, `city`, `state`, `fb`, `twitter`, `youtube`, `linkedin`, `copyright_text`, `commission`, `recapthca`, `recaptcha_key`, `recaptcha_secret`, `template_id`, `instructor_reg`, `email_template`, `meta_keywords`, `meta_description`, `currency_conversion`, `device_limit`, `email_notification`, `show_drip`, `AmazonS3`, `BBB`, `Sslcommerz`, `Zoom`, `lat`, `lng`, `zoom_level`, `gmap_key`, `fixer_key`, `footer_about_title`, `footer_about_description`, `footer_copy_right`, `footer_section_one_title`, `footer_section_two_title`, `footer_section_three_title`, `created_at`, `updated_at`) VALUES
-(1, 'Infix LMS', NULL, '1205', NULL, '89/2 Panthapath, Dhaka 1215, Bangladesh', '+8801841412141', 'info@spondonit.com', 112, 'public/uploads/settings/logo.png', 'public/uploads/settings/logo.png', 'public/uploads/settings/favicon.png', '1.0', 1, NULL, 2, 1, 19, 1, NULL, NULL, NULL, NULL, NULL, 83, 19, 'Dhaka', 'Dhaka', 'https://facebook.com/', 'https://twitter.com/', 'https://youtube.com/', 'https://www.linkedin.com/', 'Copyright © 2021 InfixLMS. All rights reserved | Made By CodeThemes ', 40.00, 0, NULL, NULL, 3, 1, NULL, NULL, NULL, 'Fixer', 2, 0, 0, 0, 0, 0, 0, '23.806931', '90.368709', '11', 'AIzaSyA7nx22ZmINYk9TGiXDEXGVxghC43Ox6qA', '0bd244e811264242d56e1759c93a3f1a', 'About', NULL, 'Copyright © 2021 InfixLMS. All rights reserved | Made By  <a href=\"https://spondonit.com\" target=\"_blank\"><span style=\"color:#D12053\">CodeThemes</span></a>', 'Support Zone', 'Company Info', 'Explore Services', '2021-02-17 07:17:47', '2021-02-17 07:17:47');
+(1, 'FOL EDU', NULL, '1205', NULL, '89/2 Panthapath, Dhaka 1215, Bangladesh', '+8801841412141', 'info@spondonit.com', 112, 'public/uploads/settings/logo.png', 'public/uploads/settings/logo.png', 'public/uploads/settings/favicon.png', '1.0', 1, NULL, 2, 1, 19, 1, NULL, NULL, NULL, NULL, NULL, 83, 19, 'Dhaka', 'Dhaka', 'https://facebook.com/', 'https://twitter.com/', 'https://youtube.com/', 'https://www.linkedin.com/', 'Copyright © 2021 InfixLMS. All rights reserved | Made By CodeThemes ', 40.00, 0, NULL, NULL, 3, 1, NULL, NULL, NULL, 'Fixer', 2, 0, 0, 0, 0, 0, 0, '23.806931', '90.368709', '11', 'AIzaSyA7nx22ZmINYk9TGiXDEXGVxghC43Ox6qA', '0bd244e811264242d56e1759c93a3f1a', 'About', NULL, 'Copyright © 2021 InfixLMS. All rights reserved | Made By  <a href=\"https://spondonit.com\" target=\"_blank\"><span style=\"color:#D12053\">CodeThemes</span></a>', 'Support Zone', 'Company Info', 'Explore Services', '2021-02-17 07:17:47', '2021-02-17 07:17:47');
 
 -- --------------------------------------------------------
 

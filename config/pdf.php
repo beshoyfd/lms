@@ -2,9 +2,9 @@
 
 return [
     'format'           => 'A4',
-    'author'           => 'Infix LMS',
+    'author'           => 'FOL EDU',
     'subject'          => '',
     'keywords'         => '', // Separate values with comma
-    'creator'          => 'Infix LMS',
+    'creator'          => 'FOL EDU',
     'display_mode'     => 'fullpage'
 ];

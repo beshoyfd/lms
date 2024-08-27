@@ -3868,6 +3868,7 @@ if (!function_exists('clearAllLangCache')) {
 if (!function_exists('footerSettings')) {
     function footerSettings($key)
     {
+        return '';
         $footerSetting = Cache::rememberForever('footerSetting_' . app()->getLocale() . SaasDomain(), function () {
             return FooterSetting::all();
         });
