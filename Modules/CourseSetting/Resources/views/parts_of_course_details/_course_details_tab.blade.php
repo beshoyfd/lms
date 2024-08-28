@@ -1032,6 +1032,161 @@
 
                 </div>
 
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="checkbox_wrap d-flex align-items-center">
+                            <label for="show_time_table" class="switch_toggle me-2">
+                                <input type="checkbox" id="show_time_table" value="1"
+                                       {{$course->timeTables->count() ? 'checked' : ''}}
+                                       name="show_time_table">
+                                <i class="slider round"></i>
+                            </label>
+                            <label
+                                class="mb-0">{{ __('courses.Show Time Table') }}</label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="mt-25" id="timeTable" style="display: {{$course->timeTables->count() ? 'block' : 'none'}}">
+                    <div id="timetable-container">
+                        @forelse($course->timeTables as $timeTable)
+                        <div class="row timetable-entry">
+                            <div class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="start_date">{{__('common.Start Date')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   value="{{$timeTable->start_date}}"
+                                                   name="timetable[start_date][]" type="date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="end_date">{{__('common.End Date')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   value="{{$timeTable->end_date}}"
+                                                   name="timetable[end_date][]" type="date">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="primary_input mb-25">
+                                    <label class="primary_input_label d-flex" for="duration">{{__('common.Duration')}}</label>
+                                    <input class="primary_input_field form-control"
+                                           value="{{$timeTable->duration}}"
+                                           name="timetable[durations][]" placeholder="4 days" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="start_time">{{__('common.Start Time')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   value="{{$timeTable->start_time}}"
+                                                   name="timetable[start_time][]" type="time">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="end_time">{{__('common.End Time')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   value="{{$timeTable->end_time}}"
+                                                   name="timetable[end_time][]" type="time">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="primary_input mb-25">
+                                    <label class="primary_input_label d-flex" for="duration">{{__('common.PDUs')}}</label>
+                                    <input class="primary_input_field form-control"
+                                           name="timetable[pdus][]"
+                                           value="{{$timeTable->pdus}}"
+                                           placeholder="16 hourse" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <span style="cursor: pointer" class="remove-timetable badge badge-sm bg-danger">{{__('common.Remove')}} -</span>
+                            </div>
+                        </div>
+                        @empty
+                        <div class="row timetable-entry">
+                            <div class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="start_date">{{__('common.Start Date')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   name="timetable[start_date][]" type="date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="end_date">{{__('common.End Date')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   name="timetable[end_date][]" type="date">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="primary_input mb-25">
+                                    <label class="primary_input_label d-flex" for="duration">{{__('common.Duration')}}</label>
+                                    <input class="primary_input_field form-control"
+                                           name="timetable[durations][]" placeholder="4 days" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="start_time">{{__('common.Start Time')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   name="timetable[start_time][]" type="time">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="primary_input mb-25">
+                                            <label class="primary_input_label d-flex" for="end_time">{{__('common.End Time')}}</label>
+                                            <input class="primary_input_field form-control"
+                                                   name="timetable[end_time][]" type="time">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="primary_input mb-25">
+                                    <label class="primary_input_label d-flex" for="duration">{{__('common.PDUs')}}</label>
+                                    <input class="primary_input_field form-control"
+                                           name="timetable[pdus][]"
+                                           placeholder="16 hourse" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <span style="cursor: pointer" class="remove-timetable badge badge-sm bg-danger">{{__('common.Remove')}} -</span>
+                            </div>
+                        </div>
+                        @endforelse
+                    </div>
+                </div>
+
+                <button type="button" id="add-timetable" style="display: {{$course->timeTables->count() ? 'block' : 'none'}}" class="btn btn-primary btn-sm">{{__('common.Add time table')}}
+                </button>
+
+
                 <div class="col-lg-12 text-center pt_15">
                     <div class="d-flex justify-content-center">
                         <button class="primary-btn semi_large2  fix-gr-bg"
@@ -1046,3 +1201,34 @@
 
 
 </div>
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+
+            let show_time_table = $('#show_time_table');
+            let timeTable = $('#timeTable');
+            show_time_table.change(function () {
+                if (show_time_table.is(':checked')) {
+                    timeTable.show();
+                    $('#add-timetable').show();
+                } else {
+                    timeTable.hide();
+                    $('#add-timetable').hide();
+                }
+            });
+
+            $('#add-timetable').click(function () {
+                var newTimetable = $('.timetable-entry:first').clone();
+                newTimetable.find('input').val('');
+                $('#timetable-container').append(newTimetable);
+            });
+
+            $(document).on('click', '.remove-timetable', function () {
+                if ($('.timetable-entry').length > 1) {
+                    $(this).closest('.timetable-entry').remove();
+                }
+            });
+        });
+    </script>
+@endpush

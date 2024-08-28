@@ -13,7 +13,7 @@
                         <div class="footer_widget">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="{{getCourseImage(Settings('logo2'))}}" alt=""
+                                    <img src="" alt=""
                                          style="width: 108px">
                                 </a>
                             </div>

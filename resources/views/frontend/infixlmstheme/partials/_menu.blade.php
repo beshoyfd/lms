@@ -12,7 +12,7 @@
             <span class="d-none d-sm-inline">Bakkah</span>
         </a>
 
-        <!-- Theme switcher -->
+<!--        &lt;!&ndash; Theme switcher &ndash;&gt;
         <div class="form-check form-switch mode-switch order-lg-2 me-3 me-lg-4 ms-auto" data-bs-toggle="mode">
             <input class="form-check-input" type="checkbox" id="theme-mode">
             <label class="form-check-label" for="theme-mode">
@@ -21,14 +21,14 @@
             <label class="form-check-label" for="theme-mode">
                 <i class="ai-moon fs-lg"></i>
             </label>
-        </div>
+        </div>-->
 
         <!-- Search + Account + Cart -->
         <div class="nav align-items-center order-lg-3 ms-n1 me-3 me-sm-0">
             @if(Settings('hide_menu_search_box')!=1)
-                <a class="nav-link fs-4 p-2 mx-sm-1" href="#searchModal" data-bs-toggle="modal" aria-label="Search">
+<!--                <a class="nav-link fs-4 p-2 mx-sm-1" href="#searchModal" data-bs-toggle="modal" aria-label="Search">
                     <i class="ai-search"></i>
-                </a>
+                </a>-->
             @endif
             @guest
                 <a class="nav-link fs-4 p-2 mx-sm-1 d-none d-sm-flex" href="{{url('login')}}" aria-label="Account">
@@ -143,6 +143,22 @@
                         </div>
                     </li>
                 @endif
+
+                    @if(Settings('hide_menu_search_box')!=1)
+                    <li class="nav-item">
+                        <div class="input-group input-group-sm" style="max-width: 300px;">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" style="padding: 0.25rem 0.5rem;">
+                                <i class="ai-search"></i>
+                            </span>
+                            </div>
+                            <form>
+                                <input type="text" class="form-control" placeholder="Search for courses" style="padding: 0.25rem 0.5rem;">
+                            </form>
+                        </div>
+                    </li>
+                    @endif
+
 
                 @guest
                     <li class="nav-item border-top mt-2 py-2 d-sm-none">
