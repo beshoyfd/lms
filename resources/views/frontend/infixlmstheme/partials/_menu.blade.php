@@ -12,21 +12,21 @@
             <span class="d-none d-sm-inline">Bakkah</span>
         </a>
 
-<!--        &lt;!&ndash; Theme switcher &ndash;&gt;
-        <div class="form-check form-switch mode-switch order-lg-2 me-3 me-lg-4 ms-auto" data-bs-toggle="mode">
-            <input class="form-check-input" type="checkbox" id="theme-mode">
-            <label class="form-check-label" for="theme-mode">
-                <i class="ai-sun fs-lg"></i>
-            </label>
-            <label class="form-check-label" for="theme-mode">
-                <i class="ai-moon fs-lg"></i>
-            </label>
-        </div>-->
+        <!--        &lt;!&ndash; Theme switcher &ndash;&gt;
+                <div class="form-check form-switch mode-switch order-lg-2 me-3 me-lg-4 ms-auto" data-bs-toggle="mode">
+                    <input class="form-check-input" type="checkbox" id="theme-mode">
+                    <label class="form-check-label" for="theme-mode">
+                        <i class="ai-sun fs-lg"></i>
+                    </label>
+                    <label class="form-check-label" for="theme-mode">
+                        <i class="ai-moon fs-lg"></i>
+                    </label>
+                </div>-->
 
         <!-- Search + Account + Cart -->
         <div class="nav align-items-center order-lg-3 ms-n1 me-3 me-sm-0">
-            @if(Settings('hide_menu_search_box')!=1)
-<!--                <a class="nav-link fs-4 p-2 mx-sm-1" href="#searchModal" data-bs-toggle="modal" aria-label="Search">
+        @if(Settings('hide_menu_search_box')!=1)
+            <!--                <a class="nav-link fs-4 p-2 mx-sm-1" href="#searchModal" data-bs-toggle="modal" aria-label="Search">
                     <i class="ai-search"></i>
                 </a>-->
             @endif
@@ -78,6 +78,75 @@
         <!-- Navbar collapse (Main navigation) -->
         <nav class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav navbar-nav-scroll me-auto" style="--ar-scroll-height: 520px;">
+
+                @if(isset($menus))
+                    @foreach($menus->where('parent_id',null) as $menu)
+                        @php
+                            if($menu->title=='Forum' && !isModuleActive('Forum')){
+                                continue;
+                            }
+                            if($menu->link == '/upcoming-courses'  && !isModuleActive('UpcomingCourse')){
+                               continue;
+                            }
+
+                            if ($menu->link=='/saas-signup') {
+                                if (Auth::check()) {
+                                   continue;
+                                }elseif (SaasDomain() !='main')
+                                {
+                                    continue;
+                                }
+                            }
+                        @endphp
+
+                        <li class="@if($menu->mega_menu==1) dropdown @else @endif nav-item">
+                            <a class="nav-link" @if($menu->mega_menu==1)
+                            class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
+                               @else
+                               href="{{getMenuLink($menu)}}"
+                                @endif>{{$menu->title}}</a>
+                            @if(isset($menu->childs))
+                                @if(count($menu->childs)!=0)
+                                    @if(isset($menu->childs))
+                                        @if($menu->mega_menu==1)
+                                            <ul class="mega_menu submenu ">
+                                                <li class="container mx-auto">
+                                                    <div class="row">
+                                                        @foreach($menu->childs as $sub)
+                                                            <div
+                                                                class="col-lg-{{$menu->mega_menu_column}}">
+                                                                <h4>
+                                                                    {{$sub->title}}
+                                                                </h4>
+                                                                @if(isset($sub->childs))
+                                                                    @if(count($sub->childs)!=0)
+                                                                        <ul class="mega_menu_list">
+                                                                            @foreach( $sub->childs as $s)
+                                                                                <li class="@if($sub->show==1)  @endif">
+                                                                                    <a @if($s->is_newtab==1) target="_blank"
+                                                                                       @endif  href="{{getMenuLink($s)}}">{{$s->title}}</a>
+                                                                                </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
+                                                                @endif
+
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        @endif
+                                    @endif
+                                @endif
+                            @endif
+                        </li>
+                    @endforeach
+                @else
+
+                @endif
+
+
                 @if(Settings('category_show'))
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Learning
@@ -144,7 +213,10 @@
                     </li>
                 @endif
 
-                    @if(Settings('hide_menu_search_box')!=1)
+
+
+
+                @if(Settings('hide_menu_search_box')!=1)
                     <li class="nav-item">
                         <div class="input-group input-group-sm" style="max-width: 300px;">
                             <div class="input-group-prepend">
@@ -152,12 +224,13 @@
                                 <i class="ai-search"></i>
                             </span>
                             </div>
-                            <form>
-                                <input type="text" class="form-control" placeholder="Search for courses" style="padding: 0.25rem 0.5rem;">
+                            <form action="{{route('courses')}}?" method="get">
+                                <input value="{{request()->q}}" type="text" name="q" class="form-control" placeholder="Search for courses"
+                                       style="padding: 0.25rem 0.5rem;">
                             </form>
                         </div>
                     </li>
-                    @endif
+                @endif
 
 
                 @guest

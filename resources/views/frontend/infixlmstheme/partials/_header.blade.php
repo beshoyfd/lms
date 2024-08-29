@@ -118,7 +118,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
     <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css">
+    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css?v=1.2">
 
     @yield('css')
     @stack('css')

@@ -4,8 +4,14 @@
     </div>
 </div>
 
+<style>
+    .rating_cart i.fa-star {
+        color: #ffc107;
+    }
+</style>
+
 <div class="row pb-2 pb-sm-4">
-    <x-class-page-section-sidebar :level="$level" :type="$type" :categories="$categories"
+    <x-class-page-section-sidebar :level="$level ?? []" :type="$type" :categories="$categories"
                                   :category="$category" :languages="$languages" :language="$language"
                                   :mode="$mode"/>
     <!-- Product grid -->
@@ -77,14 +83,52 @@
                         <div class="d-flex align-items-center">
                             <x-price-tag :price="$course->price"
                                          :discount="$course->discount_price"/>
-                            <div class="nav ms-auto" data-bs-toggle="tooltip"
-                                 data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
-                                 data-bs-placement="left" title="Add to cart">
-                                <a class="nav-link fs-lg py-2 px-1" href="#" aria-label="Add to Cart">
-                                    <i class="ai-cart"></i>
-                                </a>
-                            </div>
                         </div>
+
+
+                        <div class="rating_cart d-flex justify-content-between mt-2">
+                            <div class="rateing">
+                                <span>{{$course->total_rating}}/5</span>
+
+                                <i class="fas fa-star"></i>
+                            </div>
+                            @if(!onlySubscription())
+                                @auth()
+                                    @if(!$course->isLoginUserEnrolled && !$course->isLoginUserCart)
+                                        <div class="nav ms-auto" data-bs-toggle="tooltip"
+                                             data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
+                                             data-bs-placement="left" title="Add to cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="#"
+                                               data-id="{{$course->id}}" aria-label="Add to Cart">
+                                                <i class="ai-cart"></i>
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endauth
+                                @guest()
+                                    @if(!$course->isGuestUserCart)
+                                        <div class="nav ms-auto" data-bs-toggle="tooltip"
+                                             data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
+                                             data-bs-placement="left" title="Add to cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="#"
+                                               data-id="{{$course->id}}" aria-label="Add to Cart">
+                                                <i class="ai-cart"></i>
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endguest
+                            @endif
+                        </div>
+                        <div class="course_less_students d-flex justify-content-between mt-3">
+                            <a> <i class="fa fa-list"></i> {{$course->total_lessons}}
+                                {{__('frontend.Lessons')}}</a>
+                            @if(!Settings('hide_total_enrollment_count') == 1)
+                                <a>
+                                    <i class="fa fa-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
+                                </a>
+                            @endif
+                        </div>
+
                     </div>
                 @endforeach
             @endif
