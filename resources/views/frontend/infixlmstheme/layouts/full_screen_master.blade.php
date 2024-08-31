@@ -6,7 +6,7 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-        {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}}
+        {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}}
     </title>
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="{{ Settings('site_name')  }}">

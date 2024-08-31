@@ -1,7 +1,5 @@
 @extends(theme('layouts.master'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('courses.Courses')}} @endsection
-@section('css') @endsection
-
+@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{__('courses.Courses')}} @endsection
 
 @section('mainContent')
 
@@ -15,10 +13,10 @@
             <div class="row align-items-center g-0">
                 <div class="col-md-6 offset-xl-1 text-center text-md-start">
                     <div class="py-4 px-4 px-sm-5 pe-md-0 ps-xl-4">
-                        <p class="text-body fs-xs text-uppercase pt-3 pt-md-0 mb-3 mb-lg-4">Best selling</p>
-                        <h2 class="h1 pb-2 pb-xl-3">Cozy corner for the living room at a <span class="text-primary">discount up to 40%</span>
+                        <p class="text-body fs-xs text-uppercase pt-3 pt-md-0 mb-3 mb-lg-4">{{__('Best selling')}}</p>
+                        <h2 class="h1 pb-2 pb-xl-3">{{__('Cozy corner for the living room at a')}} <span class="text-primary">{{__('discount up to 40%')}}</span>
                         </h2>
-                        <a class="btn btn-sm btn-outline-dark" href="#" data-bs-theme="light">Explore</a>
+                        <a class="btn btn-sm btn-outline-dark" href="#" data-bs-theme="light">{{__('Explore')}}</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-5 d-flex justify-content-end">

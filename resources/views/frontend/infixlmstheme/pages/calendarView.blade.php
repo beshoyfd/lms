@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | Calendar
+    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | Calendar
 @endsection
 @section('css')
     <link rel="stylesheet"

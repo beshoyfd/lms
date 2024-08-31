@@ -42,7 +42,7 @@ class CoursePageSection extends Component
         if (empty($language)) {
             $language = '';
         } else {
-            $row_languages = explode(',', $language);
+            $row_languages = $language;
             $languages = [];
             $LanguageList = Language::whereIn('code', $row_languages)->first();
             foreach ($row_languages as $l) {
@@ -66,8 +66,7 @@ class CoursePageSection extends Component
         if (empty($level)) {
             $level = '';
         } else {
-            $levels = explode(',', $level);
-            $query->whereIn('level', $levels);
+            $query->whereIn('level', $level);
         }
         if (isModuleActive('Org')) {
             $required_type_request = $this->request->required_type;
@@ -135,6 +134,12 @@ class CoursePageSection extends Component
                     $query->latest();
                 }
             }
+        }
+
+        $q = $this->request->q;
+
+        if($q){
+            $query->where('title', 'like', '%' . $q . '%');
         }
 
         $courses = $query->paginate($this->request->pg_size ?? itemsGridSize());

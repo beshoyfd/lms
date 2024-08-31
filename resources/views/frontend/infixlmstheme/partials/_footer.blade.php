@@ -1,44 +1,72 @@
-<footer class="footer">
-    <div class="container py-5 my-sm-2 my-md-3 my-lg-4 my-xl-5">
-        <div class="row align-items-start text-center text-lg-start py-xxl-3">
-            <div class="col-lg-6 pb-1 pb-sm-2 pb-lg-0 mb-4 mb-lg-0">
-                <h4 class="fw-bold pb-lg-1 mb-2 mb-sm-3">If you have questions email us at</h4>
-                <a class="h1 text-primary" href="mailto:{{Settings('email')}}">{{Settings('email')}}</a>
-            </div>
-            <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end">
-                <a class="btn btn-dark btn-lg px-3 py-2" href="#">
-                    <img class="d-dark-mode-none mx-1" src="/public/frontend2/img/market/appstore-light.svg" width="136"
-                         alt="App Store">
-                    <img class="d-none d-dark-mode-block mx-1" src="/public/frontend2/img/market/appstore-dark.svg"
-                         width="136" alt="App Store">
-                </a>
-                <a class="btn btn-dark btn-lg px-3 py-2 ms-3 ms-md-4" href="#">
-                    <img class="d-dark-mode-none mx-1" src="/public/frontend2/img/market/googleplay-light.svg"
-                         width="135" alt="Google Play">
-                    <img class="d-none d-dark-mode-block mx-1" src="/public/frontend2/img/market/googleplay-dark.svg"
-                         width="135" alt="Google Play">
-                </a>
-            </div>
+<!-- Footer-->
+<footer class="footer bg-dark position-relative pb-4 pt-md-3 py-lg-4 py-xl-5">
+    <div class="d-none d-dark-mode-block position-absolute top-0 start-0 w-100 h-100"
+         style="background-color: rgba(255,255,255, .03);"></div>
+    <div class="container position-relative z-2 pt-5 pb-2" data-bs-theme="dark">
+
+
+        <x-footer-section-widgets/>
+
+
+        <!-- Nav + Switcher -->
+        <div class="d-sm-flex align-items-end justify-content-between border-bottom mt-2 mt-sm-1 pt-4 pt-sm-5">
+
+            <!-- Nav -->
+            <nav class="nav d-flex mb-3 mb-sm-4">
+                <a class="nav-link text-body-secondary fs-sm fw-normal ps-0 pe-2 py-2 me-4" href="#">{{__('Support')}}</a>
+                <a class="nav-link text-body-secondary fs-sm fw-normal ps-0 pe-2 py-2 me-4" href="#">{{__('Privacy')}}</a>
+                <a class="nav-link text-body-secondary fs-sm fw-normal ps-0 pe-2 py-2 me-sm-4" href="#">{{__('Terms of use')}}</a>
+            </nav>
+
+            <!-- Language / currency switcher -->
+            <!--            <div class="dropdown mb-4">
+                            <button class="btn btn-outline-secondary dropdown-toggle px-4" type="button" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false"><img class="me-2"
+                                                                                            src="/public/frontend2/img/flags/en.png"
+                                                                                            width="18" alt="English / USD">Eng / USD
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end my-1">
+                                <div class="dropdown-item">
+                                    <select class="form-select form-select-sm">
+                                        <option value="usd">$ USD</option>
+                                        <option value="eur">€ EUR</option>
+                                        <option value="ukp">£ UKP</option>
+                                        <option value="jpy">¥ JPY</option>
+                                    </select>
+                                </div>
+                                <a class="dropdown-item pb-1" href="#">
+                                    <img class="me-2" src="/public/frontend2/img/flags/fr.png" width="18" alt="Français">
+                                    Français
+                                </a>
+                                <a class="dropdown-item pb-1" href="#">
+                                    <img class="me-2" src="/public/frontend2/img/flags/de.png" width="18" alt="Deutsch">
+                                    Deutsch
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <img class="me-2" src="/public/frontend2/img/flags/it.png" width="18" alt="Italiano">
+                                    Italiano
+                                </a>
+                            </div>
+                        </div>-->
         </div>
-    </div>
-    <hr>
-    <div class="container py-4">
-        <div class="row align-items-center py-2 py-sm-3">
-            <div class="col-md-4 order-md-2 mb-4 mb-md-0">
+
+        <!-- Logo + Socials + Cards -->
+        <div class="d-sm-flex align-items-center pt-4">
+            <div class="d-sm-flex align-items-center pe-sm-2">
+                <a class="navbar-brand d-inline-flex align-items-center me-sm-5 mb-4 mb-sm-0" href="index.html">
+              <span class="text-primary flex-shrink-0 me-2">
+                  <img src="{{Settings('logo')}}" width="30" alt="">
+              </span>
+                    <span class="text-light opacity-90">{{Settings('site_name')}}</span>
+                </a>
+
                 <x-footer-social-links/>
+
             </div>
-            <div class="col-md-8 order-md-1">
-                <div class="d-sm-flex text-nowrap justify-content-center justify-content-md-start">
-                    <div
-                        class="nav flex-nowrap justify-content-center justify-content-sm-start order-sm-2 mb-3 mb-sm-0">
-                        <a class="nav-link fw-normal py-0 px-3" href="#">Terms &amp; Conditions</a>
-                        <a class="nav-link fw-normal py-0 px-3" href="#">Privacy Policy</a>
-                    </div>
-                    <p class="text-body-secondary order-sm-1 text-center pe-3 mb-0">&copy; All rights reserved</p>
-                </div>
-            </div>
+            <img class="ms-sm-auto" src="/public/frontend2/img/shop/footer-cards.png" width="187" alt="Accepted cards">
         </div>
     </div>
+    <div class="pt-5 pt-lg-0"></div>
 </footer>
 
 

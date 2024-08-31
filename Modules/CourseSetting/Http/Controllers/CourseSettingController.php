@@ -427,41 +427,7 @@ class CourseSettingController extends Controller
                 $course->thumbnail = $imageUrl;
             }
 
-            if ($request->timetable && is_array($request->timetable)) {
-                foreach ($request->timetable['start_date'] as $index => $startDate) {
-                    $endDate = null;
-                    $startTime = null;
-                    $endTime = null;
-                    $duration = null;
-                    $pdus = null;
-
-                    if (array_key_exists('end_date', $request->timetable)) {
-                        $endDate = $request->timetable['end_date'][$index];
-                    }
-                    if (array_key_exists('start_time', $request->timetable)) {
-                        $startTime = $request->timetable['start_time'][$index];
-                    }
-                    if (array_key_exists('end_time', $request->timetable)) {
-                        $endTime = $request->timetable['end_time'][$index];
-                    }
-                    if (array_key_exists('durations', $request->timetable)) {
-                        $duration = $request->timetable['durations'][$index];
-                    }
-                    if (array_key_exists('pdus', $request->timetable)) {
-                        $pdus = $request->timetable['pdus'][$index];
-                    }
-
-                    CourseTimeTable::query()->create([
-                        'course_id' => $course->id,
-                        'start_date' => $startDate,
-                        'end_date' => $endDate,
-                        'start_time' => $startTime,
-                        'end_time' => $endTime,
-                        'duration' => $duration,
-                        'pdus' => $pdus,
-                    ]);
-                }
-            }
+            $this->saveOrUpdateCourseTimetable($course, $request->timetable);
 
             $course->save();
 
@@ -523,7 +489,6 @@ class CourseSettingController extends Controller
 
     public function AdminUpdateCourse(Request $request)
     {
-
         Session::flash('type', 'update');
         Session::flash('id', $request->id);
 
@@ -748,6 +713,7 @@ class CourseSettingController extends Controller
                 $category = $course->category;
             }
             $this->updateTotalCountForCategory($category);
+            $this->saveOrUpdateCourseTimetable($course, $request->timetable);
 
             Toastr::success(trans('common.Operation successful'), trans('common.Success'));
             return redirect()->back();
@@ -1590,4 +1556,33 @@ class CourseSettingController extends Controller
         $category->total_quizzes = $category->QuizzesCoun;
         $category->save();
     }
+
+    protected function saveOrUpdateCourseTimetable($course, $timetable)
+    {
+        if ($timetable && is_array($timetable)) {
+            foreach ($timetable['start_date'] as $index => $startDate) {
+                $endDate = $timetable['end_date'][$index] ?? null;
+                $startTime = $timetable['start_time'][$index] ?? null;
+                $endTime = $timetable['end_time'][$index] ?? null;
+                $duration = $timetable['durations'][$index] ?? null;
+                $pdus = $timetable['pdus'][$index] ?? null;
+
+                CourseTimeTable::updateOrCreate(
+                    [
+                        'course_id' => $course->id,
+                        'start_date' => $startDate,
+                        'start_time' => $startTime,
+                    ],
+                    [
+                        'end_date' => $endDate,
+                        'end_time' => $endTime,
+                        'duration' => $duration,
+                        'pdus' => $pdus,
+                    ]
+                );
+            }
+        }
+    }
+
+
 }
