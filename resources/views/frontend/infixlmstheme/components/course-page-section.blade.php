@@ -1,6 +1,6 @@
 <div class="row pt-xl-3 mt-n1 mt-sm-0">
     <div class="col-lg-9 offset-lg-3 pt-lg-3">
-        <h1 class="pb-2 pb-sm-3">Professional Training Programs ({{$total}})</h1>
+        <h1 class="pb-2 pb-sm-3">{{__('Professional Training Programs')}} ({{$total}})</h1>
     </div>
 </div>
 
@@ -21,17 +21,18 @@
         <div class="d-flex align-items-start justify-content-between mb-4">
             <div class="me-3">
                 <div class="nav d-md-none">
-                    <a class="nav-link dropdown-toggle fs-sm p-0 mb-2" href="#activeFilters" data-bs-toggle="collapse">Active
-                        filters</a>
+                    <a class="nav-link dropdown-toggle fs-sm p-0 mb-2" href="#activeFilters" data-bs-toggle="collapse">
+                        {{__('Active filters')}}</a>
                 </div>
                 <div class="collapse d-md-block" id="activeFilters">
                     <div class="pt-2 pt-md-0">
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">All</button>
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">Live Online</button>
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">Self Study</button>
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">Exam Simulation
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('All')}}</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Live Online')}}</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Self Study')}}</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">
+                            {{__('Exam Simulation')}}
                         </button>
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">Classroom</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Classroom')}}</button>
                     </div>
                 </div>
             </div>
@@ -98,8 +99,8 @@
                                         <div class="nav ms-auto" data-bs-toggle="tooltip"
                                              data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
                                              data-bs-placement="left" title="Add to cart">
-                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="#"
-                                               data-id="{{$course->id}}" aria-label="Add to Cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="{{route('addToCart',[@$course->id])}}"
+                                                aria-label="Add to Cart">
                                                 <i class="ai-cart"></i>
                                             </a>
                                         </div>
@@ -110,8 +111,8 @@
                                         <div class="nav ms-auto" data-bs-toggle="tooltip"
                                              data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
                                              data-bs-placement="left" title="Add to cart">
-                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="#"
-                                               data-id="{{$course->id}}" aria-label="Add to Cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="{{route('addToCart',[@$course->id])}}"
+                                                aria-label="Add to Cart">
                                                 <i class="ai-cart"></i>
                                             </a>
                                         </div>
@@ -169,5 +170,5 @@
 <button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" type="button"
         data-bs-toggle="offcanvas" data-bs-target="#shopSidebar">
     <i class="ai-filter me-2"></i>
-    Filters
+    {{__('Filters')}}
 </button>

@@ -342,11 +342,11 @@
                                                                                {{--                                                                                   class="theme_btn_lite course_play_name"--}}
                                                                                data-course="{{$course->id}}"
                                                                                data-lesson="{{$lesson->id}}"
-                                                                               class="theme_btn_lite goFullScreen"
+                                                                               class="btn btn-sm btn-primary goFullScreen"
                                                                             >{{__('frontend.Preview')}}</a>
                                                                         @else
                                                                             <a href="#"
-                                                                               class="theme_btn_lite quizLink"
+                                                                               class="btn btn-sm btn-primary quizLink"
                                                                                onclick="goFullScreen({{$course->id}},{{$lesson->id}})"
                                                                                 {{--                                                                                       data-url="{{route('quizStart',[$course->id,$quiz->id,$quiz->title])}}"--}}
                                                                             >{{__('frontend.Start')}}</a>
@@ -358,12 +358,12 @@
                                                                                 <a href="#"
                                                                                    data-course="{{$course->id}}"
                                                                                    data-lesson="{{$lesson->id}}"
-                                                                                   class="theme_btn_lite goFullScreen"
+                                                                                   class="btn btn-sm btn-primary goFullScreen"
                                                                                 >{{__('common.View')}}</a>
                                                                             @else
                                                                                 <a href="#"
                                                                                    onclick="goFullScreen({{$course->id}},{{$lesson->id}})"
-                                                                                   class="theme_btn_lite quizLink"
+                                                                                   class="btn btn-sm btn-primary quizLink"
                                                                                     {{--                                                                                           data-url="{{route('quizStart',[$course->id,$quiz->id,$quiz->title])}}"--}}
                                                                                 >{{__('frontend.Start')}}</a>
                                                                             @endif
@@ -451,13 +451,13 @@
 
                                                                         @if ($file->lock==0)
                                                                             <a href="{{asset($file->file)}}"
-                                                                               class="theme_btn_lite  me-0"
-                                                                               download>Download</a>
+                                                                               class="btn btn-sm btn-primary  me-0"
+                                                                               download>{{__('Download')}}</a>
                                                                         @else
                                                                             @if(Auth::check() && $isEnrolled)
                                                                                 <a href="{{asset($file->file)}}"
-                                                                                   class="theme_btn_lite  me-0"
-                                                                                   download>Download</a>
+                                                                                   class="btn btn-sm btn-primary  me-0"
+                                                                                   download>{{__('Download')}}</a>
                                                                             @endif
 
                                                                         @endif
@@ -485,7 +485,8 @@
                                 </div>
                                 <div class="instractor_details_inner">
                                     <div class="thumb">
-                                        <img class="w-100"
+                                        <img
+                                             width="150"
                                              src="{{getProfileImage(@$course->user->image,$course->user->name)}}"
                                              alt="">
                                     </div>
@@ -891,14 +892,14 @@
 
                     @if($showWaitList)
                         <a type="button" data-bs-toggle="modal" data-bs-target="#courseWaitList"
-                           class="theme_btn d-block text-center height_50 mb_10">
+                           class="btn btn-sm btn-primary d-block text-center height_50 mb_10">
                             {{ __('frontend.Enter to Wait List') }}
                         </a>
                         @include(theme('partials._course_wait_list_form'),['course' => $course])
                     @endif
                     @if($alreadyWaitListRequest)
                         <a href="#"
-                           class="theme_btn d-block text-center height_50 mb_10">
+                           class="btn btn-sm btn-outline-primary d-block text-center height_50 mb_10">
                             {{ __('frontend.Already In Wait List') }}
                         </a>
                     @endif
@@ -912,13 +913,13 @@
 
                                 @if ($isEnrolled)
                                     <a href="{{route('continueCourse',[$course->slug])}}"
-                                       class="theme_btn d-block text-center height_50 mb_10">{{__('common.Continue Watch')}}</a>
+                                       class="btn btn-primary d-block text-center height_50 mb_10">{{__('common.Continue Watch')}}</a>
                                 @else
                                     @if($isFree)
 
                                         @if($is_cart == 1)
                                             <a href="javascript:void(0)"
-                                               class="theme_btn d-block text-center height_50 mb_10">{{__('common.Added To Cart')}}</a>
+                                               class="btn btn-sm btn-ouline-primary d-block text-center height_50 mb_10">{{__('common.Added To Cart')}}</a>
                                         @else
                                             <a href="{{route('addToCart',[@$course->id])}}"
                                                class="btn btn-primary d-block text-center height_50 mb_10">{{__('common.Add To Cart')}}</a>
@@ -1193,7 +1194,7 @@
                             <button type="button" class="theme_line_btn me-2"
                                     data-bs-dismiss="modal">{{ __('common.Cancel') }}
                             </button>
-                            <button class="theme_btn "
+                            <button class="btn btn-primary"
                                     type="submit">{{ __('common.Submit') }}</button>
                         </div>
                     </div>
