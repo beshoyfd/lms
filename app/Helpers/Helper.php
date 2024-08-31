@@ -5338,5 +5338,32 @@ if (!function_exists('getCartData')) {
         return Course::query()->whereIn('id', $cartCIDs)->get();
     }
 }
+if (!function_exists('getCoursesByCategoryAndLevel')) {
+    function getCoursesByCategoryAndLevel()
+    {
+        $categories = Category::with(['courses.courseLevel'])->get();
+        $structuredData = [];
 
+        foreach ($categories as $category) {
+            $levels = [
+                'Beginner' => [],
+                'Intermediate' => [],
+                'Advanced' => []
+            ];
 
+            foreach ($category->courses as $course) {
+                $levelName = $course->courseLevel->title;
+                if (isset($levels[$levelName])) {
+                    $levels[$levelName][] = $course;
+                }
+            }
+
+            $structuredData[] = [
+                'category' => $category->name,
+                'levels' => $levels,
+            ];
+        }
+
+        return $structuredData;
+    }
+}
