@@ -13,7 +13,7 @@ class AddSaasBranchModule extends Migration
 
         $newModule = new \Modules\ModuleManager\Entities\Module();
         $newModule->name = 'SaasBranch';
-        $newModule->details = 'SaasBranch module for Infix LMS';
+        $newModule->details = 'SaasBranch module for FOL EDU';
         $newModule->status = 0;
         $newModule->order = $totalCount;
         $newModule->save();

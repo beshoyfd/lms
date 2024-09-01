@@ -212,7 +212,7 @@ return [
 "to your account" => "на ваш счет",
 "Welcome back. Please login" => "С возвратом. Войдите в систему",
 "Don’t have an account" => "У меня нет счета.",
-"Welcome to Infix LMS" => "Вас приветствует Infix LMS",
+"Welcome to FOL EDU" => "Вас приветствует FOL EDU",
 "Learning Management System" => "Система управления обучением",
 "Excellence" => "Совершенство",
 "Community" => "Сообщество",

@@ -53,9 +53,9 @@
         <!-- Logo + Socials + Cards -->
         <div class="d-sm-flex align-items-center pt-4">
             <div class="d-sm-flex align-items-center pe-sm-2">
-                <a class="navbar-brand d-inline-flex align-items-center me-sm-5 mb-4 mb-sm-0" href="index.html">
+                <a class="navbar-brand d-inline-flex align-items-center me-sm-5 mb-4 mb-sm-0" href="{{url('/')}}">
               <span class="text-primary flex-shrink-0 me-2">
-                  <img src="{{Settings('logo')}}" width="30" alt="">
+                  <img src="{{Settings('logo')}}" width="150" alt="">
               </span>
                     <span class="text-light opacity-90">{{Settings('site_name')}}</span>
                 </a>

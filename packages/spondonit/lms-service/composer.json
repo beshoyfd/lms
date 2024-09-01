@@ -1,6 +1,6 @@
 {
     "name": "spondonit/lms-service",
-    "description": "'Service Provider for Infix Lms application'",
+    "description": "'Service Provider for FOL EDU application'",
     "type": "library",
     "repositories": [
         {

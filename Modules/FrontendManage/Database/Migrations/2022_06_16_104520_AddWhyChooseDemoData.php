@@ -10,7 +10,7 @@ class AddWhyChooseDemoData extends Migration
     {
         HomeContent::create([
             'key' => 'why_choose_title',
-            'value' => 'Why Choose Infix LMS?',
+            'value' => 'Why Choose FOL EDU?',
         ]);
 
         HomeContent::create([

@@ -13,7 +13,7 @@ class AddSurveyModule extends Migration
 
         $newModule = new \Modules\ModuleManager\Entities\Module();
         $newModule->name = 'Survey';
-        $newModule->details = 'Survey module for Infix LMS';
+        $newModule->details = 'Survey module for FOL EDU';
         $newModule->status = 0;
         $newModule->order = $totalCount;
         $newModule->save();

@@ -13,8 +13,13 @@
 
             <!-- Sign in form -->
             <div class="d-flex flex-column align-items-center w-lg-50 h-100 px-3 px-lg-5 pt-5">
+                <div class="logo">
+                    <a href="{{ url('/') }}">
+                        <img style="width: 190px" src="{{asset(Settings('logo') )}} " alt="">
+                    </a>
+                </div>
                 <div class="w-100 mt-auto" style="max-width: 526px;">
-                    <h1>Sign in to Bakkah</h1>
+                    <h1>{{__('Sign in to FOL')}}</h1>
 
                     @if(Settings('student_reg')==1 && saasPlanCheck('student')==false)
                         <p class="pb-3 mb-3 mb-lg-4">{{__("frontend.Don’t have an account")}}?<a
@@ -107,7 +112,7 @@
 
 
                     <!-- Sign in with social account -->
-                        <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">Or sign in with your social account</h2>
+                        <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">{{__('Or sign in with your social account')}}</h2>
                         <div class="row row-cols-1 row-cols-sm-2 gy-3">
                             <div class="col">
                                 <a class="btn btn-icon btn-outline-secondary btn-google btn-lg w-100" href="#">
@@ -126,10 +131,7 @@
                 </div>
 
                 <!-- Copyright -->
-                <p class="nav w-100 fs-sm pt-5 mt-auto mb-5" style="max-width: 526px;"><span
-                        class="text-body-secondary">&copy; All rights reserved. Made by</span><a
-                        class="nav-link d-inline-block p-0 ms-1" href="https://createx.studio/" target="_blank"
-                        rel="noopener">Createx Studio</a></p>
+                <p class="nav w-100 fs-sm pt-5 mt-auto mb-5" style="max-width: 526px;"></p>
             </div>
 
             <!-- Cover image -->

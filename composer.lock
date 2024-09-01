@@ -12414,7 +12414,7 @@
                     "email": "hello@spondonit.com"
                 }
             ],
-            "description": "'Service Provider for Infix Lms application'",
+            "description": "'Service Provider for FOL EDU application'",
             "transport-options": {
                 "relative": true
             }

@@ -2,10 +2,12 @@
     <div class="container">
 
         <a class="navbar-brand pe-sm-3" href="{{url('/')}}">
+            @if($logo = Settings('logo'))
               <span class="text-primary flex-shrink-0 me-2">
-                  <img src="{{asset(Settings('logo'))}}" width="60">
+                  <img src="{{asset($logo)}}" width="100">
               </span>
-            <span class="d-none d-sm-inline">{{Settings('site_title')}}</span>
+            @endif
+            <span class="d-none d-sm-inline">{{__("FOL EDU")}}</span>
         </a>
 
         <div class="nav align-items-center order-lg-3 ms-n1 me-3 me-sm-0">
@@ -117,7 +119,21 @@
                     </li>
                 @endif
 
-
+                    @if(Settings('hide_menu_search_box')!=1)
+                        <li class="nav-item">
+                            <div class="input-group input-group-sm" style="max-width: 300px;">
+                                <div class="input-group-prepend">
+                            <span class="input-group-text" style="padding: 0.25rem 0.5rem;">
+                                <i class="ai-search"></i>
+                            </span>
+                                </div>
+                                <form action="{{route('courses')}}?" method="get">
+                                    <input value="{{request()->q}}" type="text" name="q" class="form-control" placeholder="{{__('Search for courses')}}"
+                                           style="padding: 0.25rem 0.5rem;">
+                                </form>
+                            </div>
+                        </li>
+                    @endif
             @if(isset($menus))
                     @foreach($menus->where('parent_id',null) as $menu)
                         @php
@@ -189,21 +205,7 @@
 
 
 
-                @if(Settings('hide_menu_search_box')!=1)
-                    <li class="nav-item">
-                        <div class="input-group input-group-sm" style="max-width: 300px;">
-                            <div class="input-group-prepend">
-                            <span class="input-group-text" style="padding: 0.25rem 0.5rem;">
-                                <i class="ai-search"></i>
-                            </span>
-                            </div>
-                            <form action="{{route('courses')}}?" method="get">
-                                <input value="{{request()->q}}" type="text" name="q" class="form-control" placeholder="Search for courses"
-                                       style="padding: 0.25rem 0.5rem;">
-                            </form>
-                        </div>
-                    </li>
-                @endif
+
 
 
                 @guest

@@ -1,5 +1,5 @@
 <?php
-$project_name = 'InfixLMS';
+$project_name = 'FOL EDU';
 function getStorageFile($file_name)
 {
     $file = 'storage/app/.' . $file_name;
