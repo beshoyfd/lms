@@ -51,11 +51,11 @@
             }'>
                 <div class="swiper-wrapper">
 
-
-                    @if(@$testimonials != "" && count($testimonials) > 3)
+                    @if(@$testimonials != "" && count($testimonials) > 0)
                         <div class="swiper-slide bg-light">
                             <div class="d-flex flex-column">
                                 @foreach ($testimonials as $idx=>$testimonial)
+
                                     @if($idx<3)
                                     @php
                                         $alignClass = $loop->iteration % 2 == 0 ? 'align-self-center' : 'align-self-end';
