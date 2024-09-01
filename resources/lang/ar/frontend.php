@@ -211,7 +211,7 @@
   'to your account' => 'الى الحساب الخاص بك',
   'Welcome back. Please login' => 'أهلا بكم من الخلف برجاء بدء الاتصال',
   'Don’t have an account' => 'ليس لديك حساب',
-  'Welcome to Infix LMS' => 'مرحبا بك في Infix LMS',
+  'Welcome to FOL EDU' => 'مرحبا بك في FOL EDU',
   'Learning Management System' => 'نظام إدارة التعلم',
   'Excellence' => 'التميز',
   'Community' => 'المجتمع',

@@ -1,4 +1,4 @@
-@extends('frontend.infixlmstheme.auth.layouts.app')
+@extends(theme('auth.layouts.app'))
 @section('content')
 
     <div class="login_wrapper">
@@ -64,7 +64,7 @@
 
             </h5>
         </div>
-        @include('frontend.infixlmstheme.auth.login_wrapper_right')
+
 
     </div>
 

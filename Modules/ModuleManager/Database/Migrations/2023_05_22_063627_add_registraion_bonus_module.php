@@ -18,7 +18,7 @@ class AddRegistraionBonusModule extends Migration
         $totalCount = DB::table('modules')->count();
         $newModule = new Module();
         $newModule->name = 'RegistrationBonus';
-        $newModule->details = 'Registration bonus module for infix LMS';
+        $newModule->details = 'Registration bonus module for FOL EDU';
         $newModule->status = 0;
         $newModule->order = $totalCount;
         $newModule->save();

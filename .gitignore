@@ -19,6 +19,7 @@ modules_statuses.json
 code-generator
 /files/
 /public_html/
+/testing.fol.edu.sa/
 INFO.md
 .env.production
 .env.testing

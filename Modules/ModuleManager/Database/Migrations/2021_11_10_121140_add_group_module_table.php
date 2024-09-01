@@ -16,7 +16,7 @@ class AddGroupModuleTable extends Migration
         $totalCount = \Illuminate\Support\Facades\DB::table('modules')->count();
         $newModule = new \Modules\ModuleManager\Entities\Module();
         $newModule->name = 'Group';
-        $newModule->details = 'Group module for Infix LMS';
+        $newModule->details = 'Group module for FOL EDU';
         $newModule->status = 0;
         $newModule->order = $totalCount;
         $newModule->save();
@@ -24,7 +24,7 @@ class AddGroupModuleTable extends Migration
         $totalCount = \Illuminate\Support\Facades\DB::table('modules')->count();
         $newModule = new \Modules\ModuleManager\Entities\Module();
         $newModule->name = 'Catalogue';
-        $newModule->details = 'Catalogue module for Infix LMS';
+        $newModule->details = 'Catalogue module for FOL EDU';
         $newModule->status = 0;
         $newModule->order = $totalCount;
         $newModule->save();
