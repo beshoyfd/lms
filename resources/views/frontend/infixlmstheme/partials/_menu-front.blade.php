@@ -11,12 +11,74 @@
         </a>
 
         <div class="nav align-items-center order-lg-3 ms-n1 me-3 me-sm-0">
-        @if(Settings('hide_menu_search_box')!=1)
-            <!--                <a class="nav-link fs-4 p-2 mx-sm-1" href="#searchModal" data-bs-toggle="modal" aria-label="Search">
-                    <i class="ai-search"></i>
-                </a>-->
+            @if(isset($menus))
+                @foreach($menus->where('parent_id',null) as $menu)
+                    @php
+                        if($menu->title=='Forum' && !isModuleActive('Forum')){
+                            continue;
+                        }
+                        if($menu->link == '/upcoming-courses'  && !isModuleActive('UpcomingCourse')){
+                           continue;
+                        }
+
+                        if ($menu->link=='/saas-signup') {
+                            if (Auth::check()) {
+                               continue;
+                            }elseif (SaasDomain() !='main')
+                            {
+                                continue;
+                            }
+                        }
+                    @endphp
+
+                    <li class="@if($menu->mega_menu==1) dropdown @else @endif nav-item">
+                        <a class="nav-link" @if($menu->mega_menu==1)
+                            class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
+                           @else
+                               href="{{getMenuLink($menu)}}"
+                            @endif>{{$menu->title}}</a>
+                        @if(isset($menu->childs))
+                            @if(count($menu->childs)!=0)
+                                @if(isset($menu->childs))
+                                    @if($menu->mega_menu==1)
+                                        <ul class="mega_menu submenu ">
+                                            <li class="container mx-auto">
+                                                <div class="row">
+                                                    @foreach($menu->childs as $sub)
+                                                        <div
+                                                            class="col-lg-{{$menu->mega_menu_column}}">
+                                                            <h4>
+                                                                {{$sub->title}}
+                                                            </h4>
+                                                            @if(isset($sub->childs))
+                                                                @if(count($sub->childs)!=0)
+                                                                    <ul class="mega_menu_list">
+                                                                        @foreach( $sub->childs as $s)
+                                                                            <li class="@if($sub->show==1)  @endif">
+                                                                                <a @if($s->is_newtab==1) target="_blank"
+                                                                                   @endif  href="{{getMenuLink($s)}}">{{$s->title}}</a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endif
+                                                            @endif
+
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @endif
+                                @endif
+                            @endif
+                        @endif
+                    </li>
+                @endforeach
+            @else
+
             @endif
-            @guest
+
+        @guest
                 <a class="nav-link fs-4 p-2 mx-sm-1 d-none d-sm-flex" href="{{url('login')}}" aria-label="Account">
                     <i class="ai-user"></i>
                 </a>
@@ -134,76 +196,6 @@
                             </div>
                         </li>
                     @endif
-            @if(isset($menus))
-                    @foreach($menus->where('parent_id',null) as $menu)
-                        @php
-                            if($menu->title=='Forum' && !isModuleActive('Forum')){
-                                continue;
-                            }
-                            if($menu->link == '/upcoming-courses'  && !isModuleActive('UpcomingCourse')){
-                               continue;
-                            }
-
-                            if ($menu->link=='/saas-signup') {
-                                if (Auth::check()) {
-                                   continue;
-                                }elseif (SaasDomain() !='main')
-                                {
-                                    continue;
-                                }
-                            }
-                        @endphp
-
-                        <li class="@if($menu->mega_menu==1) dropdown @else @endif nav-item">
-                            <a class="nav-link" @if($menu->mega_menu==1)
-                            class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
-                               @else
-                               href="{{getMenuLink($menu)}}"
-                                @endif>{{$menu->title}}</a>
-                            @if(isset($menu->childs))
-                                @if(count($menu->childs)!=0)
-                                    @if(isset($menu->childs))
-                                        @if($menu->mega_menu==1)
-                                            <ul class="mega_menu submenu ">
-                                                <li class="container mx-auto">
-                                                    <div class="row">
-                                                        @foreach($menu->childs as $sub)
-                                                            <div
-                                                                class="col-lg-{{$menu->mega_menu_column}}">
-                                                                <h4>
-                                                                    {{$sub->title}}
-                                                                </h4>
-                                                                @if(isset($sub->childs))
-                                                                    @if(count($sub->childs)!=0)
-                                                                        <ul class="mega_menu_list">
-                                                                            @foreach( $sub->childs as $s)
-                                                                                <li class="@if($sub->show==1)  @endif">
-                                                                                    <a @if($s->is_newtab==1) target="_blank"
-                                                                                       @endif  href="{{getMenuLink($s)}}">{{$s->title}}</a>
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    @endif
-                                                                @endif
-
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        @endif
-                                    @endif
-                                @endif
-                            @endif
-                        </li>
-                    @endforeach
-                @else
-
-                @endif
-
-
-
-
 
 
 
