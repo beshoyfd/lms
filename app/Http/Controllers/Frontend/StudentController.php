@@ -35,6 +35,7 @@ use Modules\CourseSetting\Entities\Course;
 use Modules\CourseSetting\Entities\CourseCanceled;
 use Modules\CourseSetting\Entities\CourseEnrolled;
 use Modules\CourseSetting\Entities\CourseReveiw;
+use Modules\CourseSetting\Entities\CourseTimeTable;
 use Modules\OfflinePayment\Entities\OfflinePayment;
 use Modules\Payment\Entities\Cart;
 use Modules\Payment\Entities\Checkout;
@@ -85,6 +86,12 @@ class StudentController extends Controller
         } catch (Exception $e) {
             GettingError($e->getMessage(), url()->current(), request()->ip(), request()->userAgent());
         }
+    }
+
+    public function getTimeTable(Request $request)
+    {
+        $row = CourseTimeTable::find($request->id);
+        return response()->json(['row' => $row]);
     }
 
     public function myAppointment(Request $request)
@@ -749,6 +756,7 @@ class StudentController extends Controller
                         if (!$cart->course->isLoginUserEnrolled) {
                             $enroll = new CourseEnrolled();
                             $enroll->user_id = \auth()->id();
+                            $enroll->time_table_id = \session('selectedTimeTableId');
                             $enroll->tracking = 1;
                             $enroll->course_id = $cart->course->id;
                             $enroll->purchase_price = 0;

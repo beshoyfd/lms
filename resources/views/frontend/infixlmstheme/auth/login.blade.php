@@ -1,86 +1,67 @@
 @extends(theme('auth.layouts.app'))
 @section('content')
-    <div class="login_wrapper">
-        <div class="login_wrapper_left">
-            <div class="logo">
-                <a href="{{ url('/') }}">
-                    <img style="width: 190px" src="{{asset(Settings('logo') )}} " alt="">
-                </a>
-            </div>
-            <div class="login_wrapper_content">
-                <h4>{{__('frontend.Welcome back. Please login')}} <br>{{__('frontend.to your account')}} </h4>
 
-                <div class="socail_links">
+    <main class="page-wrapper">
+        <div class="d-lg-flex position-relative h-100">
 
+            <!-- Home button -->
+            <a class="text-nav btn btn-icon bg-light border rounded-circle position-absolute top-0 end-0 p-0 mt-3 me-3 mt-sm-4 me-sm-4"
+               href="{{url('/')}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Back to home"
+               aria-label="Back to home">
+                <i class="ai-home"></i>
+            </a>
 
-                    @if(saasEnv('ALLOW_FACEBOOK_LOGIN')=='true')
+            <!-- Sign in form -->
+            <div class="d-flex flex-column align-items-center w-lg-50 h-100 px-3 px-lg-5 pt-5">
+                <div class="w-100 mt-auto" style="max-width: 526px;">
+                    <h1>Sign in to Bakkah</h1>
 
-                        <a href="{{ route('social.oauth', 'facebook') }}"
-                           class="theme_btn small_btn2 text-center facebookLoginBtn">
-                            <i class="fab fa-facebook-f"></i>
-                            {{__('frontend.Login with Facebook')}}</a>
+                    @if(Settings('student_reg')==1 && saasPlanCheck('student')==false)
+                        <p class="pb-3 mb-3 mb-lg-4">{{__("frontend.Don’t have an account")}}?<a
+                                href="{{route('register')}}">
+                                {{__('common.Register')}}
+                            </a>
+                        </p>
                     @endif
 
-                    @if(saasEnv('ALLOW_GOOGLE_LOGIN')=='true')
-                        <a href="{{ route('social.oauth', 'google') }}"
-                           class="theme_btn small_btn2 text-center googleLoginBtn">
-                            <i class="fab fa-google"></i>
-                            {{__('frontend.Login with Google')}}</a>
-                    @endif
-                </div>
-                @if(saasEnv('ALLOW_FACEBOOK_LOGIN')=='true' || saasEnv('ALLOW_GOOGLE_LOGIN')=='true')
-                    <p class="login_text">{{__('frontend.Or')}} {{__('frontend.login with Email Address')}}</p>
-                @endif
+                    <form action="{{route('login')}}" method="POST" class="needs-validation" novalidate id="loginForm">
+                        @csrf
 
-                <form action="{{route('login')}}" method="POST" id="loginForm">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="input-group custom_group_field">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon3">
-                                        <!-- svg -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="13.328" height="10.662"
-                                             viewBox="0 0 13.328 10.662">
-                                            <path id="Path_44" data-name="Path 44"
-                                                  d="M13.995,4H3.333A1.331,1.331,0,0,0,2.007,5.333l-.007,8a1.337,1.337,0,0,0,1.333,1.333H13.995a1.337,1.337,0,0,0,1.333-1.333v-8A1.337,1.337,0,0,0,13.995,4Zm0,9.329H3.333V6.666L8.664,10l5.331-3.332ZM8.664,8.665,3.333,5.333H13.995Z"
-                                                  transform="translate(-2 -4)" fill="#687083"/>
-                                        </svg>
-                                        <!-- svg -->
-                                    </span>
-                                </div>
-                                <input type="email" value="{{old('email')}}"
-                                       class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                       placeholder="{{__('common.Enter Email')}}" name="email" aria-label="Username"
-                                       aria-describedby="basic-addon3">
+                        <div class="pb-3 mb-3">
+                            <div class="position-relative">
+                                <i class="ai-mail fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                <input
+                                    class="form-control form-control-lg ps-5 {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                    type="email"
+                                    value="{{old('email')}}"
+                                    placeholder="{{__('common.Enter Email')}}"
+                                    name="email"
+                                    required>
                             </div>
                             @if($errors->first('email'))
                                 <span class="text-danger" role="alert">{{$errors->first('email')}}</span>
                             @endif
                         </div>
 
-                        <div class="col-12 mt_20">
-                            <div class="input-group custom_group_field">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon4">
-                                        <!-- svg -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="10.697" height="14.039"
-                                             viewBox="0 0 10.697 14.039">
-                                        <path id="Path_46" data-name="Path 46"
-                                              d="M9.348,11.7A1.337,1.337,0,1,0,8.011,10.36,1.341,1.341,0,0,0,9.348,11.7ZM13.36,5.68h-.669V4.343a3.343,3.343,0,0,0-6.685,0h1.27a2.072,2.072,0,0,1,4.145,0V5.68H5.337A1.341,1.341,0,0,0,4,7.017V13.7a1.341,1.341,0,0,0,1.337,1.337H13.36A1.341,1.341,0,0,0,14.7,13.7V7.017A1.341,1.341,0,0,0,13.36,5.68Zm0,8.022H5.337V7.017H13.36Z"
-                                              transform="translate(-4 -1)" fill="#687083"/>
-                                        </svg>
-                                        <!-- svg -->
-                                    </span>
+                        <div class="mb-4">
+                            <div class="position-relative">
+                                <i class="ai-lock-closed fs-lg position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                <div class="password-toggle">
+                                    <input class="form-control form-control-lg ps-5" type="password"
+                                           placeholder="{{__('common.Enter Password')}}"
+                                           name="password"
+                                           required>
+                                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                                        <input class="password-toggle-check" type="checkbox"><span
+                                            class="password-toggle-indicator"></span>
+                                    </label>
                                 </div>
-                                <input type="password" name="password" class="form-control"
-                                       placeholder="{{__('common.Enter Password')}}" aria-label="password"
-                                       aria-describedby="basic-addon4">
                             </div>
                             @if($errors->first('password'))
                                 <span class="text-danger" role="alert">{{$errors->first('password')}}</span>
                             @endif
                         </div>
+
                         <div class="col-12 mt_20">
                             @if(saasEnv('NOCAPTCHA_FOR_LOGIN')=='true')
                                 @if(saasEnv('NOCAPTCHA_IS_INVISIBLE')=="true")
@@ -95,82 +76,66 @@
                                 @endif
                             @endif
                         </div>
-                        <div class="col-12 mt_20">
-                            <div class="remember_forgot_pass d-flex justify-content-between">
-                                <label class="primary_checkbox d-flex">
-                                    <input type="checkbox" name="remember"
-                                           {{ old('remember') ? 'checked' : '' }} value="1">
-                                    <span class="checkmark mr_15"></span>
-                                    <span class="label_name">{{__('common.Remember Me')}}</span>
-                                </label>
-                                @if(Settings('allow_force_logout'))
-                                    <label class="primary_checkbox d-flex">
-                                        <input type="checkbox" name="force"
-                                               {{ old('force') ? 'checked' : '' }} value="1">
-                                        <span class="checkmark mr_15"></span>
-                                        <span class="label_name">{{__('auth.Force login')}}</span>
-                                    </label>
-                                @endif
-                                <a href="{{route('SendPasswordResetLink')}}"
-                                   class="forgot_pass">{{__('common.Forgot Password ?')}}</a>
+
+                        <div class="d-flex flex-wrap align-items-center justify-content-between pb-4">
+                            <div class="form-check my-1">
+                                <input type="checkbox" name="remember"
+                                       {{ old('remember') ? 'checked' : '' }} value="1">
+                                <label class="form-check-label ms-1"
+                                       for="keep-signedin">{{__('common.Remember Me')}}</label>
+                            </div>
+                            <a class="fs-sm fw-semibold text-decoration-none my-1"
+                               href="{{route('SendPasswordResetLink')}}">{{__('common.Forgot Password ?')}}</a>
+                        </div>
+
+                        @if(saasEnv('NOCAPTCHA_FOR_LOGIN')=='true' && saasEnv('NOCAPTCHA_IS_INVISIBLE')=="true")
+
+                            <button type="button" class="g-recaptcha theme_btn text-center w-100"
+                                    data-sitekey="{{saasEnv('NOCAPTCHA_SITEKEY')}}" data-size="invisible"
+                                    data-callback="onSubmit"
+                                    class="theme_btn text-center w-100"> {{__('common.Login')}}</button>
+                            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                            <script>
+                                function onSubmit(token) {
+                                    document.getElementById("loginForm").submit();
+                                }
+                            </script>
+                        @else
+                            <button class="btn btn-lg btn-primary w-100 mb-4"
+                                    type="submit">{{__('common.Login')}}</button>
+                    @endif
+
+
+                    <!-- Sign in with social account -->
+                        <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">Or sign in with your social account</h2>
+                        <div class="row row-cols-1 row-cols-sm-2 gy-3">
+                            <div class="col">
+                                <a class="btn btn-icon btn-outline-secondary btn-google btn-lg w-100" href="#">
+                                    <i class="ai-google fs-xl me-2"></i>
+                                    Google
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-icon btn-outline-secondary btn-facebook btn-lg w-100" href="#">
+                                    <i class="ai-facebook fs-xl me-2"></i>
+                                    Facebook
+                                </a>
                             </div>
                         </div>
-                        <div class="col-12">
-
-                            @if(saasEnv('NOCAPTCHA_FOR_LOGIN')=='true' && saasEnv('NOCAPTCHA_IS_INVISIBLE')=="true")
-
-                                <button type="button" class="g-recaptcha theme_btn text-center w-100"
-                                        data-sitekey="{{saasEnv('NOCAPTCHA_SITEKEY')}}" data-size="invisible"
-                                        data-callback="onSubmit"
-                                        class="theme_btn text-center w-100"> {{__('common.Login')}}</button>
-                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                                <script>
-                                    function onSubmit(token) {
-                                        document.getElementById("loginForm").submit();
-                                    }
-                                </script>
-                            @else
-                                <button type="submit"
-                                        class="theme_btn text-center w-100"> {{__('common.Login')}}</button>
-                            @endif
-                        </div>
-                    </div>
-                </form>
-            </div>
-            @if(Settings('student_reg')==1 && saasPlanCheck('student')==false)
-                <h5 class="shitch_text mb-0">{{__("frontend.Don’t have an account")}}? <a href="{{route('register')}}">
-                        {{__('common.Register')}}
-                    </a></h5>
-            @endif
-            @if(config('app.demo_mode'))
-                <div class="row g-2 mt-2">
-                    <div class="col-sm-4 mb_10">
-
-
-                        <a class="theme_btn small_btn2 text-center w-100"
-                           href="{{route('auto.login','admin')}}">Admin</a>
-
-                    </div>
-
-                    <div class="col-sm-4 mb_10">
-                        <a class="theme_btn small_btn2 text-center w-100"
-                           href="{{route('auto.login','teacher')}}">Instructor</a>
-                    </div>
-                    <div class="col-sm-4 mb_10">
-                        <a class="theme_btn small_btn2 text-center w-100"
-                           href="{{route('auto.login','student')}}">Student</a>
-
-                    </div>
+                    </form>
                 </div>
-            @endif
-        </div>
-        @include('frontend.infixlmstheme.auth.login_wrapper_right')
-    </div>
 
-    {!! Toastr::message() !!}
-    <script>
-        $('form').submit(function (e) {
-            $(":submit").attr("disabled", true);
-        });
-    </script>
+                <!-- Copyright -->
+                <p class="nav w-100 fs-sm pt-5 mt-auto mb-5" style="max-width: 526px;"><span
+                        class="text-body-secondary">&copy; All rights reserved. Made by</span><a
+                        class="nav-link d-inline-block p-0 ms-1" href="https://createx.studio/" target="_blank"
+                        rel="noopener">Createx Studio</a></p>
+            </div>
+
+            <!-- Cover image -->
+            <div class="w-50 bg-size-cover bg-repeat-0 bg-position-center"
+                 style="background-image: url(/public/frontend2/img/account/cover.jpg);"></div>
+        </div>
+    </main>
+
 @endsection

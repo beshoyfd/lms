@@ -81,6 +81,8 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     Route::post('deleteBlogCommentRepliesReply/{id}', 'BlogController@deleteBlogCommentRepliesReply')->name('deleteBlogCommentRepliesReply');
     Route::get('/addToCart/{id}/{store_qty?}', 'WebsiteController@addToCart')->name('addToCart');
+    Route::get('/removeCart/{id}', 'WebsiteController@removeCart')->name('removeCart');
+    Route::post('/store-time-table-id', 'WebsiteController@storeTimeTableId')->name('storeTimeTableId');
     Route::get('/buyNow/{id}/{store_qty?}', 'WebsiteController@buyNow')->name('buyNow');
     Route::post('enrollOrCart/{id}', 'WebsiteController@enrollOrCart')->name('enrollOrCart');
     Route::get('my-cart', 'WebsiteController@myCart')->name('myCart');
@@ -144,6 +146,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['student']], function 
     Route::get('student-dashboard', 'StudentController@myDashboard')->name('studentDashboard');
     Route::get('my-courses', 'StudentController@myCourses')->name('myCourses');
     Route::get('my-classes', 'StudentController@myCourses')->name('myClasses');
+    Route::post('get-time-table', 'StudentController@getTimeTable')->name('get-time-table');
     Route::get('my-online-course', 'StudentController@myCourses')->name('myOnlineCourse');
     Route::get('my-offline-course', 'StudentController@myCourses')->name('myOfflineCourse');
     Route::get('my-quizzes', 'StudentController@myCourses')->name('myQuizzes');

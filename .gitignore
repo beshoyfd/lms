@@ -15,9 +15,11 @@ storage/*.key
 /public/uploads
 /public/database-backup
 phpcs.xml
+modules_statuses.json
 code-generator
 /files/
 /public_html/
 INFO.md
 .env.production
 .env.testing
+deployment/run_encrypt.sh

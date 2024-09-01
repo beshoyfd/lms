@@ -132,6 +132,11 @@ class CourseEnrolled extends Model
         return $this->belongsTo(Pathway::class, 'pathway_id')->withDefault();
     }
 
+    public function timeTable()
+    {
+        return $this->belongsTo(CourseTimeTable::class, 'time_table_id');
+    }
+
 //    public function getCreatedAtAttribute()
 //    {
 //        $date = $this->attributes['created_at'];

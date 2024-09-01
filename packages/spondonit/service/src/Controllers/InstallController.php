@@ -135,7 +135,7 @@ class InstallController extends Controller{
                 Toastr::success(__('service::install.module_verify'), 'Success');
             }
         }
-
+        
         return back();
 
     }
@@ -156,7 +156,7 @@ class InstallController extends Controller{
 
         Toastr::success($message);
         return redirect()->back();
-
+        
     }
 
 

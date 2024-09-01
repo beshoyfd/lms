@@ -81,13 +81,13 @@ if (!function_exists('send_smtp_mail')) {
             'subject' => $subject,
         ];
 
-        try{
+        try {
             Mail::send('partials.email', ['body' => $message], function ($send) use ($mail_val) {
                 $send->from($mail_val['email_from'], $mail_val['email_from_name']);
                 $send->replyto($mail_val['email_from'], $mail_val['email_from_name']);
                 $send->to($mail_val['send_to'])->subject($mail_val['subject']);
             });
-        }catch (Exception $e){
+        } catch (Exception $e) {
             Log::error($e->getMessage());
             return false;
         }
@@ -407,7 +407,7 @@ if (!function_exists('cartItem')) {
     {
         if (Auth::check()) {
 
-            return   Cache::rememberForever('login_user_cart_sum'.Auth::id() . SaasDomain(), function (){
+            return Cache::rememberForever('login_user_cart_sum' . Auth::id() . SaasDomain(), function () {
                 return Cart::where('user_id', Auth::id())
                     ->when(isModuleActive('Appointment'), function ($query) {
                         $query->whereNotNull('course_id');
@@ -2054,15 +2054,15 @@ if (!function_exists('htmlPart')) {
     }
 }
 if (!function_exists('translatedNumber')) {
-    function translatedNumber($number =null)
+    function translatedNumber($number = null)
     {
-        $number =(string)$number;
+        $number = (string)$number;
         $translatedNumber = '';
         for ($i = 0; $i < strlen($number); $i++) {
             $digit = $number[$i];
             if (is_numeric($digit)) {
                 $translatedNumber .= trans('number.' . $digit);
-            }else{
+            } else {
                 $translatedNumber .= $digit;
             }
         }
@@ -2096,7 +2096,7 @@ if (!function_exists('getPriceFormat')) {
                 $price = number_format((float)str_replace(',', '', $price), 2);
             }
 
-            $price =translatedNumber($price);
+            $price = translatedNumber($price);
 
 
             if ($type == 1) {
@@ -2125,7 +2125,7 @@ if (!function_exists('getPriceFormat')) {
         if (Settings('currency_seperator') == 2) {
             $explode = explode('.', $result);
             return implode(',', $explode);
-         } else {
+        } else {
             return $result;
         }
 
@@ -2413,7 +2413,7 @@ function convertCurrency($from_currency, $to_currency, $amount)
     $to = urlencode($to_currency);
 
     $client = new Client();
-    $cacheTime = (Settings('currency_api_cache_time')?Settings('currency_api_cache_time'):1440)*60;
+    $cacheTime = (Settings('currency_api_cache_time') ? Settings('currency_api_cache_time') : 1440) * 60;
 
     try {
         if (Settings('currency_conversion') == 'Fixer') {
@@ -2775,6 +2775,7 @@ if (!function_exists('getPriceAsNumber')) {
 if (!function_exists('currentTheme')) {
     function currentTheme()
     {
+        return 'custom';
         if (app()->bound('getSetting')) {
             return Settings('frontend_active_theme');
         } else {
@@ -3867,7 +3868,6 @@ if (!function_exists('clearAllLangCache')) {
 if (!function_exists('footerSettings')) {
     function footerSettings($key)
     {
-        return '';
         $footerSetting = Cache::rememberForever('footerSetting_' . app()->getLocale() . SaasDomain(), function () {
             return FooterSetting::all();
         });
@@ -4242,7 +4242,7 @@ if (!function_exists('checkGamification')) {
                 'user_id' => $user_id,
                 'type' => $type,
                 'badge_type' => $badge_type,
-                'point' =>(int) $point,
+                'point' => (int)$point,
             ]);
             if ($point != 0) {
                 $typeTrans = 'setting.' . $type;
@@ -4268,7 +4268,7 @@ if (!function_exists('checkGamification')) {
 
         }
 
-        $totalGamificationPoint =(int) UserGamificationPoint::where('badge_type', $badge_type)->where('user_id', auth()->id())->sum('point');
+        $totalGamificationPoint = (int)UserGamificationPoint::where('badge_type', $badge_type)->where('user_id', auth()->id())->sum('point');
 
         $badges = Badge::where('type', $badge_type)->where('point', '<=', $totalGamificationPoint)->where('status', 1)->orderBy('point', 'desc')->get();
         foreach ($badges as $badge) {
@@ -4306,7 +4306,7 @@ if (!function_exists('checkUserLevel')) {
     {
         if ((int)Settings('gamification_level_status')) {
             if ((int)Settings('gamification_level_entry_point_status')) {
-                $point = (int) Settings('gamification_level_entry_point');
+                $point = (int)Settings('gamification_level_entry_point');
                 if ($user->gamification_points >= $point) {
                     $user->gamification_points = $user->gamification_points - $point;
                     $user->save();
@@ -5316,5 +5316,54 @@ if (!function_exists('extractId')) {
         preg_match('/\[id=(\d+)\]/', $input, $matches);
 
         return $matches[1] ?? null;
+    }
+}
+
+
+if (!function_exists('getCartData')) {
+    function getCartData()
+    {
+        $cartCIDs = [];
+        if (Auth::check()) {
+            $cartCIDs = Cart::where('user_id', Auth::id())->get('course_id')->toArray();
+        } else {
+            $sessonCartList = session()->get('cart');
+            if (!empty($sessonCartList)) {
+                foreach ($sessonCartList as $item) {
+                    $cartCIDs[] = $item['course_id'];
+                }
+            }
+        }
+
+        return Course::query()->whereIn('id', $cartCIDs)->get();
+    }
+}
+if (!function_exists('getCoursesByCategoryAndLevel')) {
+    function getCoursesByCategoryAndLevel()
+    {
+        $categories = Category::with(['courses.courseLevel'])->get();
+        $structuredData = [];
+
+        foreach ($categories as $category) {
+            $levels = [
+                'Beginner' => [],
+                'Intermediate' => [],
+                'Advanced' => []
+            ];
+
+            foreach ($category->courses as $course) {
+                $levelName = $course->courseLevel->title;
+                if (isset($levels[$levelName])) {
+                    $levels[$levelName][] = $course;
+                }
+            }
+
+            $structuredData[] = [
+                'category' => $category->name,
+                'levels' => $levels,
+            ];
+        }
+
+        return $structuredData;
     }
 }

@@ -942,14 +942,22 @@ class Course extends Model
     {
         return $this->hasMany(CertificateRecord::class, 'course_id', 'id');
     }
+
     public function instructor()
     {
         return $this->belongsTo(User::class, 'user_id', 'id')->withDefault([
             'name' => ' '
         ]);
     }
-    public function getModeOfDeliveryAttribute($value){
+
+    public function getModeOfDeliveryAttribute($value)
+    {
         return (int)$value;
+    }
+
+    public function timeTables()
+    {
+        return $this->hasMany(CourseTimeTable::class);
     }
 
 

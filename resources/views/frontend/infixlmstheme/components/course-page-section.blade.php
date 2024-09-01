@@ -1,133 +1,174 @@
-<div>
-    <input type="hidden" class="class_route" name="class_route" value="{{route('courses')}}">
-    <div class="courses_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-xl-3">
-                    <x-class-page-section-sidebar :level="$level" :type="$type" :categories="$categories"
-                                                  :category="$category" :languages="$languages" :language="$language"
-                                                  :mode="$mode"/>
+<div class="row pt-xl-3 mt-n1 mt-sm-0">
+    <div class="col-lg-9 offset-lg-3 pt-lg-3">
+        <h1 class="pb-2 pb-sm-3">{{__('Professional Training Programs')}} ({{$total}})</h1>
+    </div>
+</div>
+
+<style>
+    .rating_cart i.fa-star {
+        color: #ffc107;
+    }
+</style>
+
+<div class="row pb-2 pb-sm-4">
+    <x-class-page-section-sidebar :level="$level ?? []" :type="$type" :categories="$categories"
+                                  :category="$category" :languages="$languages" :language="$language"
+                                  :mode="$mode"/>
+    <!-- Product grid -->
+    <div class="col-lg-9">
+
+        <!-- Active filters + Sorting -->
+        <div class="d-flex align-items-start justify-content-between mb-4">
+            <div class="me-3">
+                <div class="nav d-md-none">
+                    <a class="nav-link dropdown-toggle fs-sm p-0 mb-2" href="#activeFilters" data-bs-toggle="collapse">
+                        {{__('Active filters')}}</a>
                 </div>
-                <div class="col-lg-8 col-xl-9">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="box_header d-flex flex-wrap align-items-center justify-content-between">
-                                <h5 class="font_16 f_w_500 mb_30">{{$total}} {{__('frontend.Course are found')}}</h5>
-                                <div class="box_header_right mb_30">
-                                    <div class="short_select d-flex align-items-center">
-                                        <div class="mobile_filter mr_10">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="13"
-                                                 viewBox="0 0 19.5 13">
-                                                <g transform="translate(28)">
-                                                    <rect id="Rectangle_1" data-name="Rectangle 1" width="19.5"
-                                                          height="2" rx="1"
-                                                          transform="translate(-28)"
-                                                          fill="var(--system_primery_color)"/>
-                                                    <rect id="Rectangle_2" data-name="Rectangle 2" width="15.5"
-                                                          height="2" rx="1"
-                                                          transform="translate(-26 5.5)"
-                                                          fill="var(--system_primery_color)"/>
-                                                    <rect id="Rectangle_3" data-name="Rectangle 3" width="5" height="2"
-                                                          rx="1"
-                                                          transform="translate(-20.75 11)"
-                                                          fill="var(--system_primery_color)"/>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h5 class="mr_10 font_16 f_w_500 mb-0">{{__('frontend.Order By')}}:</h5>
-                                        <select class="small_select" id="order">
-                                            <option value="" data-display="None">{{__('frontend.None')}}</option>
-                                            <option
-                                                value="price" {{$order=="price"?'selected':''}}>{{__('frontend.Price')}}</option>
-                                            <option
-                                                value="date" {{$order=="date"?'selected':''}}>{{__('frontend.Date')}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @if(isset($courses))
-                            @foreach ($courses as $course)
-                                <div class="col-lg-6 col-xl-4">
-                                    <div class="couse_wizged">
-                                        <a href="{{courseDetailsUrl(@$course->id,@$course->type,@$course->slug)}}">
-                                            <div class="thumb">
-
-                                                <div class="thumb_inner lazy"
-                                                     data-src="{{ getCourseImage($course->thumbnail) }}">
-                                                </div>
-                                                <x-price-tag :price="$course->price"
-                                                             :discount="$course->discount_price"/>
-                                            </div>
-                                        </a>
-                                        <div class="course_content">
-                                            <a href="{{courseDetailsUrl(@$course->id,@$course->type,@$course->slug)}}">
-
-                                                <h4 class="noBrake" title=" {{$course->title}}">
-                                                    {{$course->title}}
-                                                </h4>
-                                            </a>
-                                            <div class="rating_cart">
-                                                <div class="rateing">
-                                                    <span>{{$course->total_rating}}/5</span>
-
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                @if(!onlySubscription())
-                                                    @auth()
-                                                        @if(!$course->isLoginUserEnrolled && !$course->isLoginUserCart)
-                                                            <a href="#" class="cart_store"
-                                                               data-id="{{$course->id}}">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                            </a>
-                                                        @endif
-                                                    @endauth
-                                                    @guest()
-                                                        @if(!$course->isGuestUserCart)
-                                                            <a href="#" class="cart_store"
-                                                               data-id="{{$course->id}}">
-                                                                <i class="fas fa-shopping-cart"></i>
-                                                            </a>
-                                                        @endif
-                                                    @endguest
-                                                @endif
-                                            </div>
-                                            <div class="course_less_students">
-                                                <a> <i class="ti-agenda"></i> {{$course->total_lessons}}
-                                                    {{__('frontend.Lessons')}}</a>
-                                                @if(!Settings('hide_total_enrollment_count') == 1)
-                                                    <a>
-                                                        <i class="ti-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
-                                                    </a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endif
-                        @if(count($courses)==0)
-                            <div class="col-lg-12">
-                                <div
-                                    class="Nocouse_wizged text-center d-flex align-items-center justify-content-center">
-                                    <div class="thumb">
-                                        <img style="width: 50px"
-                                             src="{{ asset('public/frontend/infixlmstheme') }}/img/not-found.png"
-                                             alt="">
-                                    </div>
-                                    <h1>
-                                        {{__('frontend.No Course Found')}}
-                                    </h1>
-                                </div>
-                            </div>
-
-                        @endif
-                    </div>
-                    <div class="mt-4">
-                        {{ $courses->appends(Request::all())->links() }}
+                <div class="collapse d-md-block" id="activeFilters">
+                    <div class="pt-2 pt-md-0">
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('All')}}</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Live Online')}}</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Self Study')}}</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">
+                            {{__('Exam Simulation')}}
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Classroom')}}</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+            @if(isset($courses))
+                @foreach ($courses as $course)
+                    <div class="col pb-2 pb-sm-3">
+                        <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
+                            <span
+                                class="badge bg-danger bg-opacity-10 text-danger position-absolute top-0 start-0 mt-3 ms-3">{{$course->category?->name}}</span>
+                            <button
+                                class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 z-5 opacity-0"
+                                type="button" aria-label="Add to Favorites">
+                                <i class="ai-heart fs-xl text-nav"></i>
+                            </button>
+                            <div class="swiper swiper-nav-onhover"
+                                 data-swiper-options='{"loop": true, "navigation": {"prevEl": ".btn-prev", "nextEl": ".btn-next"}}'>
+                                <a class="swiper-wrapper"
+                                   href="{{courseDetailsUrl(@$course->id,@$course->type,@$course->slug)}}">
+                                    <div class="swiper-slide p-2 p-xl-4">
+                                        <img class="d-block mx-auto"
+                                             src="{{ getCourseImage($course->thumbnail) }}"
+                                             width="226"
+                                             alt="Product">
+                                    </div>
+                                </a>
+                                <button
+                                    class="btn btn-prev btn-icon btn-sm btn-light bg-light border-0 rounded-circle start-0"
+                                    type="button" aria-label="Prev">
+                                    <i class="ai-chevron-left fs-xl text-nav"></i>
+                                </button>
+                                <button
+                                    class="btn btn-next btn-icon btn-sm btn-light bg-light border-0 rounded-circle end-0"
+                                    type="button" aria-label="Next">
+                                    <i class="ai-chevron-right fs-xl text-nav"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-1">
+                            <h3 class="h6 mb-0">
+                                <a href="{{courseDetailsUrl(@$course->id,@$course->type,@$course->slug)}}">
+                                    {{$course->title}}
+                                </a>
+                            </h3>
+
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <x-price-tag :price="$course->price"
+                                         :discount="$course->discount_price"/>
+                        </div>
+
+
+                        <div class="rating_cart d-flex justify-content-between mt-2">
+                            <div class="rateing">
+                                <span>{{$course->total_rating}}/5</span>
+
+                                <i class="fas fa-star"></i>
+                            </div>
+                            @if(!onlySubscription())
+                                @auth()
+                                    @if(!$course->isLoginUserEnrolled && !$course->isLoginUserCart)
+                                        <div class="nav ms-auto" data-bs-toggle="tooltip"
+                                             data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
+                                             data-bs-placement="left" title="Add to cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="{{route('addToCart',[@$course->id])}}"
+                                                aria-label="Add to Cart">
+                                                <i class="ai-cart"></i>
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endauth
+                                @guest()
+                                    @if(!$course->isGuestUserCart)
+                                        <div class="nav ms-auto" data-bs-toggle="tooltip"
+                                             data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
+                                             data-bs-placement="left" title="Add to cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="{{route('addToCart',[@$course->id])}}"
+                                                aria-label="Add to Cart">
+                                                <i class="ai-cart"></i>
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endguest
+                            @endif
+                        </div>
+                        <div class="course_less_students d-flex justify-content-between mt-3">
+                            <a> <i class="fa fa-list"></i> {{$course->total_lessons}}
+                                {{__('frontend.Lessons')}}</a>
+                            @if(!Settings('hide_total_enrollment_count') == 1)
+                                <a>
+                                    <i class="fa fa-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
+                                </a>
+                            @endif
+                        </div>
+
+                    </div>
+                @endforeach
+            @endif
+
+        </div>
+
+
+        <!-- Pagination -->
+        <div class="row gy-3 align-items-center pt-3 pt-sm-4 mt-md-2">
+            <div class="col col-md-4 col-6 order-md-1 order-1">
+                <div class="d-flex align-items-center">
+                    <span class="text-body-secondary fs-sm">Show</span>
+                    <select onchange="filterData('pg_size', this.value)" id="pg_size"
+                            class="form-select form-select-flush w-auto">
+                        <option {{request()->pg_size == 12 ? 'selected' : ''}} value="12">12</option>
+                        <option {{request()->pg_size == 18 ? 'selected' : ''}} value="18">18</option>
+                        <option {{request()->pg_size == 24 ? 'selected' : ''}} value="24">24</option>
+                        <option {{request()->pg_size == 30 ? 'selected' : ''}} value="30">30</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col col-md-4 col-12 order-md-2 order-3 text-center">
+                @if ($courses->currentPage() < $courses->lastPage())
+                    <button class="btn btn-primary w-md-auto w-100" onclick="loadMoreCourse()" type="button">Load more
+                        courses
+                    </button>
+                @endif
+            </div>
+            <div class="col col-md-4 col-6 order-md-3 order-2">
+                {{ $courses->appends(request()->all())->links() }}
+            </div>
+        </div>
     </div>
 </div>
+
+
+<!-- Sidebar toggle button -->
+<button class="d-lg-none btn btn-sm fs-sm btn-primary w-100 rounded-0 fixed-bottom" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#shopSidebar">
+    <i class="ai-filter me-2"></i>
+    {{__('Filters')}}
+</button>
