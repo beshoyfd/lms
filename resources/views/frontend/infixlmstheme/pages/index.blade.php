@@ -1,4 +1,4 @@
-@extends(theme('layouts.master'))
+@extends(theme('layouts.master-front'))
 @section('title'){{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{__('frontendmanage.Home')}} @endsection
 
 @section('mainContent')
@@ -19,7 +19,7 @@
             <p class="fs-lg pb-3 mb-2 mb-sm-3 mb-lg-4 mx-auto" style="max-width: 640px;">Our development team has been
                 working around the clock to browse the market and conclude the most
                 wanted professional courses.</p>
-            <a class="btn btn-lg btn-primary" href="sessions.html">Explore Courses</a>
+            <a class="btn btn-lg btn-primary" href="{{route('courses')}}">{{__('Explore Courses')}}</a>
         </div>
     </section>
 

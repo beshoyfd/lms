@@ -1,4 +1,4 @@
-@extends(theme('layouts.master'))
+@extends(theme('layouts.master-front'))
 @section('title')
     {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} |  {{$course->title}}
 @endsection
