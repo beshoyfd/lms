@@ -31,7 +31,7 @@
     <div class="px-4 pt-3">
         <div class="d-flex justify-content-between align-items-center border-bottom pb-3 pb-sm-4">
             <h2 class="offcanvas-title d-flex align-items-center mb-1">
-                Your cart <span class="fs-base fw-normal text-body-secondary ms-3">({{@cartItem()}} items)</span>
+                {{__('Your cart')}} <span class="fs-base fw-normal text-body-secondary ms-3">({{@cartItem()}} items)</span>
             </h2>
             <button class="btn-close mb-1 me-n1" type="button" data-bs-dismiss="offcanvas"
                     data-bs-target="#cartOffcanvas" aria-label="Close"></button>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="nav justify-content-end mt-n5 mt-sm-n3">
-                        <a class="nav-link fs-xl p-2" href="#" data-bs-toggle="tooltip" title="Remove"
+                        <a class="nav-link fs-xl p-2" href="{{route('removeCart', $courseCartTime->id)}}" data-bs-toggle="tooltip" title="Remove"
                            aria-label="Remove">
                             <i class="ai-trash"></i>
                         </a>

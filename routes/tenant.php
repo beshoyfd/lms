@@ -81,6 +81,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     Route::post('deleteBlogCommentRepliesReply/{id}', 'BlogController@deleteBlogCommentRepliesReply')->name('deleteBlogCommentRepliesReply');
     Route::get('/addToCart/{id}/{store_qty?}', 'WebsiteController@addToCart')->name('addToCart');
+    Route::get('/removeCart/{id}', 'WebsiteController@removeCart')->name('removeCart');
     Route::post('/store-time-table-id', 'WebsiteController@storeTimeTableId')->name('storeTimeTableId');
     Route::get('/buyNow/{id}/{store_qty?}', 'WebsiteController@buyNow')->name('buyNow');
     Route::post('enrollOrCart/{id}', 'WebsiteController@enrollOrCart')->name('enrollOrCart');

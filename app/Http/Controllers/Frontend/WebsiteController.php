@@ -550,12 +550,12 @@ class WebsiteController extends Controller
             }
             if (isModuleActive('HLS') && $lesson->host == 'm3u8') {
 
-                $extractId =extractId($lesson->video_url);
-                if ($extractId){
+                $extractId = extractId($lesson->video_url);
+                if ($extractId) {
                     $m3Video = HlsVideo::where([
-                        'id' =>$extractId
+                        'id' => $extractId
                     ])->first();
-                }else{
+                } else {
                     $m3Links = explode('/', $lesson->video_url);
                     $total = count($m3Links);
                     $m3Video = HlsVideo::where([
@@ -2567,6 +2567,33 @@ class WebsiteController extends Controller
         }
     }
 
+    public function removeCart($course_id)
+    {
+        if (Auth::check() && (\auth()->user()->role_id != 1)) {
+            Cart::where('user_id', $user->id)->where('course_id', $course_id)->delete();
+            return Toastr::success(trans('frontend.Item removed from your cart'), trans('common.Success'));
+        }
+
+        if (session()->has('cart')) {
+            $cart = session()->get('cart');
+            if (isset($cart[$course_id])) {
+                unset($cart[$course_id]);
+                session()->put('cart', $cart);
+                if (empty($cart)) {
+                    session()->forget('cart');
+                }
+                Toastr::success(trans('frontend.Item removed from your cart'), trans('common.Success'));
+            } else {
+                Toastr::error(trans('frontend.Item not found in your cart'), trans('common.Error'));
+            }
+        } else {
+            Toastr::error(trans('frontend.Cart is empty'), trans('common.Error'));
+        }
+
+        return redirect()->back();
+    }
+
+
     public function storeTimeTableId(Request $request)
     {
         $request->session()->put('selectedTimeTableId', $request->input('timeTableId'));
@@ -2771,19 +2798,19 @@ class WebsiteController extends Controller
         $course = $class->course;
 
 
-        $enrolled =CourseEnrolled::where('user_id', Auth::id())->where('course_id', $course->id)->where('status',1)->first();
+        $enrolled = CourseEnrolled::where('user_id', Auth::id())->where('course_id', $course->id)->where('status', 1)->first();
 
         if ($enrolled) {
             $records = ClassRecord::where('class_id', $class_id)
                 ->get();
             $currentRecord = $records->where('id', $record_id)->first();
 
-            if (!$currentRecord){
+            if (!$currentRecord) {
                 abort(404);
             }
 
-            if ($class->record_validity>0 && $currentRecord->created_at->diffInDays(Carbon::now()) > $class->record_validity) {
-              Toastr::error(trans('frontend.Your access validity is expired'), trans('common.Failed'));
+            if ($class->record_validity > 0 && $currentRecord->created_at->diffInDays(Carbon::now()) > $class->record_validity) {
+                Toastr::error(trans('frontend.Your access validity is expired'), trans('common.Failed'));
                 return redirect()->route('courseDetailsView', $course->slug);
             }
 
@@ -2808,8 +2835,6 @@ class WebsiteController extends Controller
             Toastr::error(trans('frontend.You are not enrolled for this class'), trans('common.Failed'));
             return redirect()->route('courseDetailsView', $course->slug);
         }
-
-
 
 
     }
