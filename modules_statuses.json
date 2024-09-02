@@ -25,6 +25,7 @@
     "Paytm": true,
     "PayStack": true,
     "Wallet": true,
+    "FrontendMultiLang": true,
     "Certificate": true,
     "BankPayment": true,
     "OfflinePayment": true,

@@ -7,7 +7,7 @@
     <section class="bg-secondary py-5">
         <div class="container text-center pt-5 mt-lg-4 mt-xl-5">
             <div class="position-relative mx-auto my-3" style="max-width: 850px;">
-                <h1 class="display-3 position-relative z-2 mb-0">Top Demanded Programs in one Place</h1>
+                <h1 class="display-3 position-relative z-2 mb-0">{{__('Top Demanded Programs in one Place')}}</h1>
                 <div class="text-warning position-absolute top-0 start-50 translate-middle-x w-100 mt-md-3">
                     <svg width="608" height="66" viewBox="0 0 608 66" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -16,9 +16,9 @@
                     </svg>
                 </div>
             </div>
-            <p class="fs-lg pb-3 mb-2 mb-sm-3 mb-lg-4 mx-auto" style="max-width: 640px;">Our development team has been
+            <p class="fs-lg pb-3 mb-2 mb-sm-3 mb-lg-4 mx-auto" style="max-width: 640px;">{{__('Our development team has been
                 working around the clock to browse the market and conclude the most
-                wanted professional courses.</p>
+                wanted professional courses.')}}</p>
             <a class="btn btn-lg btn-primary" href="{{route('courses')}}">{{__('Explore Courses')}}</a>
         </div>
     </section>
@@ -30,6 +30,39 @@
             <polygon fill="currentColor"
                      points="3000,0 3000,12.3 2751,7.2 2460,18 2239,7.2 2017,10.7 1911.5,7.2 1368,18 831,7.2 540,18 319,7.2 97,10.7 0,7.5 0,0 "></polygon>
         </svg>
+    </div>
+
+    <div class="container py-5">
+        <div class="row text-center">
+            <div class="col-md-3 col-6 ">
+                <div class="counter-box p-4">
+                    <i class="fas fa-book fa-2x mb-3 icons icons_1"></i>
+                    <h3 class="counter" data-count="77">0</h3>
+                    <p class="text-muted">Online Courses</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 ">
+                <div class="counter-box p-4">
+                    <i class="fas fa-user-graduate fa-2x mb-3 icons icons_2"></i>
+                    <h3 class="counter" data-count="18361">0</h3>
+                    <p class="text-muted">Student Enrolled</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 ">
+                <div class="counter-box p-4">
+                    <i class="fas fa-globe fa-2x mb-3 icons icons_3"></i>
+                    <h3 class="counter" data-count="97">0</h3>
+                    <p class="text-muted">Countries Student</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 ">
+                <div class="counter-box p-4">
+                    <i class="fas fa-heart fa-2x mb-3 icons icons_4"></i>
+                    <h3 class="counter" data-count="678">0</h3>
+                    <p class="text-muted">Positive Feedback</p>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -189,13 +222,13 @@
 
     <!-- Benefits -->
     <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
-        <h2 class="h1 text-center pb-3 pt-2 pt-sm-3 pt-md-4 pt-lg-5 mt-md-3 mt-lg-0 mb-3 mb-lg-4">Our benefits</h2>
+        <h2 class="h1 text-center pb-3 pt-2 pt-sm-3 pt-md-4 pt-lg-5 mt-md-3 mt-lg-0 mb-3 mb-lg-4">{{__('Our benefits')}}</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-4 gy-sm-5 gx-4 pb-3 pb-md-4 pb-lg-5 mb-md-3 mb-lg-0">
 
             <!-- Item -->
             <div class="col text-center">
                 <div class="ratio ratio-1x1 position-relative mx-auto mb-3 mb-sm-4" style="width: 68px;">
-                    <i class="ai-search-settings text-primary fs-1 d-flex align-items-center justify-content-center position-absolute start-0"></i>
+                    <i class="ai-dollar text-primary fs-1 d-flex align-items-center justify-content-center position-absolute start-0"></i>
                     <svg class="position-absolute top-0 start-0 text-primary" width="68" height="68" viewBox="0 0 68 68"
                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -203,31 +236,30 @@
                             fill-opacity="0.1"></path>
                     </svg>
                 </div>
-                <h3 class="h4 pb-2 mb-1">Online support</h3>
-                <p class="fs-sm mb-0">Pharetra morbi quis is massa maecenas vulputate elit non nullage a duis tortor mi
-                    massa pharetra.</p>
+                <h3 class="h4 pb-2 mb-1">{{__('Money Guaranteed')}}</h3>
+                <p class="fs-sm mb-0">{{__('Our payment policy ensures money refund within a specific duration if requested')}}</p>
             </div>
 
             <!-- Item -->
             <div class="col text-center">
                 <div class="ratio ratio-1x1 position-relative mx-auto mb-3 mb-sm-4" style="width: 68px;">
-                    <i class="ai-bulb-alt text-primary fs-1 d-flex align-items-center justify-content-center position-absolute start-0"></i>
+                    <i class="ai-file text-primary fs-1 d-flex align-items-center justify-content-center position-absolute start-0"></i>
                     <svg class="position-absolute top-0 start-0 text-primary" width="68" height="68" viewBox="0 0 68 68"
                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M65.0556 29.2672C75.4219 46.3175 48.5577 59.7388 33.8299 64.3181C21.0447 67.5599 1.98006 58.174 0.888673 42.8524C-0.475555 23.7004 18.3473 14.5883 29.9289 8.26059C41.5104 1.93285 52.0978 7.9543 65.0556 29.2672Z"
                             fill-opacity="0.1"></path>
                     </svg>
+
                 </div>
-                <h3 class="h4 pb-2 mb-1">100% guarantee</h3>
-                <p class="fs-sm mb-0">Sapien ultrices egestas at faucibus eu diam velit diam id amet nibh quam rutrum
-                    diam diam natoque scelerisque.</p>
+                <h3 class="h4 pb-2 mb-1">{{__('Global Accreditation')}}</h3>
+                <p class="fs-sm mb-0">{{__('Our partners of success are all globally identified as masters in their fields')}}</p>
             </div>
 
             <!-- Item -->
             <div class="col text-center">
                 <div class="ratio ratio-1x1 position-relative mx-auto mb-3 mb-sm-4" style="width: 68px;">
-                    <i class="ai-circle-check-filled text-primary fs-2 d-flex align-items-center justify-content-center position-absolute start-0"></i>
+                    <i class="ai-clock text-primary fs-2 d-flex align-items-center justify-content-center position-absolute start-0"></i>
                     <svg class="position-absolute top-0 start-0 text-primary" width="68" height="68" viewBox="0 0 68 68"
                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -235,15 +267,14 @@
                             fill-opacity="0.1"></path>
                     </svg>
                 </div>
-                <h3 class="h4 pb-2 mb-1">Work on time</h3>
-                <p class="fs-sm mb-0">Morbi et massa fames ac scelerisque sit commodo dignissim faucibus vel quisque
-                    proin lectus orbi et massa fames.</p>
+                <h3 class="h4 pb-2 mb-1">{{__('Flexibility in Learning')}}</h3>
+                <p class="fs-sm mb-0">{{__('Flexibility what distinguishes us! Choose your option to learn whenever and wherever you are')}}</p>
             </div>
 
             <!-- Item -->
             <div class="col text-center">
                 <div class="ratio ratio-1x1 position-relative mx-auto mb-3 mb-sm-4" style="width: 68px;">
-                    <i class="ai-rocket text-primary fs-2 d-flex align-items-center justify-content-center position-absolute start-0"></i>
+                    <i class="ai-phone text-primary fs-2 d-flex align-items-center justify-content-center position-absolute start-0"></i>
                     <svg class="position-absolute top-0 start-0 text-primary" width="68" height="68" viewBox="0 0 68 68"
                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -251,45 +282,13 @@
                             fill-opacity="0.1"></path>
                     </svg>
                 </div>
-                <h3 class="h4 pb-2 mb-1">Free consultation</h3>
-                <p class="fs-sm mb-0">Consectetur adipiscing elit proin volutpat mollis egestas nam luctus facilisis
-                    ultrices pellentesque volutpat ligula est.</p>
+                <h3 class="h4 pb-2 mb-1">{{__('Online support')}}</h3>
+                <p class="fs-sm mb-0">{{__('Our online support is available around the clock, ensuring that you can get help whenever you need it, no matter the time or day.')}}</p>
             </div>
         </div>
     </section>
 
-    <div class="container py-5">
-        <div class="row text-center">
-            <div class="col-md-3 col-6 mb-4">
-                <div class="counter-box p-4">
-                    <i class="fas fa-book fa-2x mb-3 icons icons_1"></i>
-                    <h3 class="counter" data-count="77">0</h3>
-                    <p class="text-muted">Online Courses</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4">
-                <div class="counter-box p-4">
-                    <i class="fas fa-user-graduate fa-2x mb-3 icons icons_2"></i>
-                    <h3 class="counter" data-count="18361">0</h3>
-                    <p class="text-muted">Student Enrolled</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4">
-                <div class="counter-box p-4">
-                    <i class="fas fa-globe fa-2x mb-3 icons icons_3"></i>
-                    <h3 class="counter" data-count="97">0</h3>
-                    <p class="text-muted">Countries Student</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4">
-                <div class="counter-box p-4">
-                    <i class="fas fa-heart fa-2x mb-3 icons icons_4"></i>
-                    <h3 class="counter" data-count="678">0</h3>
-                    <p class="text-muted">Positive Feedback</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 
     <x-home-page-faq :homeContent="$homeContent"/>
@@ -316,9 +315,7 @@
                               <i class="ai-mail"></i>
                             </span>
                             <input class="form-control" placeholder="{{__('frontend.Enter e-mail Address')}}"
-                                   onfocus="this.placeholder = ''"
-                                   onblur="this.placeholder = '{{__('frontend.Email')}}'"
-                                   required="" type="email" value="{{old('email')}}">
+                                     type="email" value="{{old('email')}}">
                             <button class="btn btn-warning" type="submit">{{__('frontend.Subscribe Now')}}</button>
                         </div>
                         @if(isset($errors) && $errors->any())

@@ -2290,7 +2290,12 @@ if (!function_exists('isModuleActive')) {
 
             $is_module_available = 'Modules/' . $module . '/Providers/' . $module . 'ServiceProvider.php';
 
+
+
+
             if (file_exists($is_module_available)) {
+
+
 
 
                 $moduleCheck = Module::find($module)->isEnabled();
@@ -2304,7 +2309,6 @@ if (!function_exists('isModuleActive')) {
 
                 if ($modulestatus == 1) {
                     $is_verify = app('ModuleManagerList')->where('name', $module)->first();
-
                     if (!empty($is_verify->purchase_code)) {
                         return true;
                     }

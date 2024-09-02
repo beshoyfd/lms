@@ -5,9 +5,9 @@
              data-aos-offset="150" data-disable-parallax-down="lg">
             <div class="pe-lg-4 pe-xl-0">
                 <h2 class="h1 text-center text-lg-start mb-0 mx-auto mx-lg-0" style="max-width: 468px;">
-                    What our clients say about their
+                    {{__('Customer Testimonials')}}
                     <span class="d-inline-block position-relative">
-                  <span class="position-relative z-2 mx-2">experience</span>
+
                   <svg class="position-absolute top-50 end-0 translate-middle-y me-n1 mt-1" width="249" height="46"
                        viewBox="0 0 249 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="text-warning" opacity=".4"
@@ -15,7 +15,6 @@
                           fill="currentColor"></path>
                   </svg>
                 </span>
-                    with the tool
                 </h2>
 
                 <!-- Swiper controls (Prev / Next) -->
@@ -64,10 +63,8 @@
                                          style="max-width: 570px;">
                                         <div class="bg-light rounded-circle flex-shrink-0 position-relative z-2 me-n5"
                                              style="padding: .375rem;">
-                                            <img class="rounded-circle"
-                                                 src="{{getProfileImage($testimonial->image,$testimonial->author)}}"
-                                                 width="80"
-                                                 alt="{{ $testimonial->name }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 119.47 119.47"><g id="Group_2217" data-name="Group 2217" transform="translate(-289.739 -151.585)">
+                                                    <circle id="Ellipse_524" data-name="Ellipse 524" cx="42.239" cy="42.239" r="42.239" transform="translate(289.739 211.32) rotate(-45)" fill="#c62334"></circle> <g id="Group_2207" data-name="Group 2207" transform="translate(332.104 200.845)"><path id="Path_32619" data-name="Path 32619" d="M348.767,232.088a7.81,7.81,0,0,0,.447-15.608,10.972,10.972,0,0,1,3.011-5.343c-4.314,0-11.268,5.883-11.268,13.14A7.81,7.81,0,0,0,348.767,232.088Z" transform="translate(-340.956 -211.138)" fill="#fff"></path> <path id="Path_32620" data-name="Path 32620" d="M371.881,232.088a7.81,7.81,0,0,0,.448-15.608,10.972,10.972,0,0,1,3.011-5.343c-4.314,0-11.268,5.883-11.268,13.14A7.81,7.81,0,0,0,371.881,232.088Z" transform="translate(-344.951 -211.138)" fill="#fff"></path></g></g></svg>
                                         </div>
                                         <div class="card bg-secondary border-0 rounded-4 py-3 ps-4 ps-sm-5 pe-3">
                                             <div class="card-body py-3 px-2 p-sm-4 ms-4 ms-sm-0">

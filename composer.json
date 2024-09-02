@@ -94,6 +94,7 @@
         "spatie/db-dumper": "^3.0",
         "spatie/flysystem-dropbox": "^3.0",
         "spatie/laravel-backup": "^8.0",
+        "spatie/laravel-ray": "^1.37",
         "spatie/laravel-sluggable": "^3.4",
         "spatie/laravel-translatable": "6.5.1",
         "spatie/valuestore": "^1.2",
