@@ -164,6 +164,7 @@ class CourseDeatilsPageSection extends Component
 
         }
 
+
         return view(theme('components.course-details-page-section'), $data, compact('is_cart', 'levels', 'related', 'userRating', 'lessons', 'total', 'isFree', 'isBookmarked', 'course_exercises', 'reviewer_user_ids', 'course_enrolled_std'));
     }
 }

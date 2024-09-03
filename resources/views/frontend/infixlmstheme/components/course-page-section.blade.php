@@ -8,6 +8,13 @@
     .rating_cart i.fa-star {
         color: #ffc107;
     }
+
+    .boxx {
+        border: 1px solid #eee;
+        padding: 12px;
+        border-radius: 10px;
+        box-shadow: 1px 2px #eee;
+    }
 </style>
 
 <div class="row pb-2 pb-sm-4">
@@ -26,13 +33,17 @@
                 </div>
                 <div class="collapse d-md-block" id="activeFilters">
                     <div class="pt-2 pt-md-0">
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('All')}}</button>
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Live Online')}}</button>
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Self Study')}}</button>
+                        <button type="button"
+                                class="btn btn-outline-secondary rounded-custom me-2">{{__('All')}}</button>
+                        <button type="button"
+                                class="btn btn-outline-secondary rounded-custom me-2">{{__('Live Online')}}</button>
+                        <button type="button"
+                                class="btn btn-outline-secondary rounded-custom me-2">{{__('Self Study')}}</button>
                         <button type="button" class="btn btn-outline-secondary rounded-custom me-2">
                             {{__('Exam Simulation')}}
                         </button>
-                        <button type="button" class="btn btn-outline-secondary rounded-custom me-2">{{__('Classroom')}}</button>
+                        <button type="button"
+                                class="btn btn-outline-secondary rounded-custom me-2">{{__('Classroom')}}</button>
                     </div>
                 </div>
             </div>
@@ -41,15 +52,27 @@
 
             @if(isset($courses))
                 @foreach ($courses as $course)
+
+                    <?php
+                    $bookmarked = \Modules\StudentSetting\Entities\BookmarkCourse::where('user_id', Auth::id())
+                        ->where('course_id', $course->id)->count();
+                    if ($bookmarked == 0) {
+                        $isBookmarked = false;
+                    } else {
+                        $isBookmarked = true;
+                    }
+                    ?>
+
                     <div class="col pb-2 pb-sm-3">
                         <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
                             <span
                                 class="badge bg-danger bg-opacity-10 text-danger position-absolute top-0 start-0 mt-3 ms-3">{{$course->category?->name}}</span>
-                            <button
-                                class="btn btn-icon btn-sm btn-light bg-light border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 z-5 opacity-0"
-                                type="button" aria-label="Add to Favorites">
-                                <i class="ai-heart fs-xl text-nav"></i>
-                            </button>
+                            <a
+                                href="{{route('bookmarkSave',[$course->id])}}"
+                                class="btn btn-icon btn-sm {{$isBookmarked ? 'btn-danger bg-danger' : 'btn-light bg-light'}} border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 z-5 {{$isBookmarked ? '' : 'opacity-0'}}"
+                                type="button" aria-label="{{__('Add to Favorites')}}">
+                                <i class="ai-heart fs-xl {{$isBookmarked ?  'text-white' : 'text-nav' }}"></i>
+                            </a>
                             <div class="swiper swiper-nav-onhover"
                                  data-swiper-options='{"loop": true, "navigation": {"prevEl": ".btn-prev", "nextEl": ".btn-next"}}'>
                                 <a class="swiper-wrapper"
@@ -99,8 +122,9 @@
                                         <div class="nav ms-auto" data-bs-toggle="tooltip"
                                              data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
                                              data-bs-placement="left" title="Add to cart">
-                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="{{route('addToCart',[@$course->id])}}"
-                                                aria-label="Add to Cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store"
+                                               href="{{route('addToCart',[@$course->id])}}"
+                                               aria-label="Add to Cart">
                                                 <i class="ai-cart"></i>
                                             </a>
                                         </div>
@@ -111,8 +135,9 @@
                                         <div class="nav ms-auto" data-bs-toggle="tooltip"
                                              data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
                                              data-bs-placement="left" title="Add to cart">
-                                            <a class="nav-link fs-lg py-2 px-1 cart_store" href="{{route('addToCart',[@$course->id])}}"
-                                                aria-label="Add to Cart">
+                                            <a class="nav-link fs-lg py-2 px-1 cart_store"
+                                               href="{{route('addToCart',[@$course->id])}}"
+                                               aria-label="Add to Cart">
                                                 <i class="ai-cart"></i>
                                             </a>
                                         </div>
@@ -120,7 +145,7 @@
                                 @endguest
                             @endif
                         </div>
-                        <div class="course_less_students d-flex justify-content-between mt-3">
+                        <div class="course_less_students d-flex justify-content-between mt-3 boxx">
                             <a> <i class="fa fa-list"></i> {{$course->total_lessons}}
                                 {{__('frontend.Lessons')}}</a>
                             @if(!Settings('hide_total_enrollment_count') == 1)

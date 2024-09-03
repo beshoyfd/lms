@@ -29,7 +29,7 @@
 @endsection
 
 @push('css')
-    <link rel="stylesheet" href="{{asset('/public/frontend2/css/course-details.css')}}">
+    <link rel="stylesheet" href="{{asset('/public/frontend2/css/course-details.css')}}?v=1.2">
 @endpush
 @push('js')
     <script>
