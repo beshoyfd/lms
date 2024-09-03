@@ -1134,7 +1134,107 @@
 }
 
 @media (max-width: 575.98px) {
-    .conversition_box .single_comment_box .comment_box_inner.comment_box_inner_reply,.conversition_box .single_comment_box .comment_box_inner.comment_box_inner_reply2 {
-        margin-left:20px
+    .conversition_box .single_comment_box .comment_box_inner.comment_box_inner_reply, .conversition_box .single_comment_box .comment_box_inner.comment_box_inner_reply2 {
+        margin-left: 20px
     }
+}
+
+
+.instractor_details_wrapper .instractor_details_inner {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 60px;
+    margin-bottom: 53px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info h4 {
+    margin-bottom: 8px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info h5 {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font_family2), sans-serif;
+    color: #373737
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info .ins_details {
+    margin-bottom: 21px;
+    margin-top: 24px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info .intractor_qualification .single_qualification {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font_family2), sans-serif;
+    margin-bottom: 10px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info .intractor_qualification .single_qualification i {
+    font-size: 22px;
+    font-weight: 400;
+    margin-right: 15px
+}
+
+.author_courses {
+    padding-top: 87px;
+    border-top: 1px solid #e9e7f7
+}
+
+.instractor_details_wrapper .instractor_title {
+    margin-bottom: 38px
+}
+
+.instractor_details_wrapper .instractor_title h4 {
+    margin-bottom: 3px
+}
+
+.instractor_details_wrapper .instractor_title > p {
+    color: #373737;
+    font-weight: 500
+}
+
+.instractor_details_wrapper .instractor_details_inner {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 60px;
+    margin-bottom: 53px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info h4 {
+    margin-bottom: 8px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info h5 {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font_family2), sans-serif;
+    color: #373737
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info .ins_details {
+    margin-bottom: 21px;
+    margin-top: 24px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info .intractor_qualification .single_qualification {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font_family2), sans-serif;
+    margin-bottom: 10px
+}
+
+.instractor_details_wrapper .instractor_details_inner .instractor_details_info .intractor_qualification .single_qualification i {
+    font-size: 22px;
+    font-weight: 400;
+    margin-right: 15px
+}
+
+.author_courses {
+    padding-top: 87px;
+    border-top: 1px solid #e9e7f7
 }

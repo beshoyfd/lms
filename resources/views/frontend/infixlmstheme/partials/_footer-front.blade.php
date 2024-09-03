@@ -69,6 +69,11 @@
     <div class="pt-5 pt-lg-0"></div>
 </footer>
 
+<div class="whatsApp_icon" style="background-color: #0dc152">
+    <a href="{{Settings('whatsapp')}}" target="_blank">
+        <i class="fab fa-whatsapp text-white"></i>
+    </a>
+</div>
 
 <!-- Back to top button -->
 <a class="btn-scroll-top" href="#top" data-scroll aria-label="Scroll back to top">

@@ -238,3 +238,24 @@
     background: #4a65e8;
 }
 
+
+.whatsApp_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #00C348;
+    font-size: 48px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    right: 30px;
+    bottom: 90px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.whatsApp_icon i {
+    padding: 15px;
+    font-size: 30px;
+}

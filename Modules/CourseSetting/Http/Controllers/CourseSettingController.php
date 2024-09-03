@@ -1559,6 +1559,7 @@ class CourseSettingController extends Controller
 
     protected function saveOrUpdateCourseTimetable($course, $timetable)
     {
+        $course->timeTables()->delete();
         if ($timetable && is_array($timetable)) {
             foreach ($timetable['start_date'] as $index => $startDate) {
                 $endDate = $timetable['end_date'][$index] ?? null;
@@ -1567,13 +1568,11 @@ class CourseSettingController extends Controller
                 $duration = $timetable['durations'][$index] ?? null;
                 $pdus = $timetable['pdus'][$index] ?? null;
 
-                CourseTimeTable::updateOrCreate(
+                CourseTimeTable::create(
                     [
                         'course_id' => $course->id,
                         'start_date' => $startDate,
                         'start_time' => $startTime,
-                    ],
-                    [
                         'end_date' => $endDate,
                         'end_time' => $endTime,
                         'duration' => $duration,

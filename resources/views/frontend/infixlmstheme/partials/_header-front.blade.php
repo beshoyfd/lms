@@ -4,7 +4,7 @@
       itemtype="{{url('/')}}">
 
 <head>
-{{--    @laravelPWA--}}
+    @laravelPWA
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -118,7 +118,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
     <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css?v=1.2">
+    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css?v=1.3">
 
     @yield('css')
     @stack('css')

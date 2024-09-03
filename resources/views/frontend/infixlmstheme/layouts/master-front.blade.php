@@ -99,6 +99,8 @@
 <script src="/public/frontend2/vendor/img-comparison-slider/dist/index.js"></script>
 <script src="/public/frontend2/js/theme.min.js"></script>
 @include(theme('layouts.flash'))
+
+
 <script>
     (function () {
         window.onload = function () {
