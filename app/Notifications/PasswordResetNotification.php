@@ -68,6 +68,7 @@ class PasswordResetNotification extends ResetPassword
 
         $key = ['http://{{reset_link}}', '{{reset_link}}', '{{app_name}}'];
         $value = [route('password.reset', $this->token), route('password.reset', $this->token), Settings('site_title')];
+        //dd($value);
         $body = str_replace($key, $value, $body);
 
         $config = EmailSetting::where('active_status', 1)->first();
