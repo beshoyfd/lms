@@ -87,19 +87,19 @@
             <div class="dropdown">
                 <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-4" type="button" data-bs-toggle="dropdown"
                         data-bs-auto-close="outside" aria-expanded="false">
-                    <img class="me-2" src="/public/frontend2/img/flags/en.png" width="18" alt="English / USD">
+                    <img class="me-2" src="/public/frontend2/img/flags/en.png" width="18" alt="English">
                     Eng
                 </button>
                 <div class="dropdown-menu dropdown-menu-end my-1">
-                    <a class="dropdown-item pb-1" href="#">
+                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'fr')}}">
                         <img class="me-2" src="/public/frontend2/img/flags/fr.png" width="18" alt="Français">
                         Français
                     </a>
-                    <a class="dropdown-item pb-1" href="#">
+                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'de')}}">
                         <img class="me-2" src="/public/frontend2/img/flags/de.png" width="18" alt="Deutsch">
                         Deutsch
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{route('changeLanguage', 'it')}}">
                         <img class="me-2" src="/public/frontend2/img/flags/it.png" width="18" alt="Italiano">
                         Italiano
                     </a>

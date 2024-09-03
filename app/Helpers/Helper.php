@@ -5342,29 +5342,30 @@ if (!function_exists('getCartData')) {
         return Course::query()->whereIn('id', $cartCIDs)->get();
     }
 }
+
 if (!function_exists('getCoursesByCategoryAndLevel')) {
     function getCoursesByCategoryAndLevel()
     {
+        $levels = \Modules\CourseSetting\Entities\CourseLevel::all()->keyBy('title');
         $categories = Category::with(['courses.courseLevel'])->get();
         $structuredData = [];
 
         foreach ($categories as $category) {
-            $levels = [
-                'Beginner' => [],
-                'Intermediate' => [],
-                'Advanced' => []
-            ];
+            $levelData = [];
+            foreach ($levels as $levelTitle => $level) {
+                $levelData[$levelTitle] = [];
+            }
 
             foreach ($category->courses as $course) {
                 $levelName = $course->courseLevel->title;
-                if (isset($levels[$levelName])) {
-                    $levels[$levelName][] = $course;
+                if (isset($levelData[$levelName])) {
+                    $levelData[$levelName][] = $course;
                 }
             }
 
             $structuredData[] = [
                 'category' => $category->name,
-                'levels' => $levels,
+                'levels' => $levelData,
             ];
         }
 
