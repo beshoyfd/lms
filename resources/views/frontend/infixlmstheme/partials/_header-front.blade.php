@@ -118,7 +118,16 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
     <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css?v=1.3">
+    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css?v=1.41">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
 
     @yield('css')
     @stack('css')

@@ -181,6 +181,56 @@
     @endif
 
 
+    <!-- OWL -->
+    <section class="container py-5 my-sm-2 my-md-4 my-lg-5 home-page">
+
+        <div id="categories" class="section-content caregories" dir="ltr">
+            <div class="container pt-5">
+                <div class="text text-center">
+                    <h2>Top Demanded Programs in one Place</h2>
+                    <h4>A whole professional package!</h4>
+                    <p class="light-text">Our development team has been working around the clock to browse the market
+                        and conclude the most <br> wanted professional courses.</p>
+                </div>
+                <div class="services">
+                    <div class="owl-carousel owl-theme">
+                        @php
+                            $colors = ['#2a3261','#fb4400', '#8AAAD9', '#05D2D7', '#F5C159', '#8AAAD9', '#F5C159', '#05D2D7', '#03759A'];
+                        @endphp
+
+                        @foreach(getHeaderCategories() as $cat)
+                            @php
+                                $randomColor = $colors[array_rand($colors)];
+                            @endphp
+                            <div class="item py-3">
+                                <a href="{{route('courses')}}?category_id={{$cat->id}}" data-target="category_5">
+                                    <div class="card-image mx-1"
+                                         style="background-image: url('{{asset($cat->image)}}')">
+                                        <div class="image" style="background: #000">
+                                            <img loading="lazy" alt="{{$cat->name}}" style="margin: 0 auto"
+                                                 src="{{asset($cat->image)}}"
+                                                 class="w-50">
+
+                                        </div>
+                                        <a style="background: {{$randomColor}};text-decoration: none;"
+                                           href="{{route('courses')}}?category_id={{$cat->id}}"
+                                           data-target="category_{{$cat->id}}">
+                                            <span>{{$cat->name}}</span>
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     <!-- CTA -->
     <section class="bg-primary pb-2 py-sm-3 py-md-4 py-lg-5">
         <div class="container py-5 my-lg-2 my-xl-4 my-xxl-5">
@@ -315,7 +365,7 @@
                               <i class="ai-mail"></i>
                             </span>
                             <input class="form-control" placeholder="{{__('frontend.Enter e-mail Address')}}"
-                                     type="email" value="{{old('email')}}">
+                                   type="email" value="{{old('email')}}">
                             <button class="btn btn-warning" type="submit">{{__('frontend.Subscribe Now')}}</button>
                         </div>
                         @if(isset($errors) && $errors->any())
