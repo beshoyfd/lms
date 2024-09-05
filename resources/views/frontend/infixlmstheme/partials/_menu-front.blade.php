@@ -163,7 +163,56 @@
                     <span class="badge bg-primary fs-xs position-absolute end-0 top-0 me-n1"
                           style="padding: .25rem .375rem;">{{@cartItem()}}</span>
                 </a>
-            @endif
+                @else
+
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle px-4 text-black" type="button"
+                                data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-expanded="false">
+                            {{auth()->user()->name}}
+                            <i class="ai-user"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end my-1">
+
+                            @if(Auth::user()->role_id==3)
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('studentDashboard')}}">{{__('dashboard.Dashboard')}}</a>
+                                <a class="dropdown-item pb-1"
+                                   href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+
+                                @if(isModuleActive('Affiliate') && auth()->user()->affiliate_request!=1)
+                                    <a href="{{routeIsExist('affiliate.users.request')?route('affiliate.users.request'):''}}">{{__('frontend.Join Affiliate Program')}}</a>
+                                @endif
+                            @else
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('dashboard')}}">{{__('dashboard.Dashboard')}}</a>
+                                <a class="dropdown-item pb-1"
+                                   href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
+
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+                            @endif
+                            @if(isModuleActive('UserType'))
+                                @foreach(auth()->user()->userRoles as $role)
+                                    @php
+                                        if ($role->id==auth()->user()->role_id){
+                                            continue;
+                                        }
+                                    @endphp
+                                    <a class="dropdown-item pb-1" href="{{route('usertype.changePanel',$role->id)}}">
+                                        {{__('common.Switch to')}} {{$role->name}}
+                                    </a>
+                                @endforeach
+                            @endif
+                            <a class="dropdown-item pb-1" href="{{route('logout')}}">{{__('frontend.Log Out')}}</a>
+
+                        </div>
+                    </div>
+
+                @endguest
+
 
 
         </div>
