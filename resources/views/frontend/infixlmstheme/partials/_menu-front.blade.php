@@ -1,7 +1,7 @@
 <header class="navbar navbar-expand-lg fixed-top">
     <div class="container">
 
-        <a class="navbar-brand pe-sm-3" href="{{url('/')}}">
+        <a class="navbar-brand " href="{{url('/')}}">
             @if($logo = Settings('logo'))
                 <span class="text-primary flex-shrink-0 me-2">
                   <img src="{{asset($logo)}}" width="100">
@@ -10,7 +10,7 @@
             <span class="d-none d-sm-inline">{{__("FOL EDU")}}</span>
         </a>
 
-        <div class="nav align-items-center order-lg-3 ms-n1 me-3 me-sm-0">
+        <div class="nav align-items-center order-lg-2 ms-n1 me-2 me-sm-0">
             @if(isset($menus))
                 @foreach($menus->where('parent_id',null) as $menu)
                     @php
@@ -32,7 +32,7 @@
                     @endphp
 
                     <li class="@if($menu->mega_menu==1) dropdown @else @endif nav-item">
-                        <a class="nav-link" @if($menu->mega_menu==1)
+                        <a class="nav-link p-2" @if($menu->mega_menu==1)
                         class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
                            @else
                            href="{{getMenuLink($menu)}}"
@@ -78,99 +78,26 @@
 
             @endif
 
+                @if(Settings('show_cart')==1)
+                    <a class="nav-link position-relative fs-4 p-2 ml-2" href="#cartOffcanvas" data-bs-toggle="offcanvas"
+                       aria-label="Shopping cart">
+                        <i class="ai-cart"></i>
+                        <span class="badge bg-primary fs-xs position-absolute end-0 top-0 me-n1"
+                              style="padding: .25rem .375rem;">{{@cartItem()}}</span>
+                    </a>
+                @endif
+
             @guest
-                <a class="nav-link fs-4 p-2 mx-sm-1 d-none d-sm-flex" href="{{url('login')}}" aria-label="Account">
-                    <i class="ai-user"></i>
-                </a>
-            @else
 
-                <div class="dropdown">
-                    <button class="btn btn-sm dropdown-toggle px-4 text-black" type="button"
-                            data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside" aria-expanded="false">
-                        {{auth()->user()->name}}
-                        <i class="ai-user"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end my-1">
-
-                        @if(Auth::user()->role_id==3)
-                            <a class="dropdown-item pb-1"
-                               href="{{route('studentDashboard')}}">{{__('dashboard.Dashboard')}}</a>
-                            <a class="dropdown-item pb-1"
-                               href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
-                            <a class="dropdown-item pb-1"
-                               href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
-
-                            @if(isModuleActive('Affiliate') && auth()->user()->affiliate_request!=1)
-                                <a href="{{routeIsExist('affiliate.users.request')?route('affiliate.users.request'):''}}">{{__('frontend.Join Affiliate Program')}}</a>
-                            @endif
-                        @else
-                            <a class="dropdown-item pb-1"
-                               href="{{route('dashboard')}}">{{__('dashboard.Dashboard')}}</a>
-                            <a class="dropdown-item pb-1"
-                               href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
-
-                            <a class="dropdown-item pb-1"
-                               href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
-                        @endif
-                        @if(isModuleActive('UserType'))
-                            @foreach(auth()->user()->userRoles as $role)
-                                @php
-                                    if ($role->id==auth()->user()->role_id){
-                                        continue;
-                                    }
-                                @endphp
-                                <a class="dropdown-item pb-1" href="{{route('usertype.changePanel',$role->id)}}">
-                                    {{__('common.Switch to')}} {{$role->name}}
-                                </a>
-                            @endforeach
-                        @endif
-                        <a class="dropdown-item pb-1" href="{{route('logout')}}">{{__('frontend.Log Out')}}</a>
-
-                    </div>
-                </div>
-
-            @endguest
-
-            <div class="dropdown">
-                <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-4" type="button"
-                        data-bs-toggle="dropdown"
-                        data-bs-auto-close="outside" aria-expanded="false">
-                    <img class="me-2" src="/public/frontend2/img/flags/en.png" width="18" alt="English">
-                    Eng
-                </button>
-                <div class="dropdown-menu dropdown-menu-end my-1">
-                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'fr')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/fr.png" width="18" alt="Français">
-                        Français
-                    </a>
-                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'de')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/de.png" width="18" alt="Deutsch">
-                        Deutsch
-                    </a>
-                    <a class="dropdown-item" href="{{route('changeLanguage', 'it')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/it.png" width="18" alt="Italiano">
-                        Italiano
-                    </a>
-                </div>
-            </div>
-
-
-            @if(Settings('show_cart')==1)
-                <a class="nav-link position-relative fs-4 p-2 ml-2" href="#cartOffcanvas" data-bs-toggle="offcanvas"
-                   aria-label="Shopping cart">
-                    <i class="ai-cart"></i>
-                    <span class="badge bg-primary fs-xs position-absolute end-0 top-0 me-n1"
-                          style="padding: .25rem .375rem;">{{@cartItem()}}</span>
-                </a>
+                <a class="btn btn-sm btn-primary ms-2" href="{{url('login')}}">{{__('Sign In')}}</a>
                 @else
 
                     <div class="dropdown">
                         <button class="btn btn-sm dropdown-toggle px-4 text-black" type="button"
                                 data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" aria-expanded="false">
-                            {{auth()->user()->name}}
-                            <i class="ai-user"></i>
+                        <span style="    font-size: 1rem;">{{auth()->user()->name}}
+                        <i class="ai-user" style="    font-size: 1.25rem;"></i></span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end my-1">
 
@@ -214,11 +141,25 @@
                 @endguest
 
 
+                <div class="dropdown ms-2">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" aria-expanded="false">
+                        <img class="me-2" src="/public/frontend2/img/flags/uk.png" width="18" alt="English">
+                        {{__('English')}}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end my-1">
+                        <a class="dropdown-item pb-1" href="#" {{route('changeLanguage', 'ar')}}>
+                            <img class="me-2" src="/public/frontend2/img/flags/ar.png" width="18" alt="Arabic">
+                            {{__('Arabic')}}
+                        </a>
+                    </div>
+                </div>
+
 
         </div>
 
         <!-- Mobile menu toggler (Hamburger) -->
-        <button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class="navbar-toggler ms-sm-3 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -253,7 +194,7 @@
 
 
                 @if(Settings('category_show'))
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown me-1">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             {{__('Learning Programs')}}
                         </a>
@@ -285,7 +226,7 @@
                                             <div class="row">
                                                 @foreach($category['levels'] as $level => $courses)
                                                     <div class="col-4">
-                                                        <div class="text-black">{{ $level }}</div>
+                                                        <div class="text-black d-block">{{ $level }}</div>
                                                         <!-- Flush list group -->
                                                         <ul class="list-group list-group-flush">
                                                             @foreach($courses as $course)

@@ -104,7 +104,7 @@
                                     {{__('frontend.Curriculum')}}
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item d-none">
                                 <a class="nav-link text-nowrap px-4 px-lg-3 px-xl-4" href="#Instructor"
                                    data-bs-toggle="tab" role="tab">
                                     {{__('frontend.Instructor')}}

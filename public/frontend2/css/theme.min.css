@@ -405,7 +405,7 @@ sup {
 
 a {
     color: rgba(var(--ar-link-color-rgb), var(--ar-link-opacity, 1));
-    text-decoration: underline
+    text-decoration: none
 }
 
 a:hover {

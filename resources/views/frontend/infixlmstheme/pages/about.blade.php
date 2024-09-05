@@ -518,9 +518,6 @@
 
     <x-about-page-counter :about="$about"/>
 
-    @if($about->show_brand)
-        <x-about-page-brand/>
-    @endif
 
         </div>
     </section>

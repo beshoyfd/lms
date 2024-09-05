@@ -118,6 +118,24 @@
                                     <i class="ai-chevron-right fs-xl text-nav"></i>
                                 </button>
                             </div>
+
+                            <div class="course_less_students d-flex justify-content-between boxx bg-primary mt-n1 rounded-1" style="padding: 3px 4px;position:absolute;">
+                            <span class=" text-white rounded-3 p-1"> <i class="fa fa-list"></i> {{$course->total_lessons}}
+                                {{__('frontend.Lessons')}}</span>
+
+                                <span class="rateing  text-white rounded-3  p-1" style="text-decoration: none; visibility: hidden">
+                                <span>{{$course->total_rating}}/5</span>
+                                <i class="fas fa-star"></i>
+                            </span>
+
+                                @if(!Settings('hide_total_enrollment_count') == 1)
+                                    <span class=" text-white rounded-3  p-1">
+                                    <i class="fa fa-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
+                                </span>
+                                @endif
+
+
+                            </div>
                         </div>
                         <div class="d-flex mb-1 position-relative">
                             @if($course->getDiscountPercentage())
@@ -132,8 +150,9 @@
 
                         </div>
                         <div class="d-flex align-items-center">
-                            <x-price-tag :price="$course->price"
-                                         :discount="$course->discount_price"/>
+{{--                            <x-price-tag :price="$course->price"--}}
+{{--                                         :discount="$course->discount_price"/>--}}
+                            Soon
                         </div>
 
 
@@ -167,23 +186,7 @@
                                 @endguest
                             @endif
                         </div>
-                        <div class="course_less_students d-flex justify-content-between mt-3 boxx">
-                            <a> <i class="fa fa-list"></i> {{$course->total_lessons}}
-                                {{__('frontend.Lessons')}}</a>
 
-                            <a class="rateing" style="text-decoration: none">
-                                <span>{{$course->total_rating}}/5</span>
-                                <i class="fas fa-star"></i>
-                            </a>
-
-                            @if(!Settings('hide_total_enrollment_count') == 1)
-                                <a>
-                                    <i class="fa fa-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
-                                </a>
-                            @endif
-
-
-                        </div>
 
                     </div>
                 @endforeach
