@@ -1,3 +1,4 @@
+@php(die)
 @include(theme('partials._header'))
 @include(theme('partials._menu'))
 

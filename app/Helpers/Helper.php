@@ -5346,7 +5346,7 @@ if (!function_exists('getCartData')) {
 if (!function_exists('getCoursesByCategoryAndLevel')) {
     function getCoursesByCategoryAndLevel()
     {
-        $levels = \Modules\CourseSetting\Entities\CourseLevel::all()->keyBy('title');
+        $levels = \Modules\CourseSetting\Entities\CourseLevel::query()->where('status', 1)->get()->keyBy('title');
         $categories = Category::with(['courses.courseLevel'])->get();
         $structuredData = [];
 
