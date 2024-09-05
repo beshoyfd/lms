@@ -9,7 +9,7 @@
         <x-breadcrumb :banner="$frontendContent->course_page_banner" :title="$frontendContent->course_page_title"
                       :subTitle="$frontendContent->course_page_sub_title"/>
 
-        <section class="rounded-1 overflow-hidden mb-5" style="background-color: #e3e5e9;" data-bs-theme="light">
+        <section class="rounded-1 overflow-hidden mb-5 d-none" style="background-color: #e3e5e9;" data-bs-theme="light">
             <div class="row align-items-center g-0">
                 <div class="col-md-6 offset-xl-1 text-center text-md-start">
                     <div class="py-4 px-4 px-sm-5 pe-md-0 ps-xl-4">

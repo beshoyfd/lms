@@ -55,7 +55,7 @@
             <div class="d-sm-flex align-items-center pe-sm-2">
                 <a class="navbar-brand d-inline-flex align-items-center me-sm-5 mb-4 mb-sm-0" href="{{url('/')}}">
               <span class="text-primary flex-shrink-0 me-2">
-                  <img src="{{Settings('logo')}}" width="150" alt="">
+                  <img src="{{Settings('logo2')}}" width="150" alt="">
               </span>
                     <span class="text-light opacity-90">{{Settings('site_name')}}</span>
                 </a>

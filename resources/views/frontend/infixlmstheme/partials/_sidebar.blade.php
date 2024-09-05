@@ -609,7 +609,7 @@
                 @endif
 
 
-                @if (permissionCheck('deposit') && showEcommerce())
+                @if (permissionCheck('deposit') && showEcommerce() && false)
                     <li>
                         <a href="{{route('deposit')}}"
                            class=" d-flex align-items-center {{ routeIs('deposit')  ? 'active' : '' }}">
@@ -661,7 +661,7 @@
                         </a>
                     </li>
                 @endif
-                @if (permissionCheck('referral') && showEcommerce())
+                @if (permissionCheck('referral') && showEcommerce() && false)
                     <li>
                         <a href="{{route('referral')}}"
                            class=" d-flex align-items-center {{ routeIs('referral')  ? 'active' : '' }}">

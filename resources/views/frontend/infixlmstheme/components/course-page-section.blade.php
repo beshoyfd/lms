@@ -81,6 +81,7 @@
                                         <img class="d-block mx-auto"
                                              src="{{ getCourseImage($course->thumbnail) }}"
                                              width="226"
+                                             style="height: 200px;"
                                              alt="Product">
                                     </div>
                                 </a>

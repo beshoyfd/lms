@@ -39,7 +39,7 @@
                             <h4 class="card-title mb-4">{{__('common.Phone')}}</h4>
                             <ul class="list-unstyled mb-0">
                                 <li class="pb-1 mb-2">
-                                    <span class="d-block fs-sm text-body-secondary mb-1">Main office</span>
+
                                     <a class="nav-link fs-lg p-0" href="tel:{{Settings('phone')}}">{{Settings('phone')}}</a>
                                 </li>
                             </ul>
@@ -54,7 +54,7 @@
                             <h4 class="card-title mb-4">{{__('common.Email')}}</h4>
                             <ul class="list-unstyled mb-0">
                                 <li class="pb-1 mb-2">
-                                    <span class="d-block fs-sm text-body-secondary mb-1">Main office</span>
+
                                     <a class="nav-link fs-lg p-0"
                                        href="mailto:{{Settings('email')}}">{{Settings('email')}}</a>
                                 </li>

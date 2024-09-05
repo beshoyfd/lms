@@ -8,7 +8,7 @@
             <form action="{{route('users.basic_info.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md-6 mt_20">
+                    <div class="col-md-6 mt_20 d-none">
                         <label class="primary_label2" for="first_name">{{__('common.First')}} {{__('common.Name')}}
                             <span class="required_mark">*</span></label>
                         <input id="first_name" name="first_name" placeholder="{{__('common.Name')}}"
@@ -19,7 +19,7 @@
                         <span class="text-danger" role="alert">{{$errors->first('first_name')}}</span>
                     </div>
 
-                    <div class="col-md-6 mt_20">
+                    <div class="col-md-6 mt_20 d-none">
                         <label class="primary_label2" for="last_name">{{__('common.Last')}} {{__('common.Name')}}
                         </label>
                         <input id="last_name" name="last_name" placeholder="{{__('common.Name')}}"
@@ -71,7 +71,7 @@
                                value="{{old('identification_number',$user->identification_number)}}" type="text">
                         <span class="text-danger" role="alert">{{$errors->first('identification_number')}}</span>
                     </div>
-                    <div class="col-md-6 mt_20">
+                    <div class="col-md-6 mt_20 d-none">
                         <div class="single_input ">
                             <span class="primary_label2">{{__('common.Currency')}}  </span>
                             <select class="theme_select wide mb_20"
@@ -114,7 +114,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-6 mt_20">
+                    <div class="col-md-6 mt_20 d-none">
                         <div class="single_input ">
                             <span class="primary_label2">{{__('profile.timezone')}}  </span>
                             <select class="theme_select wide mb_20"

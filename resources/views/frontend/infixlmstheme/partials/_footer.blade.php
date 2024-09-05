@@ -1,4 +1,4 @@
-<div class="aoraeditor-skip aoraeditor-footer">
+<div class="aoraeditor-skip aoraeditor-footer d-none">
     <x-popup-content/>
     <footer class="{{Settings('footer_show')==0?'d-none d-sm-none d-md-block d-lg-block d-xl-block':''}}">
         @if(@$homeContent->show_subscribe_section==1)

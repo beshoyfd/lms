@@ -4,11 +4,18 @@
 @section('mainContent')
 
 
+
     <section class="bg-secondary py-5">
         <div class="container text-center pt-5 mt-lg-4 mt-xl-5">
+            <div class="m-auto">
+                <div class="logo mb-4">
+                    <img src="{{ getCourseImage(Settings('logo3')) }}" alt="" width="400"
+                         title="">
+                </div>
+            </div>
             <div class="position-relative mx-auto my-3" style="max-width: 850px;">
                 <h1 class="display-3 position-relative z-2 mb-0">{{__('Top Demanded Programs in one Place')}}</h1>
-                <div class="text-warning position-absolute top-0 start-50 translate-middle-x w-100 mt-md-3">
+                <div class="text-secondary-brand position-absolute top-0 start-50 translate-middle-x w-100 mt-md-3">
                     <svg width="608" height="66" viewBox="0 0 608 66" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path opacity=".35"
@@ -32,34 +39,34 @@
         </svg>
     </div>
 
-    <div class="container py-5">
+    <div class="container py-3">
         <div class="row text-center">
             <div class="col-md-3 col-6 ">
                 <div class="counter-box p-4">
                     <i class="fas fa-book fa-2x mb-3 icons icons_1"></i>
                     <h3 class="counter" data-count="77">0</h3>
-                    <p class="text-muted">Online Courses</p>
+                    <p class="text-muted">{{__("Online Courses")}}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 ">
                 <div class="counter-box p-4">
                     <i class="fas fa-user-graduate fa-2x mb-3 icons icons_2"></i>
                     <h3 class="counter" data-count="18361">0</h3>
-                    <p class="text-muted">Student Enrolled</p>
+                    <p class="text-muted">{{__("Student Enrolled")}}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 ">
                 <div class="counter-box p-4">
                     <i class="fas fa-globe fa-2x mb-3 icons icons_3"></i>
                     <h3 class="counter" data-count="97">0</h3>
-                    <p class="text-muted">Countries Student</p>
+                    <p class="text-muted">{{__("Visitors")}}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 ">
                 <div class="counter-box p-4">
                     <i class="fas fa-heart fa-2x mb-3 icons icons_4"></i>
                     <h3 class="counter" data-count="678">0</h3>
-                    <p class="text-muted">Positive Feedback</p>
+                    <p class="text-muted">{{__("Positive Feedback")}}</p>
                 </div>
             </div>
         </div>
@@ -187,10 +194,10 @@
         <div id="categories" class="section-content caregories" dir="ltr">
             <div class="container pt-5">
                 <div class="text text-center">
-                    <h2>Top Demanded Programs in one Place</h2>
-                    <h4>A whole professional package!</h4>
-                    <p class="light-text">Our development team has been working around the clock to browse the market
-                        and conclude the most <br> wanted professional courses.</p>
+                    <h2>{{__('Top Demanded Programs in one Place')}}</h2>
+                    <h4>{{__('A whole professional package!')}}</h4>
+                    <p class="light-text">{{__('Our development team has been working around the clock to browse the market
+                        and conclude the most <br> wanted professional courses.')}}</p>
                 </div>
                 <div class="services">
                     <div class="owl-carousel owl-theme">
@@ -232,20 +239,27 @@
 
 
     <!-- CTA -->
-    <section class="bg-primary pb-2 py-sm-3 py-md-4 py-lg-5">
-        <div class="container py-5 my-lg-2 my-xl-4 my-xxl-5">
-            <div class="text-center mx-auto" style="max-width: 700px;" data-aos="fade-up" data-aos-duration="500"
+    <section class="bg-primary ">
+        <div class="container py-5">
+            <div class="text-center mx-auto" style="max-width: 800px;" data-aos="fade-up" data-aos-duration="500"
                  data-aos-offset="280" data-disable-parallax-down="lg">
-                <h2 class="display-3 text-light mb-lg-4">Ready to get started?</h2>
-                <p class="h2 text-light mb-4">Organize your tasks with a <span
-                        class="text-warning">14-day free trial</span></p>
+                <h2 class="display-4 text-light mb-lg-4">{{__('Start Learning NOW')}}</h2>
+                <p class="h2 text-light mb-4"><span
+                        class="text-white">{{__("You are one click away from hearing about your favorite business topic from an expert")}}</span>
+                </p>
+                <div class="text-secondary-brand position-absolute   start-50 translate-middle-x w-100 mt-md-3" style="z-index: -1;top:40%;">
+                    <svg width="608" height="66" viewBox="0 0 608 66" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path opacity=".35"
+                              d="M45.66 63.0651C48.1682 62.8708 50.692 62.5736 53.2046 62.482C55.5493 62.3949 57.8918 62.3033 60.232 62.2161C73.0671 61.7358 85.8977 61.1192 98.7394 60.9293C112.169 60.7304 125.603 60.402 139.035 60.3663C152.743 60.3328 166.446 60.2747 180.152 60.3417C206.867 60.4757 231.522 59.2366 258.233 59.3013C290.201 57.8797 306.797 56.9045 334.904 55.6546C348.07 55.5876 361.243 55.2681 374.408 55.0111C387.336 54.7632 399.538 53.6311 412.46 53.1396C415.299 53.0323 418.137 52.8201 420.972 52.6548C423.774 52.4894 426.583 52.3576 429.383 52.1432C436.572 51.5913 444.461 51.7091 451.639 51.0545C464.138 49.9061 476.595 48.378 489.11 47.4218C502.221 46.4209 515.361 45.8534 528.486 45.0379C534.408 44.6715 540.366 44.2135 546.249 43.4048C552.974 42.4865 559.639 41.3762 566.288 39.991C572.715 38.6505 579.137 37.2743 585.567 35.9584C588.655 35.3261 591.757 34.7497 594.873 34.2984C598.4 33.7868 601.894 33.2618 605.377 32.5044C607.052 32.138 607.381 29.8927 607.381 28.4494C607.388 27.6273 607.258 26.8297 606.995 26.0567C606.749 25.4065 606.232 24.3676 605.377 24.3967C599.094 24.6089 592.816 24.8234 586.535 25.1205C580.2 25.4177 573.853 25.6009 567.51 25.6903C555.192 25.8578 542.852 25.4311 530.548 24.9172C532.645 24.6335 534.742 24.3498 536.839 24.0638C544.371 23.0361 551.882 21.7448 559.453 21.0522C563.482 20.6813 567.524 20.373 571.541 19.8971C573.579 19.6581 575.599 19.381 577.614 18.9744C579.777 18.5365 581.91 17.9378 584.036 17.339C584.719 17.2653 585.234 16.9212 585.587 16.3158C586.213 15.4489 586.5 14.2872 586.608 13.1746C588.761 12.511 589.194 9.31622 589.194 7.39709C589.207 6.20853 589.022 5.05348 588.635 3.93417C588.261 2.94892 587.55 1.55034 586.297 1.53694C579.758 1.46321 573.23 1.01862 566.691 0.938188C565.93 0.931485 565.163 0.927017 564.397 0.927017C558.77 0.927017 553.155 1.17501 547.535 1.47885C535.016 2.1558 522.495 2.96679 509.989 3.87832C504.175 4.29834 498.369 4.79655 492.551 5.15178C485.435 5.58297 478.335 5.91139 471.212 6.19066C459.296 6.65536 447.361 6.83632 435.438 7.05527C421.763 7.3122 408.106 7.67189 394.447 8.31756C381.795 8.91631 369.155 9.7139 356.512 10.4757C343.816 11.2354 331.122 11.9905 318.427 12.7613C305.415 13.5499 292.394 14.1353 279.373 14.7206C272.783 15.02 266.185 15.1071 259.593 15.297C253.354 15.4758 247.107 15.5227 240.864 15.6143C228.574 15.7952 216.287 15.9069 203.998 16.0343C179.21 16.2867 154.428 16.6934 129.642 17.1067C116.025 17.3346 102.412 17.587 88.7943 17.8439C81.8486 17.9758 74.9007 18.2506 67.9594 18.4539C62.0236 18.6259 56.0901 19.0303 50.1565 19.3364C43.8406 19.6625 37.5247 20.0222 31.2089 20.3886C27.4542 20.6076 23.6952 20.8332 19.9362 21.0522C18.3053 21.1505 16.67 21.2443 15.0346 21.3426C13.5474 21.4297 12.0579 21.5415 10.5729 21.6554C9.51432 21.7358 8.47346 21.89 7.42818 22.0687C6.26798 22.2631 5.11442 22.7859 4.00063 23.1657C3.33545 23.7019 2.87138 24.381 2.61503 25.2099C2.24156 26.3002 2.05814 27.4217 2.0714 28.5768C2.05814 29.7341 2.24156 30.8556 2.61503 31.9459C2.81834 32.3569 3.02165 32.768 3.22496 33.1769C3.60506 33.8292 4.15974 34.1979 4.88901 34.2783C6.1818 34.6492 7.4547 35.0156 8.78063 35.2367C9.50548 35.1563 10.0602 34.7922 10.4381 34.142C10.5817 33.9432 10.7077 33.7309 10.8182 33.5075C11.5121 33.4896 12.2082 33.4919 12.9043 33.4919C13.5695 33.4919 14.2369 33.4874 14.9043 33.4718C16.407 33.4383 17.9053 33.4003 19.4058 33.3645C23.2709 33.2729 27.136 33.1791 31.0011 33.0875C35.1889 32.987 39.3766 32.911 43.5622 32.8373C43.129 32.8753 42.6981 32.9132 42.265 32.9467C32.3735 33.7242 22.4886 34.5062 12.606 35.3931C11.0038 35.5741 9.79056 36.3784 8.95301 37.806C7.71768 39.5129 7.04366 41.7135 6.70996 43.9231C4.97299 43.9075 3.2338 43.8873 1.49682 43.8739C0.28359 43.865 0.0449219 46.0031 0.0449219 46.8252C0.0449219 47.6608 0.28359 49.7564 1.50345 49.7698C3.1675 49.7855 4.83376 49.8145 6.49781 49.8369C6.64146 51.6934 7.01272 53.5098 7.62265 55.2882C8.06905 56.1908 8.51545 57.0934 8.96184 57.9937C9.79719 59.4213 15.9944 65.1786 17.5966 65.3596C26.9466 64.5218 36.3011 63.789 45.66 63.0651Z"></path>
+                    </svg>
+                </div>
                 <div class="position-relative pt-2 pt-sm-3 pt-md-5">
                     <div data-aos="fade-up" data-aos-duration="800" data-aos-offset="150"
                          data-disable-parallax-down="lg">
-                        <a class="btn btn-lg btn-light text-dark" href="#" data-bs-theme="light">Started 14-day free
-                            trial</a>
+                        <a class="btn btn-lg btn-light text-dark" href="{{route('courses')}}" data-bs-theme="light">{{__('EXPLORE COURSES')}}</a>
                     </div>
-                    <div class="d-none d-md-block position-absolute top-0 end-0 pe-4 me-5 text-warning"
+                    <div class="d-none d-md-block position-absolute top-0 end-0 pe-4 me-5 text-secondary-brand"
                          data-aos="zoom-in" data-aos-duration="400" data-aos-delay="700" data-aos-offset="280"
                          data-aos-easing="ease-out-back" data-disable-parallax-down="lg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="95" height="78" fill="currentColor"
@@ -271,7 +285,7 @@
 
 
     <!-- Benefits -->
-    <section class="container py-5 my-lg-3 my-xl-4 my-xxl-5">
+    <section class="container py-5">
         <h2 class="h1 text-center pb-3 pt-2 pt-sm-3 pt-md-4 pt-lg-5 mt-md-3 mt-lg-0 mb-3 mb-lg-4">{{__('Our benefits')}}</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-4 gy-sm-5 gx-4 pb-3 pb-md-4 pb-lg-5 mb-md-3 mb-lg-0">
 
@@ -351,22 +365,20 @@
         <div class="container pt-lg-2 pt-xl-4 pt-xxl-5 pb-1 pb-sm-3">
             <div class="row pt-sm-3 pt-md-4">
                 <div class="col-md-6 col-xl-5 offset-xl-1">
-                    <h2 class="display-3">Ready to take your business to the next level?</h2>
+                    <h2 class="display-4">{{__("Subscribe in FOL EDU newsletter")}}</h2>
                 </div>
                 <div class="col-md-6 col-lg-5 col-xl-4 offset-lg-1">
                     <form action="{{route('subscribe')}}"
                           method="POST">
                         @csrf
-                        <p class="text-body fs-xl pb-4 mb-2 mb-lg-3">Massa velitienes semper faucibus tristique id nibh
-                            elementum, id eu aliquamd diam mi tempus at laciniarty scelerisques augue at morbi. Arcu sit
-                            orcirs, risus mattissit laoreet.</p>
+                        <p class="text-body fs-xl pb-4 mb-2 mb-lg-3">{{__(" don't miss a thing with our offers, new courses & more!")}}</p>
                         <div class="input-group">
                             <span class="input-group-text text-body-secondary">
                               <i class="ai-mail"></i>
                             </span>
                             <input class="form-control" placeholder="{{__('frontend.Enter e-mail Address')}}"
                                    type="email" value="{{old('email')}}">
-                            <button class="btn btn-warning" type="submit">{{__('frontend.Subscribe Now')}}</button>
+                            <button class="btn btn-secondary-brand" type="submit">{{__('frontend.Subscribe Now')}}</button>
                         </div>
                         @if(isset($errors) && $errors->any())
                             <span class="text-danger" role="alert">{{$errors->first('email')}}</span>
@@ -375,7 +387,7 @@
                 </div>
             </div>
             <div class="d-none d-md-block text-center mt-n5">
-                <svg class="text-warning ms-lg-5" width="171" height="97" viewBox="0 0 171 97" fill="currentColor"
+                <svg class="text-secondary-brand ms-lg-5" width="171" height="97" viewBox="0 0 171 97" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M169.319 54.333C162.404 55.9509 155.712 58.0764 149.09 60.6764L149.07 60.6761C148.967 60.7158 148.863 60.7554 148.76 60.7951C147.3 61.3811 148.325 63.4238 149.672 63.2067C154.548 62.4134 159.994 59.8725 164.87 59.0792C148.278 73.1339 129.684 89.2549 107.779 92.6402C85.6981 96.0539 65.5665 86.7839 56.8768 66.9865C70.9662 55.0671 79.2106 35.6614 79.0299 17.6457C78.9484 10.3157 76.1485 -3.36373 65.7068 1.21851C55.8557 5.53146 52.0466 22.5213 50.5736 31.7739C48.7364 43.2858 49.7593 55.5291 53.8643 66.2014C52.787 67.0812 51.6907 67.8989 50.5755 68.6546C40.6328 75.3851 27.1039 78.8929 16.4487 72.0362C2.91045 63.3259 1.93984 44.9485 1.56902 30.4091C1.54778 29.6265 0.359869 29.6092 0.360624 30.3915C0.322634 44.0809 0.835929 59.065 10.5664 69.6857C18.5722 78.4182 30.4315 79.7753 41.3346 75.9924C46.2437 74.2834 50.7739 71.7557 54.8581 68.6348C59.9738 80.2586 68.9965 89.6956 82.2735 93.7393C113.474 103.223 141.744 83.0494 164.903 63.697L161.901 71.0334C161.267 72.5887 163.76 73.2736 164.393 71.7389C165.986 67.8713 167.569 63.9933 169.152 60.1359C169.288 60.0247 169.695 58.6127 169.821 58.491C170.122 57.1161 169.152 60.1359 169.851 58.4169C170.189 57.6087 170.517 56.79 170.855 55.9818C171.248 54.9994 170.185 54.1192 169.319 54.333ZM54.3624 59.8578C51.4872 49.1623 51.6051 37.5841 54.2025 26.8039C55.5185 21.3369 57.4405 15.8066 60.1572 10.8541C61.2311 8.89354 62.5139 6.77134 64.2307 5.31421C69.4231 0.902277 74.3649 4.80357 75.8002 10.4446C80.5272 28.9489 70.1806 51.6898 55.8431 64.5114C55.2971 63.0109 54.793 61.4698 54.3624 59.8578Z"></path>

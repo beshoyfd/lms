@@ -90,7 +90,7 @@
                                        for="keep-signedin">{{__('common.Remember Me')}}</label>
                             </div>
                             <a class="fs-sm fw-semibold text-decoration-none my-1"
-                               href="#" {{route('SendPasswordResetLink')}}>{{__('common.Forgot Password ?')}}</a>
+                               href="{{route('SendPasswordResetLink')}}" >{{__('common.Forgot Password ?')}}</a>
                         </div>
 
                         @if(saasEnv('NOCAPTCHA_FOR_LOGIN')=='true' && saasEnv('NOCAPTCHA_IS_INVISIBLE')=="true")

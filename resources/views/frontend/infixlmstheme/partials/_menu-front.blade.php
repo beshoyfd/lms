@@ -10,7 +10,7 @@
             <span class="d-none d-sm-inline">{{__("FOL EDU")}}</span>
         </a>
 
-        <div class="nav align-items-center order-lg-3 ms-n1 me-3 me-sm-0">
+        <div class="nav align-items-center order-lg-2 ms-n1 me-2 me-sm-0">
             @if(isset($menus))
                 @foreach($menus->where('parent_id',null) as $menu)
                     @php
@@ -32,7 +32,7 @@
                     @endphp
 
                     <li class="@if($menu->mega_menu==1) dropdown @else @endif nav-item">
-                        <a class="nav-link" @if($menu->mega_menu==1)
+                        <a class="nav-link p-2" @if($menu->mega_menu==1)
                         class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
                            @else
                            href="{{getMenuLink($menu)}}"
@@ -78,48 +78,40 @@
 
             @endif
 
+                @if(Settings('show_cart')==1)
+                    <a class="nav-link position-relative fs-4 p-2 ml-2" href="#cartOffcanvas" data-bs-toggle="offcanvas"
+                       aria-label="Shopping cart">
+                        <i class="ai-cart"></i>
+                        <span class="badge bg-primary fs-xs position-absolute end-0 top-0 me-n1"
+                              style="padding: .25rem .375rem;">{{@cartItem()}}</span>
+                    </a>
+                @endif
+
             @guest
-                <a class="nav-link fs-4 p-2 mx-sm-1 d-none d-sm-flex" href="{{url('login')}}" aria-label="Account">
-                    <i class="ai-user"></i>
-                </a>
+
+                <a class="btn btn-sm btn-primary ms-2 d-none d-lg-block" href="{{url('login')}}">{{__('Sign In')}}</a>
             @endguest
 
-            <div class="dropdown">
-                <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-4" type="button" data-bs-toggle="dropdown"
-                        data-bs-auto-close="outside" aria-expanded="false">
-                    <img class="me-2" src="/public/frontend2/img/flags/en.png" width="18" alt="English">
-                    Eng
-                </button>
-                <div class="dropdown-menu dropdown-menu-end my-1">
-                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'fr')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/fr.png" width="18" alt="Français">
-                        Français
-                    </a>
-                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'de')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/de.png" width="18" alt="Deutsch">
-                        Deutsch
-                    </a>
-                    <a class="dropdown-item" href="{{route('changeLanguage', 'it')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/it.png" width="18" alt="Italiano">
-                        Italiano
-                    </a>
-                </div>
-            </div>
 
-            @if(Settings('show_cart')==1)
-                <a class="nav-link position-relative fs-4 p-2 ml-2" href="#cartOffcanvas" data-bs-toggle="offcanvas"
-                   aria-label="Shopping cart">
-                    <i class="ai-cart"></i>
-                    <span class="badge bg-primary fs-xs position-absolute end-0 top-0 me-n1"
-                          style="padding: .25rem .375rem;">{{@cartItem()}}</span>
-                </a>
-            @endif
+                <div class="dropdown ms-2">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" aria-expanded="false">
+                        <img class="me-2" src="/public/frontend2/img/flags/uk.png" width="18" alt="English">
+                        {{__('English')}}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end my-1">
+                        <a class="dropdown-item pb-1" href="#" {{route('changeLanguage', 'ar')}}>
+                            <img class="me-2" src="/public/frontend2/img/flags/ar.png" width="18" alt="Arabic">
+                            {{__('Arabic')}}
+                        </a>
+                    </div>
+                </div>
 
 
         </div>
 
         <!-- Mobile menu toggler (Hamburger) -->
-        <button class="navbar-toggler ms-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class="navbar-toggler ms-sm-3 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -154,7 +146,7 @@
 
 
                 @if(Settings('category_show'))
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown me-1">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             {{__('Learning Programs')}}
                         </a>
