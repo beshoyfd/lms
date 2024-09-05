@@ -3,7 +3,7 @@
 
         <a class="navbar-brand pe-sm-3" href="{{url('/')}}">
             @if($logo = Settings('logo'))
-              <span class="text-primary flex-shrink-0 me-2">
+                <span class="text-primary flex-shrink-0 me-2">
                   <img src="{{asset($logo)}}" width="100">
               </span>
             @endif
@@ -33,9 +33,9 @@
 
                     <li class="@if($menu->mega_menu==1) dropdown @else @endif nav-item">
                         <a class="nav-link" @if($menu->mega_menu==1)
-                            class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
+                        class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
                            @else
-                               href="{{getMenuLink($menu)}}"
+                           href="{{getMenuLink($menu)}}"
                             @endif>{{$menu->title}}</a>
                         @if(isset($menu->childs))
                             @if(count($menu->childs)!=0)
@@ -78,19 +78,143 @@
 
             @endif
 
-        @guest
+            @guest
                 <a class="nav-link fs-4 p-2 mx-sm-1 d-none d-sm-flex" href="{{url('login')}}" aria-label="Account">
                     <i class="ai-user"></i>
                 </a>
+            @else
+
+                <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle px-4 text-black" type="button"
+                            data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" aria-expanded="false">
+                        {{auth()->user()->name}}
+                        <i class="ai-user"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end my-1">
+
+                        @if(Auth::user()->role_id==3)
+                            <a class="dropdown-item pb-1"
+                               href="{{route('studentDashboard')}}">{{__('dashboard.Dashboard')}}</a>
+                            <a class="dropdown-item pb-1"
+                               href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
+                            <a class="dropdown-item pb-1"
+                               href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+
+                            @if(isModuleActive('Affiliate') && auth()->user()->affiliate_request!=1)
+                                <a href="{{routeIsExist('affiliate.users.request')?route('affiliate.users.request'):''}}">{{__('frontend.Join Affiliate Program')}}</a>
+                            @endif
+                        @else
+                            <a class="dropdown-item pb-1"
+                               href="{{route('dashboard')}}">{{__('dashboard.Dashboard')}}</a>
+                            <a class="dropdown-item pb-1"
+                               href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
+
+                            <a class="dropdown-item pb-1"
+                               href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+                        @endif
+                        @if(isModuleActive('UserType'))
+                            @foreach(auth()->user()->userRoles as $role)
+                                @php
+                                    if ($role->id==auth()->user()->role_id){
+                                        continue;
+                                    }
+                                @endphp
+                                <a class="dropdown-item pb-1" href="{{route('usertype.changePanel',$role->id)}}">
+                                    {{__('common.Switch to')}} {{$role->name}}
+                                </a>
+                            @endforeach
+                        @endif
+                        <a class="dropdown-item pb-1" href="{{route('logout')}}">{{__('frontend.Log Out')}}</a>
+
+                    </div>
+                </div>
+
             @endguest
+
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-4" type="button"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside" aria-expanded="false">
+                    <img class="me-2" src="/public/frontend2/img/flags/en.png" width="18" alt="English">
+                    Eng
+                </button>
+                <div class="dropdown-menu dropdown-menu-end my-1">
+                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'fr')}}">
+                        <img class="me-2" src="/public/frontend2/img/flags/fr.png" width="18" alt="Français">
+                        Français
+                    </a>
+                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'de')}}">
+                        <img class="me-2" src="/public/frontend2/img/flags/de.png" width="18" alt="Deutsch">
+                        Deutsch
+                    </a>
+                    <a class="dropdown-item" href="{{route('changeLanguage', 'it')}}">
+                        <img class="me-2" src="/public/frontend2/img/flags/it.png" width="18" alt="Italiano">
+                        Italiano
+                    </a>
+                </div>
+            </div>
+
+
             @if(Settings('show_cart')==1)
-                <a class="nav-link position-relative fs-4 p-2" href="#cartOffcanvas" data-bs-toggle="offcanvas"
+                <a class="nav-link position-relative fs-4 p-2 ml-2" href="#cartOffcanvas" data-bs-toggle="offcanvas"
                    aria-label="Shopping cart">
                     <i class="ai-cart"></i>
                     <span class="badge bg-primary fs-xs position-absolute end-0 top-0 me-n1"
                           style="padding: .25rem .375rem;">{{@cartItem()}}</span>
                 </a>
-            @endif
+                @else
+
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle px-4 text-black" type="button"
+                                data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside" aria-expanded="false">
+                            {{auth()->user()->name}}
+                            <i class="ai-user"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end my-1">
+
+                            @if(Auth::user()->role_id==3)
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('studentDashboard')}}">{{__('dashboard.Dashboard')}}</a>
+                                <a class="dropdown-item pb-1"
+                                   href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+
+                                @if(isModuleActive('Affiliate') && auth()->user()->affiliate_request!=1)
+                                    <a href="{{routeIsExist('affiliate.users.request')?route('affiliate.users.request'):''}}">{{__('frontend.Join Affiliate Program')}}</a>
+                                @endif
+                            @else
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('dashboard')}}">{{__('dashboard.Dashboard')}}</a>
+                                <a class="dropdown-item pb-1"
+                                   href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
+
+                                <a class="dropdown-item pb-1"
+                                   href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+                            @endif
+                            @if(isModuleActive('UserType'))
+                                @foreach(auth()->user()->userRoles as $role)
+                                    @php
+                                        if ($role->id==auth()->user()->role_id){
+                                            continue;
+                                        }
+                                    @endphp
+                                    <a class="dropdown-item pb-1" href="{{route('usertype.changePanel',$role->id)}}">
+                                        {{__('common.Switch to')}} {{$role->name}}
+                                    </a>
+                                @endforeach
+                            @endif
+                            <a class="dropdown-item pb-1" href="{{route('logout')}}">{{__('frontend.Log Out')}}</a>
+
+                        </div>
+                    </div>
+
+                @endguest
+
+
+
         </div>
 
         <!-- Mobile menu toggler (Hamburger) -->
@@ -181,21 +305,22 @@
                     </li>
                 @endif
 
-                    @if(Settings('hide_menu_search_box')!=1)
-                        <li class="nav-item">
-                            <div class="input-group input-group-sm" style="max-width: 300px;">
-                                <div class="input-group-prepend">
+                @if(Settings('hide_menu_search_box')!=1)
+                    <li class="nav-item">
+                        <div class="input-group input-group-sm" style="max-width: 300px;">
+                            <div class="input-group-prepend">
                             <span class="input-group-text" style="padding: 0.25rem 0.5rem;">
                                 <i class="ai-search"></i>
                             </span>
-                                </div>
-                                <form action="{{route('courses')}}?" method="get">
-                                    <input value="{{request()->q}}" type="text" name="q" class="form-control" placeholder="{{__('Search for courses')}}"
-                                           style="padding: 0.25rem 0.5rem;">
-                                </form>
                             </div>
-                        </li>
-                    @endif
+                            <form action="{{route('courses')}}?" method="get">
+                                <input value="{{request()->q}}" type="text" name="q" class="form-control"
+                                       placeholder="{{__('Search for courses')}}"
+                                       style="padding: 0.25rem 0.5rem;">
+                            </form>
+                        </div>
+                    </li>
+                @endif
 
 
 
@@ -210,7 +335,6 @@
                 @endguest
 
             </ul>
-
 
 
         </nav>

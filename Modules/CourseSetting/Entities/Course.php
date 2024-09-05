@@ -317,6 +317,20 @@ class Course extends Model
         return $price;
     }
 
+    public function getDiscountPercentage()
+    {
+        $price = $this->attributes['price'];
+        $discountPrice = $this->getDiscountPriceAttribute();
+
+        if ($price > 0) {
+            $discount = ($price - $discountPrice) / $price * 100;
+            return number_format($discount);
+        }
+
+        return 0;
+    }
+
+
     public function courseLevel()
     {
         return $this->belongsTo(CourseLevel::class, 'level')->withDefault([

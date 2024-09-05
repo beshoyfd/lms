@@ -1,7 +1,4 @@
-/**
- * Switch between light and dark themes (color modes)
- * Copyright 2023 Createx Studio
- */
+
 
 (() => {
   'use strict'
@@ -32,11 +29,11 @@
 
   const showActiveTheme = (theme) => {
     const themeSwitcher = document.querySelector('[data-bs-toggle="mode"]')
-    
+
     if (!themeSwitcher) {
       return
     }
-    
+
     const themeSwitcherCheck = themeSwitcher.querySelector('input[type="checkbox"]')
 
     if (theme === 'dark') {

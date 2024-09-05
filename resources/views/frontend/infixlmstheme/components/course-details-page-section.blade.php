@@ -486,7 +486,6 @@
                                 <div class="instractor_details_inner">
                                     <div class="thumb">
                                         <img
-                                             width="150"
                                              src="{{getProfileImage(@$course->user->image,$course->user->name)}}"
                                              alt="">
                                     </div>
@@ -500,19 +499,19 @@
                                         </div>
                                         <div class="intractor_qualification">
                                             <div class="single_qualification">
-                                                <i class="ti-star"></i> {{@$userRating['rating']}}
+                                                <i class="fa fa-star"></i> {{@$userRating['rating']}}
                                                 {{__('frontend.Rating')}}
                                             </div>
                                             <div class="single_qualification">
-                                                <i class="ti-comments"></i> {{@$userRating['total']}}
+                                                <i class="fa fa-comments"></i> {{@$userRating['total']}}
                                                 {{__('frontend.Reviews')}}
                                             </div>
                                             <div class="single_qualification">
-                                                <i class="ti-user"></i> {{@$course->user->totalEnrolled()}}
+                                                <i class="fa fa-user"></i> {{@$course->user->totalEnrolled()}}
                                                 {{__('frontend.Students')}}
                                             </div>
                                             <div class="single_qualification">
-                                                <i class="ti-layout-media-center-alt"></i> {{@$course->user->totalCourses()}}
+                                                <i class="fa fa-book"></i> {{@$course->user->totalCourses()}}
                                                 {{__('frontend.Courses')}}
                                             </div>
                                         </div>
@@ -872,6 +871,7 @@
                         <div id="price-container">
                             <h3 id="price_show_tag">
                                 {{getPriceFormat($course_price)}}
+                                <del><small>{{getPriceFormat($course->price)}}</small></del>
                             </h3>
                             <div class="price_loader"></div>
                         </div>
@@ -879,11 +879,11 @@
                             @if (Auth::check() && $isBookmarked )
                                 <i class="fas fa-heart"></i>
                                 <a href="{{route('bookmarkSave',[$course->id])}}"
-                                   class="">{{__('frontend.Already In Wishlist')}}
+                                   class="btn btn-sm btn-outline-primary btn-block mt-2">{{__('frontend.Already In Wishlist')}}
                                 </a>
                             @elseif (Auth::check() && !$isBookmarked )
                                 <a href="{{route('bookmarkSave',[$course->id])}}"
-                                   class="">
+                                   class="btn btn-sm btn-primary">
                                     <i class="far fa-heart"></i>
                                     {{__('frontend.Add To Wishlist')}}  </a>
                             @endif
@@ -1029,9 +1029,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <section class="container pb-5 mb-xl-3 mb-xxl-5" data-aos="fade-up" data-aos-duration="600"
-                         data-aos-offset="280"
-                         data-disable-parallax-down="lg">
+                <section class="container pb-5 mb-xl-3 mb-xxl-5">
                     <!-- Multiple slides responsive slider with external Prev / Next buttons and bullets outside -->
                     <div class="position-relative px-5">
 

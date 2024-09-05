@@ -5843,7 +5843,7 @@ footer .copyright_area .footer_widget {
 .sidebar ul li a span {
     font-size: 14px;
     font-weight: 600;
-    color: var(--system_secendory_color);
+    color: var(--system_primary_color);
     font-family: var(--font_family1), sans-serif;
     -webkit-transition: .3s ease-in-out;
     -moz-transition: .3s ease-in-out;

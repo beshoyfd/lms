@@ -19554,3 +19554,16 @@ img-comparison-slider:focus {
     animation: blinking 1s infinite
 }
 
+.text-secondary-brand{
+    color: #cd191d;
+}
+.btn-secondary-brand{
+    background-color: #cd191d;
+}
+.btn-secondary-brand:hover{
+    background-color: #85121e;
+    color: #ffffff;
+}
+.bg-secondary-brand{
+    background-color: #cd191d;
+}

@@ -165,12 +165,16 @@
         function updateURLParams() {
             const levels = [];
             const languages = [];
+            let price;
 
             document.querySelectorAll('input.level:checked').forEach(function (el) {
                 levels.push(el.value);
             });
 
-            let price = document.querySelectorAll('input.price:checked')[0].value;
+            document.querySelectorAll('input.price:checked').forEach(function (el) {
+                price = el.value;
+            });
+
             document.querySelectorAll('input.language:checked').forEach(function (el) {
                 languages.push(el.value);
             });

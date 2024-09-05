@@ -222,19 +222,142 @@
 }
 
 .counter-box .icons_1 {
-    background: #2278ff;
+    background: #2a3261;
 }
 
 .counter-box .icons_2 {
-    background: #13caf9;
+    background: #cd191d;
 }
 
 .counter-box .icons_3 {
-    background: #fbb84e;
+    background: #2a3261;
 }
 
 
 .counter-box .icons_4 {
-    background: #4a65e8;
+    background:#cd191d;
+}
+
+
+.whatsApp_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #00C348;
+    font-size: 48px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    right: 30px;
+    bottom: 90px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.whatsApp_icon i {
+    padding: 15px;
+    font-size: 30px;
+}
+
+
+.home-page .caregories .card-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px 1px #00000015
+}
+
+.home-page .caregories .owl-item.active.center .card-image {
+    box-shadow: 0 7px 10px 1px #0000000c
+}
+
+.home-page .caregories .card-image .image {
+    height: 100%;
+    padding: 40px;
+    transition: all .5s ease
+}
+
+.home-page .caregories .card-image:hover .image {
+    padding: 30px
+}
+
+.home-page .caregories .card-image:hover a:last-child svg {
+    transform: translateX(8px)
+}
+
+.home-page .caregories .card-image .image img {
+    object-fit: contain
+}
+
+.home-page .caregories .card-image a:first-child {
+    display: block;
+    height: 230px;
+    transition: all 1s ease !important
+}
+
+.home-page .caregories .owl-item.active.center .item .card-image a:first-child {
+    height: 280px !important
+}
+
+.home-page .caregories .card-image a:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    padding: 12px 16px;
+    background: #fb4400
+}
+
+.home-page .caregories .card-image a:last-child svg path {
+    stroke: #fff
+}
+
+.home-page .caregories .card-image a:last-child svg {
+    transition: all .5s ease
+}
+
+.home-page .caregories .card-image a:last-child span {
+    margin-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical
+}
+
+.home-page .caregories .owl-item.active.center .item {
+    width: calc(100% + 38px);
+    margin-left: -19px
+}
+
+.home-page .caregories .owl-stage {
+    display: flex;
+    align-items: center
+}
+
+.home-page .caregories .services .owl-stage-outer {
+    min-height: 385px
+}
+
+.free-video .owl-dots, .home-page .caregories .services .owl-dots {
+    margin-top: 40px
+}
+
+.home-page .caregories .owl-item.active {
+    z-index: 1
+}
+
+.home-page .caregories .owl-item.active.owl-item.active.center {
+    z-index: 9999
+}
+
+.home-page .caregories .services .owl-stage {
+    transition: all .8s ease !important
 }
 

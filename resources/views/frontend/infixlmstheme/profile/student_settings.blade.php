@@ -362,23 +362,23 @@
                                 <!-- image tab -->
                                 @include(theme('profile._images_tab'))
                                 <!-- about tab -->
-                                @include(theme('profile._about_tab'))
-                                <!-- education tab -->
-                                @include(theme('profile._education_tab'))
-                                <!-- experience tab -->
-                                @include(theme('profile._experience_tab'))
-                                <!-- skills tab -->
-                                @include(theme('profile._skills_tab'))
-                                <!-- financial tab -->
-                                @include(theme('profile._financial_tab'))
-                                <!-- api tab -->
-                                @include(theme('profile._api_tab'))
-                                <!-- extra information tab -->
-                                @include(theme('profile._extra_info_tab'))
-                                <!-- identity & documents tab -->
-                                @include(theme('profile._identity_tab'))
-                                <!-- social & contact tab -->
-                                @include(theme('profile._social_tab'))
+{{--                                @include(theme('profile._about_tab'))--}}
+{{--                                <!-- education tab -->--}}
+{{--                                @include(theme('profile._education_tab'))--}}
+{{--                                <!-- experience tab -->--}}
+{{--                                @include(theme('profile._experience_tab'))--}}
+{{--                                <!-- skills tab -->--}}
+{{--                                @include(theme('profile._skills_tab'))--}}
+{{--                                <!-- financial tab -->--}}
+{{--                                @include(theme('profile._financial_tab'))--}}
+{{--                                <!-- api tab -->--}}
+{{--                                @include(theme('profile._api_tab'))--}}
+{{--                                <!-- extra information tab -->--}}
+{{--                                @include(theme('profile._extra_info_tab'))--}}
+{{--                                <!-- identity & documents tab -->--}}
+{{--                                @include(theme('profile._identity_tab'))--}}
+{{--                                <!-- social & contact tab -->--}}
+{{--                                @include(theme('profile._social_tab'))--}}
                                 <!-- delete account -->
                                 @include(theme('profile._delete_account_tab'))
 
