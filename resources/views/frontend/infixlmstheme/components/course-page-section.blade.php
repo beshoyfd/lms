@@ -11,10 +11,31 @@
 
     .boxx {
         border: 1px solid #eee;
-        padding: 12px;
-        border-radius: 10px;
-        box-shadow: 1px 2px #eee;
+        padding: 7px;
+        border-radius: 20px;
+        background: #2276fa;
     }
+
+    .boxx a {
+        background: #fff;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+
+    .dis__label {
+        top: -67px;
+        right: 0;
+        background: #d02d2d;
+        padding: 18px 2px;
+        color: #fff;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        height: 60px;
+        z-index: 9;
+        font-size: 12px;
+    }
+
 </style>
 
 <div class="row pb-2 pb-sm-4">
@@ -67,6 +88,7 @@
                         <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
                             <span
                                 class="badge bg-danger bg-opacity-10 text-danger position-absolute top-0 start-0 mt-3 ms-3">{{$course->category?->name}}</span>
+
                             <a
                                 href="{{route('bookmarkSave',[$course->id])}}"
                                 class="btn btn-icon btn-sm {{$isBookmarked ? 'btn-danger bg-danger' : 'btn-light bg-light'}} border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 z-5 {{$isBookmarked ? '' : 'opacity-0'}}"
@@ -96,7 +118,11 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="d-flex mb-1">
+                        <div class="d-flex mb-1 position-relative">
+                            @if($course->getDiscountPercentage())
+                            <span class="position-absolute dis__label">
+                                {{$course->getDiscountPercentage()}}%</span>
+                            @endif
                             <h3 class="h6 mb-0">
                                 <a href="{{courseDetailsUrl(@$course->id,@$course->type,@$course->slug)}}">
                                     {{$course->title}}
@@ -111,11 +137,6 @@
 
 
                         <div class="rating_cart d-flex justify-content-between mt-2">
-                            <div class="rateing">
-                                <span>{{$course->total_rating}}/5</span>
-
-                                <i class="fas fa-star"></i>
-                            </div>
                             @if(!onlySubscription())
                                 @auth()
                                     @if(!$course->isLoginUserEnrolled && !$course->isLoginUserCart)
@@ -148,11 +169,19 @@
                         <div class="course_less_students d-flex justify-content-between mt-3 boxx">
                             <a> <i class="fa fa-list"></i> {{$course->total_lessons}}
                                 {{__('frontend.Lessons')}}</a>
+
+                            <a class="rateing" style="text-decoration: none">
+                                <span>{{$course->total_rating}}/5</span>
+                                <i class="fas fa-star"></i>
+                            </a>
+
                             @if(!Settings('hide_total_enrollment_count') == 1)
                                 <a>
                                     <i class="fa fa-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
                                 </a>
                             @endif
+
+
                         </div>
 
                     </div>
