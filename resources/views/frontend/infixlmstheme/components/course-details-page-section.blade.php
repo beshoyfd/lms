@@ -873,6 +873,13 @@
                                 {{getPriceFormat($course_price)}}
                                 <del><small>{{getPriceFormat($course->price)}}</small></del>
                             </h3>
+                            <p class="mt-2 mb-4">
+                                @if($course->getDiscountPercentage())
+                                    <span class="position-absolute badge bg-info text-white">
+                                        {{__('common.Discount')}}
+                                {{$course->getDiscountPercentage()}}%</span>
+                                @endif
+                            </p>
                             <div class="price_loader"></div>
                         </div>
                         <p>

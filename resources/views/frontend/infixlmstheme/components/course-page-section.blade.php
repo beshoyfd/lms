@@ -24,7 +24,7 @@
     }
 
     .dis__label {
-        top: -67px;
+        top: 0;
         right: 0;
         background: #d02d2d;
         padding: 18px 2px;
@@ -36,6 +36,9 @@
         font-size: 12px;
     }
 
+    .rateing .fa-star{
+        color: orange;
+    }
 </style>
 
 <div class="row pb-2 pb-sm-4">
@@ -91,10 +94,16 @@
 
                             <a
                                 href="{{route('bookmarkSave',[$course->id])}}"
-                                class="btn btn-icon btn-sm {{$isBookmarked ? 'btn-danger bg-danger' : 'btn-light bg-light'}} border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 z-5 {{$isBookmarked ? '' : 'opacity-0'}}"
+                                class="btn btn-icon btn-sm {{$isBookmarked ? 'btn-danger bg-danger' : 'btn-light bg-light'}} border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-5 z-5 {{$isBookmarked ? '' : 'opacity-0'}}"
                                 type="button" aria-label="{{__('Add to Favorites')}}">
                                 <i class="ai-heart fs-xl {{$isBookmarked ?  'text-white' : 'text-nav' }}"></i>
                             </a>
+
+                            @if($course->getDiscountPercentage())
+                                <span class="position-absolute dis__label">
+                                {{$course->getDiscountPercentage()}}%</span>
+                            @endif
+
                             <div class="swiper swiper-nav-onhover"
                                  data-swiper-options='{"loop": true, "navigation": {"prevEl": ".btn-prev", "nextEl": ".btn-next"}}'>
                                 <a class="swiper-wrapper"
@@ -116,13 +125,29 @@
                                     type="button" aria-label="Next">
                                     <i class="ai-chevron-right fs-xl text-nav"></i>
                                 </button>
+
                             </div>
+
+                            <div class="course_less_students d-flex justify-content-between mt-3 boxx">
+                                <a> <i class="fa fa-list"></i> {{$course->total_lessons}}
+                                    {{__('frontend.Lessons')}}</a>
+
+                                <a class="rateing" style="text-decoration: none">
+                                    <span>{{$course->total_rating}}/5</span>
+                                    <i class="fas fa-star"></i>
+                                </a>
+
+                                @if(!Settings('hide_total_enrollment_count') == 1)
+                                    <a>
+                                        <i class="fa fa-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
+                                    </a>
+                                @endif
+
+
+                            </div>
+
                         </div>
                         <div class="d-flex mb-1 position-relative">
-                            @if($course->getDiscountPercentage())
-                            <span class="position-absolute dis__label">
-                                {{$course->getDiscountPercentage()}}%</span>
-                            @endif
                             <h3 class="h6 mb-0">
                                 <a href="{{courseDetailsUrl(@$course->id,@$course->type,@$course->slug)}}">
                                     {{$course->title}}
@@ -165,23 +190,6 @@
                                     @endif
                                 @endguest
                             @endif
-                        </div>
-                        <div class="course_less_students d-flex justify-content-between mt-3 boxx">
-                            <a> <i class="fa fa-list"></i> {{$course->total_lessons}}
-                                {{__('frontend.Lessons')}}</a>
-
-                            <a class="rateing" style="text-decoration: none">
-                                <span>{{$course->total_rating}}/5</span>
-                                <i class="fas fa-star"></i>
-                            </a>
-
-                            @if(!Settings('hide_total_enrollment_count') == 1)
-                                <a>
-                                    <i class="fa fa-user"></i> {{$course->total_enrolled}} {{__('frontend.Students')}}
-                                </a>
-                            @endif
-
-
                         </div>
 
                     </div>
