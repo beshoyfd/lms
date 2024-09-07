@@ -201,6 +201,39 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-4 mb-25">
+                            <div class="checkbox_wrap d-flex align-items-center mt-40">
+                                <label for="recorded" class="switch_toggle me-2">
+                                    <input type="checkbox" id="recorded" value="0" name="recorded">
+                                    <i class="slider round"></i>
+                                </label>
+                                <label
+                                    class="mb-0">Recorded videos</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-25">
+                            <div class="checkbox_wrap d-flex align-items-center mt-40">
+                                <label for="live" class="switch_toggle me-2">
+                                    <input type="checkbox" id="live" value="0" name="live">
+                                    <i class="slider round"></i>
+                                </label>
+                                <label
+                                    class="mb-0">Live broadcasts </label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-25">
+                            <div class="checkbox_wrap d-flex align-items-center mt-40">
+                                <label for="onsite" class="switch_toggle me-2">
+                                    <input type="checkbox" id="onsite" value="0" name="onsite">
+                                    <i class="slider round"></i>
+                                </label>
+                                <label
+                                    class="mb-0">Onsite attendance </label>
+                            </div>
+                        </div>
+
                         @if(\Illuminate\Support\Facades\Auth::user()->role_id!=2)
                             <div class="col-xl-6">
                                 <div class="primary_input mb-25">

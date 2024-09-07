@@ -15,9 +15,27 @@
             $total++;
             $courses[] = $value;
         }
+
+        $recorded = request()->get('recorded');
+        $live = request()->get('live');
+        $onsite = request()->get('onsite');
+        if ($recorded == 1 || $live == 1 || $onsite == 1) {
+            $courses = array_filter($courses, function ($course) use ($recorded, $live, $onsite) {
+                if ($recorded == 1 && $course->recorded == 0) {
+                    return false;
+                }
+                if ($live == 1 && $course->live == 0) {
+                    return false;
+                }
+                if ($onsite == 1 && $course->onsite == 0) {
+                    return false;
+                }
+                return true;
+            });
+        }
     @endphp
     <duv class="row">
-
+{{--  --}}
         <div class="col-12">
             <div class="box_header d-flex flex-wrap align-items-center justify-content-between">
                 <h5 class="font_16 f_w_500 mb_30">{{translatedNumber($total)}}
@@ -64,6 +82,35 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12 mb-5">
+            <div class="row">
+                <div class="col-3">
+                    <button onclick="filterCourses('all')" class="w-100 btn {{ (request()->get('all') == 1) ? 'btn-danger' : 'btn-outline-danger' }}">All</button>
+                </div>
+                <div class="col-3">
+                    <button onclick="filterCourses('recorded')" class="w-100 btn {{ (request()->get('recorded') == 1) ? 'btn-danger' : 'btn-outline-danger' }}">Recorded videos</button>
+                </div>
+                <div class="col-3">
+                    <button onclick="filterCourses('live')" class="w-100 btn {{ (request()->get('live') == 1) ? 'btn-danger' : 'btn-outline-danger' }}">Live broadcasts</button>
+                </div>
+                <div class="col-3">
+                    <button onclick="filterCourses('onsite')" class="w-100 btn {{ (request()->get('onsite') == 1) ? 'btn-danger' : 'btn-outline-danger' }}">Onsite attendance</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function filterCourses(type) {
+                let url = new URL(window.location.href);
+                let params = new URLSearchParams(url.search.slice(1));
+                params.delete('all');
+                params.delete('recorded');
+                params.delete('live');
+                params.set(type, 1);
+                window.location.href = window.location.pathname + '?' + params.toString();
+            }
+        </script>
 
         @forelse ($courses as $course)
             <div class="col-lg-6 col-xl-4">

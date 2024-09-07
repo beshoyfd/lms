@@ -1060,7 +1060,10 @@ class PaymentController extends Controller
 
         if (!empty($checkout_info)) {
 
-            if ($request->payment_method == "Sslcommerz") {
+            if ($request->payment_method == 'tabby'){
+                
+            }
+            elseif ($request->payment_method == "Sslcommerz") {
                 $ssl = new SslcommerzController();
                 $ssl->payment($checkout_info, $request);
 

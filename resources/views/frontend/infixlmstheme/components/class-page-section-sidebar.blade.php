@@ -21,6 +21,7 @@
                               transform="translate(-20.75 11)" fill="var(--system_primery_color)"/>
                     </g>
                 </svg>
+                {{--  --}}
                 <h5 class="font_16 f_w_500 mb-0">{{__('frontend.Filter Category')}}</h5>
             </div>
             <div class="popupClose"><i class="ti-close"></i></div>

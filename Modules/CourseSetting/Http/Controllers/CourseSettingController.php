@@ -366,6 +366,12 @@ class CourseSettingController extends Controller
             if (!empty($request->assign_instructor)) {
                 $course->user_id = $request->assign_instructor;
             }
+
+
+            $course->recorded = $request->recorded ?? false;
+            $course->live = $request->live ?? false;
+            $course->onsite = $request->onsite ?? false;
+
             $course->save();
 
             if ($request->get('host') == "Vimeo") {
@@ -662,6 +668,11 @@ class CourseSettingController extends Controller
             $course->image = null;
             $course->thumbnail = null;
             $course->trailer_link = null;
+
+            $course->recorded = $request->recorded ? 1 : 0;
+            $course->live = $request->live ? 1 : 0;
+            $course->onsite = $request->onsite ? 1 : 0;
+
             $course->save();
 
             if ($request->get('host') == "Vimeo") {
@@ -1354,6 +1365,8 @@ class CourseSettingController extends Controller
                 return view('coursesetting::components._course_action_td', ['query' => $query]);
             })->rawColumns(['status', 'price', 'action', 'enrolled_users'])
             ->make(true);
+
+            // aaaa
     }
 
     public function addNewCourse()
