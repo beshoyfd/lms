@@ -8,6 +8,7 @@
                                                   :category="$category" :languages="$languages" :language="$language"
                                                   :mode="$mode"/>
                 </div>
+                {{--  --}}
                 <div class="col-lg-8 col-xl-9">
                     <div class="row">
                         <div class="col-12">

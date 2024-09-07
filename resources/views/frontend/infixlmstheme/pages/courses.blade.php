@@ -6,7 +6,7 @@
     <script src="{{asset('public/frontend/infixlmstheme/js/classes.js')}}"></script>
 @endsection
 @section('mainContent')
-
+{{--  --}}
     <x-breadcrumb :banner="$frontendContent->course_page_banner" :title="$frontendContent->course_page_title"
                   :subTitle="$frontendContent->course_page_sub_title"/>
 

@@ -25,6 +25,8 @@ class CourseController extends Controller
 
     public function courses(Request $request)
     {
+        // return view(theme('pages.courses'), compact('request'));
+
         try {
             if (hasDynamicPage()) {
                 $row = FrontPage::where('slug', '/courses')->first();

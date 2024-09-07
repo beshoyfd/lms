@@ -37,6 +37,23 @@
                             <div class="col-12">
                                 <div class="payment_method_wrapper">
 
+                                    <form action="{{ route('paymentSubmit') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="payment_method"
+                                               value="tabby">
+                                        <input type="hidden" name="tracking_id"
+                                               value="{{ $checkout->tracking }}">
+                                        <input type="hidden" name="id"
+                                               value="{{ $checkout->id }}">
+                                        <button type="submit" class="Payment_btn">
+                                            <img class=" w-100"
+                                                 style="    padding: 0;
+                                                    margin-top: -2px;"
+                                                 src="https://api-docs.tabby.ai/assets/tabby-new.png" alt="">
+                                        </button>
+
+                                    </form>
+
                                     @if (isset($methods))
                                         @php
                                             $withMoule = $methods;
