@@ -4,10 +4,10 @@
         <div class="col-lg-5 pb-3 pb-lg-0 mb-3 mb-sm-4 mb-lg-0" data-aos="fade-up" data-aos-duration="850"
              data-aos-offset="150" data-disable-parallax-down="lg">
             <div class="pe-lg-4 pe-xl-0">
-                <h2 class="h1 text-center text-lg-start mb-0 mx-auto mx-lg-0" style="max-width: 468px;">
-                    {{__('Customer Testimonials')}}
+                <h2 class="h1 text-center text-lg-start mb-0 mx-auto mx-lg-0">
+                    {{__('What our clients say about their')}}
                     <span class="d-inline-block position-relative">
-
+                  <span class="position-relative z-2 mx-2">{{__('experience')}}</span>
                   <svg class="position-absolute top-50 end-0 translate-middle-y me-n1 mt-1" width="249" height="46"
                        viewBox="0 0 249 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="text-warning" opacity=".4"
@@ -15,22 +15,20 @@
                           fill="currentColor"></path>
                   </svg>
                 </span>
+                    {{__('with the tool')}}
                 </h2>
 
-                <!-- Swiper controls (Prev / Next) -->
                 <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-4 mt-lg-3">
                     <button class="btn btn-icon btn-sm btn-outline-primary rounded-circle me-3" type="button"
                             id="prev-testimonial" aria-label="Prev">
                         <i class="ai-arrow-left"></i>
                     </button>
-                    <div class="testimonials-count fw-medium flex-shrink-0 text-center"
-                         style="width: 2.5rem;"></div>
+                    <div class="testimonials-count fw-medium flex-shrink-0 text-center" style="width: 2.5rem;"></div>
                     <button class="btn btn-icon btn-sm btn-outline-primary rounded-circle ms-3" type="button"
                             id="next-testimonial" aria-label="Next">
                         <i class="ai-arrow-right"></i>
                     </button>
                 </div>
-
             </div>
         </div>
         <div class="col-sm-10 col-md-8 col-lg-7 pb-2 pb-sm-1 pb-md-0">
@@ -50,65 +48,66 @@
             }'>
                 <div class="swiper-wrapper">
 
-                    @if(@$testimonials != "" && count($testimonials) > 0)
-                        <div class="swiper-slide bg-light">
-                            <div class="d-flex flex-column">
-                                @foreach ($testimonials as $idx=>$testimonial)
-
-                                    @if($idx<3)
+                    <!-- Item -->
+                    <div class="swiper-slide bg-light">
+                        <div class="d-flex flex-column">
+                            @foreach($testimonials as $idx=>$testimonial)
+                                @if($idx<=2)
                                     @php
                                         $alignClass = $loop->iteration % 2 == 0 ? 'align-self-center' : 'align-self-end';
                                     @endphp
-                                    <div class="d-flex align-items-center {{ $alignClass }} pb-3 mb-2 mb-md-3 mb-xl-4"
+                                    <div class="d-flex align-items-center {{$alignClass}} pb-3 mb-2 mb-md-3 mb-xl-4"
                                          style="max-width: 570px;">
                                         <div class="bg-light rounded-circle flex-shrink-0 position-relative z-2 me-n5"
                                              style="padding: .375rem;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 119.47 119.47"><g id="Group_2217" data-name="Group 2217" transform="translate(-289.739 -151.585)">
-                                                    <circle id="Ellipse_524" data-name="Ellipse 524" cx="42.239" cy="42.239" r="42.239" transform="translate(289.739 211.32) rotate(-45)" fill="#c62334"></circle> <g id="Group_2207" data-name="Group 2207" transform="translate(332.104 200.845)"><path id="Path_32619" data-name="Path 32619" d="M348.767,232.088a7.81,7.81,0,0,0,.447-15.608,10.972,10.972,0,0,1,3.011-5.343c-4.314,0-11.268,5.883-11.268,13.14A7.81,7.81,0,0,0,348.767,232.088Z" transform="translate(-340.956 -211.138)" fill="#fff"></path> <path id="Path_32620" data-name="Path 32620" d="M371.881,232.088a7.81,7.81,0,0,0,.448-15.608,10.972,10.972,0,0,1,3.011-5.343c-4.314,0-11.268,5.883-11.268,13.14A7.81,7.81,0,0,0,371.881,232.088Z" transform="translate(-344.951 -211.138)" fill="#fff"></path></g></g></svg>
+                                            <img class="rounded-circle"
+                                                 src="{{getProfileImage($testimonial->image,$testimonial->author)}}"
+                                                 width="80"
+                                                 alt="{{ $testimonial->name }}">
                                         </div>
                                         <div class="card bg-secondary border-0 rounded-4 py-3 ps-4 ps-sm-5 pe-3">
                                             <div class="card-body py-3 px-2 p-sm-4 ms-4 ms-sm-0">
-                                                <p class="fs-xl">"{{@$testimonial->body}}"</p>
+                                                <p class="fs-xl">{{ $testimonial->body }}</p>
                                                 <div class="h5 fw-bold mb-0">{{ $testimonial->name }}</div>
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
-                                @endforeach
-                            </div>
+                                @endif
+                            @endforeach
+
                         </div>
-                @endif
+                    </div>
 
-                        @if(@$testimonials != "" && count($testimonials) > 4)
-                            <div class="swiper-slide bg-light">
-                                <div class="d-flex flex-column">
-                                    @foreach ($testimonials as $idx=>$testimonial)
-                                        @if($idx > 3)
-                                            @php
-                                                $alignClass = $loop->iteration % 2 == 0 ? 'align-self-center' : 'align-self-end';
-                                            @endphp
-                                            <div class="d-flex align-items-center {{ $alignClass }} pb-3 mb-2 mb-md-3 mb-xl-4"
-                                                 style="max-width: 570px;">
-                                                <div class="bg-light rounded-circle flex-shrink-0 position-relative z-2 me-n5"
-                                                     style="padding: .375rem;">
-                                                    <img class="rounded-circle"
-                                                         src="{{getProfileImage($testimonial->image,$testimonial->author)}}"
-                                                         width="80"
-                                                         alt="{{ $testimonial->name }}">
-                                                </div>
-                                                <div class="card bg-secondary border-0 rounded-4 py-3 ps-4 ps-sm-5 pe-3">
-                                                    <div class="card-body py-3 px-2 p-sm-4 ms-4 ms-sm-0">
-                                                        <p class="fs-xl">"{{@$testimonial->body}}"</p>
-                                                        <div class="h5 fw-bold mb-0">{{ $testimonial->name }}</div>
-                                                    </div>
-                                                </div>
+
+                    <!-- Item -->
+                    <div class="swiper-slide bg-light">
+                        <div class="d-flex flex-column">
+
+                            @foreach($testimonials as $idx=>$testimonial)
+                                @if($idx>2)
+                                    @php
+                                        $alignClass = $loop->iteration % 2 == 0 ? 'align-self-center' : 'align-self-end';
+                                    @endphp
+                                    <div class="d-flex align-items-center {{$alignClass}} pb-3 mb-2 mb-md-3 mb-xl-4"
+                                         style="max-width: 570px;">
+                                        <div class="bg-light rounded-circle flex-shrink-0 position-relative z-2 me-n5"
+                                             style="padding: .375rem;">
+                                            <img class="rounded-circle"
+                                                 src="{{getProfileImage($testimonial->image,$testimonial->author)}}"
+                                                 width="80"
+                                                 alt="{{ $testimonial->name }}">
+                                        </div>
+                                        <div class="card bg-secondary border-0 rounded-4 py-3 ps-4 ps-sm-5 pe-3">
+                                            <div class="card-body py-3 px-2 p-sm-4 ms-4 ms-sm-0">
+                                                <p class="fs-xl">{{ $testimonial->body }}</p>
+                                                <div class="h5 fw-bold mb-0">{{ $testimonial->name }}</div>
                                             </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                    @endif
-
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

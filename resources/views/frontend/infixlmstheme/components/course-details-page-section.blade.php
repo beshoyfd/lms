@@ -871,7 +871,9 @@
                         <div id="price-container">
                             <h3 id="price_show_tag">
                                 {{getPriceFormat($course_price)}}
-                                <del><small>{{getPriceFormat($course->price)}}</small></del>
+                                @if($course->price)
+                                    <del><small>{{getPriceFormat($course->price)}}</small></del>
+                                @endif
                             </h3>
                             <p class="mt-2 mb-4">
                                 @if($course->getDiscountPercentage())

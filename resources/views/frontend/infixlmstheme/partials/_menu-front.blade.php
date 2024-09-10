@@ -89,7 +89,7 @@
                             data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" aria-expanded="false">
                         {{auth()->user()->name}}
-                        <i class="ai-user"></i>
+                        <img src="{{auth()->user()->image}}" style="border-radius: 50%;width:25px;height:25px;margin-left: 7px">
                     </button>
                     <div class="dropdown-menu dropdown-menu-end my-1">
 
