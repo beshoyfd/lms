@@ -136,22 +136,16 @@
                 <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-4" type="button"
                         data-bs-toggle="dropdown"
                         data-bs-auto-close="outside" aria-expanded="false">
-                    <img class="me-2" src="/public/frontend2/img/flags/en.png" width="18" alt="English">
-                    Eng
+                    <img class="me-2" src="/public/frontend2/img/flags/{{app()->getLocale()}}.png" width="18" alt="{{app()->getLocale()}}">
+                    {{ str()->upper(app()->getLocale()) }}
                 </button>
                 <div class="dropdown-menu dropdown-menu-end my-1">
-                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'fr')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/fr.png" width="18" alt="Français">
-                        Français
+                    @foreach(getLanguageList() as $lang)
+                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', $lang->code)}}">
+                        <img class="me-2" src="/public/frontend2/img/flags/{{$lang->code}}.png" width="18" alt="{{$lang->native}}">
+                        {{$lang->native}}
                     </a>
-                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', 'de')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/de.png" width="18" alt="Deutsch">
-                        Deutsch
-                    </a>
-                    <a class="dropdown-item" href="{{route('changeLanguage', 'it')}}">
-                        <img class="me-2" src="/public/frontend2/img/flags/it.png" width="18" alt="Italiano">
-                        Italiano
-                    </a>
+                    @endforeach
                 </div>
             </div>
 
