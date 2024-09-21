@@ -5,9 +5,9 @@
 @else
     <nav class="sidebar">
         <div class="logo d-flex justify-content-between">
-            <a href="{{url('/')}}"><img
+            <a href="{{url('/')}}" style="height: 200px;"><img
                     src="{{getCourseImage(Settings('logo3')?Settings('logo3'):'public/uploads/settings/logo1.png')}}"
-                    alt=""></a>
+                    alt="" width="350"></a>
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
             </div>
