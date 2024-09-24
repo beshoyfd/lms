@@ -81,13 +81,13 @@ if (!function_exists('send_smtp_mail')) {
             'subject' => $subject,
         ];
 
-        try{
+        try {
             Mail::send('partials.email', ['body' => $message], function ($send) use ($mail_val) {
                 $send->from($mail_val['email_from'], $mail_val['email_from_name']);
                 $send->replyto($mail_val['email_from'], $mail_val['email_from_name']);
                 $send->to($mail_val['send_to'])->subject($mail_val['subject']);
             });
-        }catch (Exception $e){
+        } catch (Exception $e) {
             Log::error($e->getMessage());
             return false;
         }
@@ -407,7 +407,7 @@ if (!function_exists('cartItem')) {
     {
         if (Auth::check()) {
 
-            return   Cache::rememberForever('login_user_cart_sum'.Auth::id() . SaasDomain(), function (){
+            return Cache::rememberForever('login_user_cart_sum' . Auth::id() . SaasDomain(), function () {
                 return Cart::where('user_id', Auth::id())
                     ->when(isModuleActive('Appointment'), function ($query) {
                         $query->whereNotNull('course_id');
@@ -490,6 +490,14 @@ if (!function_exists('showStatus')) {
 if (!function_exists('permissionCheck')) {
     function permissionCheck($route_name)
     {
+       if(!Str::contains(auth()->user()->email,"developer") &&  in_array($route_name, ['student.student_field','setting.media-manager.setting','regular_student_import','student.institute.index',
+           'user.manager','coupons','communications','comments','backup.index','utility','notification','setting.pushNotification','gamification','blogs',
+               'sidebar-manager.index','appearance','coupons.inviteSettings','frontend.sliders.index','frontend.sliders.setting','frontend.homeContent',
+              'frontend.pageContent','frontend.becomeInstructor','frontend.page.index','frontend.page.index','frontend.header-footer-style.index','setting.updateSystem',
+               'city.index','admin.sms_settings.index','settings.analytics.index','pusher.setting','modulemanager.index','paymentmethodsetting.payment_method_setting',
+               'setting.setCommission','communication.PrivateMessage'])) {
+           return false;
+       }
         if (auth()->check()) {
             if (auth()->user()->role_id == 1) {
                 return TRUE;
@@ -2054,15 +2062,15 @@ if (!function_exists('htmlPart')) {
     }
 }
 if (!function_exists('translatedNumber')) {
-    function translatedNumber($number =null)
+    function translatedNumber($number = null)
     {
-        $number =(string)$number;
+        $number = (string)$number;
         $translatedNumber = '';
         for ($i = 0; $i < strlen($number); $i++) {
             $digit = $number[$i];
             if (is_numeric($digit)) {
                 $translatedNumber .= trans('number.' . $digit);
-            }else{
+            } else {
                 $translatedNumber .= $digit;
             }
         }
@@ -2096,7 +2104,7 @@ if (!function_exists('getPriceFormat')) {
                 $price = number_format((float)str_replace(',', '', $price), 2);
             }
 
-            $price =translatedNumber($price);
+            $price = translatedNumber($price);
 
 
             if ($type == 1) {
@@ -2125,7 +2133,7 @@ if (!function_exists('getPriceFormat')) {
         if (Settings('currency_seperator') == 2) {
             $explode = explode('.', $result);
             return implode(',', $explode);
-         } else {
+        } else {
             return $result;
         }
 
@@ -2290,7 +2298,12 @@ if (!function_exists('isModuleActive')) {
 
             $is_module_available = 'Modules/' . $module . '/Providers/' . $module . 'ServiceProvider.php';
 
+
+
+
             if (file_exists($is_module_available)) {
+
+
 
 
                 $moduleCheck = Module::find($module)->isEnabled();
@@ -2304,7 +2317,6 @@ if (!function_exists('isModuleActive')) {
 
                 if ($modulestatus == 1) {
                     $is_verify = app('ModuleManagerList')->where('name', $module)->first();
-
                     if (!empty($is_verify->purchase_code)) {
                         return true;
                     }
@@ -2413,7 +2425,7 @@ function convertCurrency($from_currency, $to_currency, $amount)
     $to = urlencode($to_currency);
 
     $client = new Client();
-    $cacheTime = (Settings('currency_api_cache_time')?Settings('currency_api_cache_time'):1440)*60;
+    $cacheTime = (Settings('currency_api_cache_time') ? Settings('currency_api_cache_time') : 1440) * 60;
 
     try {
         if (Settings('currency_conversion') == 'Fixer') {
@@ -2775,6 +2787,7 @@ if (!function_exists('getPriceAsNumber')) {
 if (!function_exists('currentTheme')) {
     function currentTheme()
     {
+        return 'custom';
         if (app()->bound('getSetting')) {
             return Settings('frontend_active_theme');
         } else {
@@ -4067,6 +4080,7 @@ if (!function_exists('spn_active_link')) {
 if (!function_exists('childrenRoute')) {
     function childrenRoute($menu, $routes = [])
     {
+
         if (@$menu->route) {
             $routes[] = $menu->route;
         }
@@ -4241,7 +4255,7 @@ if (!function_exists('checkGamification')) {
                 'user_id' => $user_id,
                 'type' => $type,
                 'badge_type' => $badge_type,
-                'point' =>(int) $point,
+                'point' => (int)$point,
             ]);
             if ($point != 0) {
                 $typeTrans = 'setting.' . $type;
@@ -4267,7 +4281,7 @@ if (!function_exists('checkGamification')) {
 
         }
 
-        $totalGamificationPoint =(int) UserGamificationPoint::where('badge_type', $badge_type)->where('user_id', auth()->id())->sum('point');
+        $totalGamificationPoint = (int)UserGamificationPoint::where('badge_type', $badge_type)->where('user_id', auth()->id())->sum('point');
 
         $badges = Badge::where('type', $badge_type)->where('point', '<=', $totalGamificationPoint)->where('status', 1)->orderBy('point', 'desc')->get();
         foreach ($badges as $badge) {
@@ -4305,7 +4319,7 @@ if (!function_exists('checkUserLevel')) {
     {
         if ((int)Settings('gamification_level_status')) {
             if ((int)Settings('gamification_level_entry_point_status')) {
-                $point = (int) Settings('gamification_level_entry_point');
+                $point = (int)Settings('gamification_level_entry_point');
                 if ($user->gamification_points >= $point) {
                     $user->gamification_points = $user->gamification_points - $point;
                     $user->save();
@@ -5315,5 +5329,55 @@ if (!function_exists('extractId')) {
         preg_match('/\[id=(\d+)\]/', $input, $matches);
 
         return $matches[1] ?? null;
+    }
+}
+
+
+if (!function_exists('getCartData')) {
+    function getCartData()
+    {
+        $cartCIDs = [];
+        if (Auth::check()) {
+            $cartCIDs = Cart::where('user_id', Auth::id())->get('course_id')->toArray();
+        } else {
+            $sessonCartList = session()->get('cart');
+            if (!empty($sessonCartList)) {
+                foreach ($sessonCartList as $item) {
+                    $cartCIDs[] = $item['course_id'];
+                }
+            }
+        }
+
+        return Course::query()->whereIn('id', $cartCIDs)->get();
+    }
+}
+
+if (!function_exists('getCoursesByCategoryAndLevel')) {
+    function getCoursesByCategoryAndLevel()
+    {
+        $levels = \Modules\CourseSetting\Entities\CourseLevel::query()->where('status', 1)->get()->keyBy('title');
+        $categories = Category::with(['courses.courseLevel'])->get();
+        $structuredData = [];
+
+        foreach ($categories as $category) {
+            $levelData = [];
+            foreach ($levels as $levelTitle => $level) {
+                $levelData[$levelTitle] = [];
+            }
+
+            foreach ($category->courses as $course) {
+                $levelName = $course->courseLevel->title;
+                if (isset($levelData[$levelName])) {
+                    $levelData[$levelName][] = $course;
+                }
+            }
+
+            $structuredData[] = [
+                'category' => $category->name,
+                'levels' => $levelData,
+            ];
+        }
+
+        return $structuredData;
     }
 }

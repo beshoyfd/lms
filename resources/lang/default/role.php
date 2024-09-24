@@ -1,18 +1,18 @@
 <?php
 
 return [
-    'Role List' => 'Role List',
-    'Role' => 'Role',
-    'Instructor Role' => 'Instructor Role',
-    'Details' => 'Details',
-    'Role has been added Successfully' => 'Role has been added Successfully',
-    'Role has been updated Successfully' => 'Role has been updated Successfully',
-    'Edit Role Info' => 'Edit Role Info',
-    'Role has been deleted Successfully' => 'Role has been deleted Successfully',
-    'Permission' => 'Permission',
-    'Menu' => 'Menu',
-    'Sub-Menu' => 'Sub-Menu',
-    'assign_permission' => 'Assign Permission',
-    'role_permission' => 'Role Permission',
-    'Student Role' => 'Student Role'
+    'Role List' => 'قائمة الأدوار',
+    'Role' => 'دور',
+    'Instructor Role' => 'دور المدرب',
+    'Details' => 'تفاصيل',
+    'Role has been added Successfully' => 'تمت إضافة الدور بنجاح',
+    'Role has been updated Successfully' => 'تم تحديث الدور بنجاح',
+    'Edit Role Info' => 'تحرير معلومات الدور',
+    'Role has been deleted Successfully' => 'تم حذف الدور بنجاح',
+    'Permission' => 'إذن',
+    'Menu' => 'قائمة',
+    'Sub-Menu' => 'قائمة فرعية',
+    'assign_permission' => 'تعيين إذن',
+    'role_permission' => 'إذن الدور',
+    'Student Role' => 'دور الطالب'
 ];

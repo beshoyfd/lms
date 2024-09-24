@@ -1,5 +1,5 @@
 @extends(theme('layouts.dashboard_master'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{__('communication.Your referral link')}} @endsection
+@section('title'){{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('communication.Your referral link')}} @endsection
 @section('css') @endsection
 @section('js')
     <script src="{{ asset('public/frontend/infixlmstheme/js/copy_currency.js') }}"></script>

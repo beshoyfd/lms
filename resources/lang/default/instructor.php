@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'Instructors' => 'Instructors',
-    'Add Instructor' => 'Add Instructor',
-    'About' => 'About',
-    'Date of Birth' => 'Date of Birth',
-    'Payout Lists' => 'Payout Lists',
-    'Payout' => 'Payout',
-    'Instructor' => 'Instructor'
+    'Instructors' => 'المدربين',
+    'Add Instructor' => 'إضافة مدرب',
+    'About' => 'حول',
+    'Date of Birth' => 'تاريخ الميلاد',
+    'Payout Lists' => 'قوائم الدفع',
+    'Payout' => 'الدفع',
+    'Instructor' => 'مدرب'
 ];

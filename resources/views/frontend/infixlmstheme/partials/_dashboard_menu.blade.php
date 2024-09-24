@@ -49,7 +49,7 @@
         {{--            </div>--}}
         {{--        </div>--}}
         <form action="{{route('search')}}">
-            <div class="input-group theme_search_field ">
+            <div class="input-group theme_search_field d-none">
                 <div class="input-group-prepend">
                     <button class="btn" type="button" id="button-addon1"><i
                             class="ti-search"></i>
@@ -195,7 +195,7 @@
             </div>
             <div class="profile_info_iner collaps_part_content">
                 <a href="{{url('/')}}">{{__('frontendmanage.Home')}}</a>
-                <a href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
+{{--                <a href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>--}}
                 <a href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
                 @if(isModuleActive('Affiliate') && $user->affiliate_request!=1)
                     <a href="{{routeIsExist('affiliate.users.request')?route('affiliate.users.request'):''}}">{{__('frontend.Join Affiliate Program')}}</a>

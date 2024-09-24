@@ -14,7 +14,7 @@ class AddHomeworkModule extends Migration
     public function up()
     {
         $totalCount = \Illuminate\Support\Facades\DB::table('modules')->count();
-        
+
         $newModule = new \Modules\ModuleManager\Entities\Module();
         $newModule->name = 'Homework';
         $newModule->details = 'Homework Module For InfixLMS. ';
@@ -24,7 +24,7 @@ class AddHomeworkModule extends Migration
 
         $newModule = new \Modules\ModuleManager\Entities\Module();
         $newModule->name = 'Communicate';
-        $newModule->details = 'Communicate module for Infix LMS';
+        $newModule->details = 'Communicate module for FOL EDU';
         $newModule->status = 0;
         $newModule->order = $totalCount;
         $newModule->save();

@@ -42,7 +42,7 @@ class CoursePageSection extends Component
         if (empty($language)) {
             $language = '';
         } else {
-            $row_languages = explode(',', $language);
+            $row_languages = $language;
             $languages = [];
             $LanguageList = Language::whereIn('code', $row_languages)->first();
             foreach ($row_languages as $l) {
@@ -66,8 +66,7 @@ class CoursePageSection extends Component
         if (empty($level)) {
             $level = '';
         } else {
-            $levels = explode(',', $level);
-            $query->whereIn('level', $levels);
+            $query->whereIn('level', $level);
         }
         if (isModuleActive('Org')) {
             $required_type_request = $this->request->required_type;
@@ -86,12 +85,12 @@ class CoursePageSection extends Component
         }
 
 
-        $category = $this->request->category;
+        $category = $this->request->category_id;
         if (empty($category)) {
             $category = '';
         } else {
-            $categories = explode(',', $category);
-            $query->whereIn('category_id', $categories);
+            //$categories = explode(',', $category);
+            $query->where('category_id', $category);
         }
 
         $subCategory = $this->request->get('sub-category');
@@ -137,7 +136,13 @@ class CoursePageSection extends Component
             }
         }
 
-        $courses = $query->paginate(itemsGridSize());
+        $q = $this->request->q;
+
+        if($q){
+            $query->where('title', 'like', '%' . $q . '%');
+        }
+
+        $courses = $query->paginate($this->request->pg_size ?? itemsGridSize());
         $total = $courses->total();
         $levels = CourseLevel::getAllActiveData();
         return view(theme('components.course-page-section'), compact('levels', 'mode', 'category', 'level', 'order', 'language', 'type', 'total', 'courses'));

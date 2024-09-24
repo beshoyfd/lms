@@ -1,7 +1,7 @@
 <!-- hero area:start -->
 @extends(theme('layouts.master'))
 @section('title')
-    {{ Settings('site_title') ? Settings('site_title') : 'Infix LMS' }} | {{ __('membership.Membership Registration') }}
+    {{ __(Settings('site_title')) ? __(Settings('site_title')) : 'JOY' }} | {{ __('membership.Membership Registration') }}
 @endsection
 @section('css')
 

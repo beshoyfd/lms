@@ -5,9 +5,9 @@
 @else
     <nav class="sidebar">
         <div class="logo d-flex justify-content-between">
-            <a href="{{url('/')}}"><img
+            <a href="{{url('/')}}" style="height: 200px;"><img
                     src="{{getCourseImage(Settings('logo3')?Settings('logo3'):'public/uploads/settings/logo1.png')}}"
-                    alt=""></a>
+                    alt="" width="350"></a>
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
             </div>
@@ -609,7 +609,7 @@
                 @endif
 
 
-                @if (permissionCheck('deposit') && showEcommerce())
+                @if (permissionCheck('deposit') && showEcommerce() && false)
                     <li>
                         <a href="{{route('deposit')}}"
                            class=" d-flex align-items-center {{ routeIs('deposit')  ? 'active' : '' }}">
@@ -661,7 +661,7 @@
                         </a>
                     </li>
                 @endif
-                @if (permissionCheck('referral') && showEcommerce())
+                @if (permissionCheck('referral') && showEcommerce() && false)
                     <li>
                         <a href="{{route('referral')}}"
                            class=" d-flex align-items-center {{ routeIs('referral')  ? 'active' : '' }}">

@@ -1,5 +1,5 @@
 <?php
 return [
-"BulkPrint" => "طباعة نقطي",
-"No Student Found" => "لم يتم ايجاد أي طالب",
+    'BulkPrint' => 'BulkPrint',
+    'No Student Found' => 'No Student Found'
 ];

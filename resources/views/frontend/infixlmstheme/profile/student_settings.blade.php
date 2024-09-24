@@ -1,6 +1,6 @@
 @extends(theme('layouts.dashboard_master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{__('profile.profile')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('profile.profile')}}
 @endsection
 @section('css')
     <link href="{{asset('public/frontend/infixlmstheme/css/select2.min.css')}}{{assetVersion()}}" rel="stylesheet"/>
@@ -330,7 +330,7 @@
                 <h3 class="mb-0 fw-bold">{{__('profile.profile_settings')}}</h3>
                 <div class="d-flex align-items-center ms-auto  pe-0 pr-lg-4">
                     <p class="mb-0 me-2">{{ __('profile.active_offline_status') }}</p>
-                    <label class="lmsSwitch_toggle d-flex align-items-center ms-auto" for="autoNext">
+                    <label class="lmsSwitch_toggle d align-items-center ms-auto d-none" for="autoNext">
                         <input value="1" name="offline_status"
                                {{@$user->userInfo->offline_status?'checked':""}}  class="offline_status_change"
                                type="checkbox" id="autoNext">
@@ -362,23 +362,23 @@
                                 <!-- image tab -->
                                 @include(theme('profile._images_tab'))
                                 <!-- about tab -->
-                                @include(theme('profile._about_tab'))
-                                <!-- education tab -->
-                                @include(theme('profile._education_tab'))
-                                <!-- experience tab -->
-                                @include(theme('profile._experience_tab'))
-                                <!-- skills tab -->
-                                @include(theme('profile._skills_tab'))
-                                <!-- financial tab -->
-                                @include(theme('profile._financial_tab'))
-                                <!-- api tab -->
-                                @include(theme('profile._api_tab'))
-                                <!-- extra information tab -->
-                                @include(theme('profile._extra_info_tab'))
-                                <!-- identity & documents tab -->
-                                @include(theme('profile._identity_tab'))
-                                <!-- social & contact tab -->
-                                @include(theme('profile._social_tab'))
+{{--                                @include(theme('profile._about_tab'))--}}
+{{--                                <!-- education tab -->--}}
+{{--                                @include(theme('profile._education_tab'))--}}
+{{--                                <!-- experience tab -->--}}
+{{--                                @include(theme('profile._experience_tab'))--}}
+{{--                                <!-- skills tab -->--}}
+{{--                                @include(theme('profile._skills_tab'))--}}
+{{--                                <!-- financial tab -->--}}
+{{--                                @include(theme('profile._financial_tab'))--}}
+{{--                                <!-- api tab -->--}}
+{{--                                @include(theme('profile._api_tab'))--}}
+{{--                                <!-- extra information tab -->--}}
+{{--                                @include(theme('profile._extra_info_tab'))--}}
+{{--                                <!-- identity & documents tab -->--}}
+{{--                                @include(theme('profile._identity_tab'))--}}
+{{--                                <!-- social & contact tab -->--}}
+{{--                                @include(theme('profile._social_tab'))--}}
                                 <!-- delete account -->
                                 @include(theme('profile._delete_account_tab'))
 

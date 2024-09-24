@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | @lang('frontendmanage.Payment Method')
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | @lang('frontendmanage.Payment Method')
 @endsection
 @section('css')
 @endsection

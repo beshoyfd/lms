@@ -28,7 +28,7 @@
                                     <tbody>
                                     <td>
                                         <img style="width: 108px" src="{{getCourseImage(Settings('logo') )}}"
-                                             alt="{{ Settings('site_name')  }}">
+                                             alt="{{ __(Settings('site_name'))  }}">
                                     </td>
                                     <td style="text-align: right">
                                         <h3 class="invoice_no black_color" style=" margin-bottom: 10px" ;>
@@ -66,7 +66,7 @@
                                             <p class="invoice_grid"
                                                style="font-size:14px; font-weight: 400; color:#3C4777;">
                                                 <span
-                                                    class="black_color">{{__('student.Company')}}: </span><span>{{Settings('site_title') }}</span>
+                                                    class="black_color">{{__('student.Company')}}: </span><span>{{__(Settings('site_title')) }}</span>
                                             </p>
                                             <p class="invoice_grid"
                                                style="font-size:14px; font-weight: 400; color:#3C4777;">

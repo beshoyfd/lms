@@ -42,4 +42,15 @@ class FooterWidget extends Model
             }
         });
     }
+    public function getNameAttribute($value)
+    {
+
+        if(!is_array($value) && app()->getLocale() == 'ar'){
+            $jsonTranslate = __($value);
+            if(!is_array($jsonTranslate))
+                return $jsonTranslate;
+        }
+
+        return $value;
+    }
 }

@@ -112,7 +112,7 @@
                             </a>
                         </li>
 
-                        <li class="d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        <li class="d-none" data-bs-toggle="tooltip" data-bs-placement="bottom"
                             title="{{__('common.Toggle Sidebar')}}" data-bs-custom-class="tooltip-zindex">
                             <button class="nav-layout-toggler   p-0">
                                 @if($user->sidebar!=1)
@@ -155,7 +155,7 @@
                         </li>
 
                         <!-- Theme Toggler start -->
-                        <li class="d-none d-sm-block" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        <li class="d-none " data-bs-toggle="tooltip" data-bs-placement="bottom"
                             title="{{__('common.Toggle Theme')}}" data-bs-custom-class="tooltip-zindex">
                             <div class="theme-toggler" id="">
                                 <div class="icons">

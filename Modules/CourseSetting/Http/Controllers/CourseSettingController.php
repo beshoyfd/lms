@@ -23,6 +23,7 @@ use Modules\CourseSetting\Entities\Course;
 use Modules\CourseSetting\Entities\CourseEnrolled;
 use Modules\CourseSetting\Entities\CourseExercise;
 use Modules\CourseSetting\Entities\CourseLevel;
+use Modules\CourseSetting\Entities\CourseTimeTable;
 use Modules\CourseSetting\Entities\Lesson;
 use Modules\CourseSetting\Entities\SchoolSubject;
 use Modules\Forum\Services\ForumService;
@@ -425,6 +426,9 @@ class CourseSettingController extends Controller
                 $course->image = $imageUrl;
                 $course->thumbnail = $imageUrl;
             }
+
+            $this->saveOrUpdateCourseTimetable($course, $request->timetable);
+
             $course->save();
 
 
@@ -485,7 +489,6 @@ class CourseSettingController extends Controller
 
     public function AdminUpdateCourse(Request $request)
     {
-
         Session::flash('type', 'update');
         Session::flash('id', $request->id);
 
@@ -710,6 +713,7 @@ class CourseSettingController extends Controller
                 $category = $course->category;
             }
             $this->updateTotalCountForCategory($category);
+            $this->saveOrUpdateCourseTimetable($course, $request->timetable);
 
             Toastr::success(trans('common.Operation successful'), trans('common.Success'));
             return redirect()->back();
@@ -1169,7 +1173,7 @@ class CourseSettingController extends Controller
 
         $hasCourse = CourseEnrolled::where('course_id', $id)->count();
         if ($hasCourse != 0) {
-            Toastr::error(trans('frontend.Course Already Enrolled By').' ' . $hasCourse . ' '.trans('frontend.Student'), trans('common.Failed'));
+            Toastr::error(trans('frontend.Course Already Enrolled By') . ' ' . $hasCourse . ' ' . trans('frontend.Student'), trans('common.Failed'));
             return redirect()->back();
         }
 
@@ -1552,4 +1556,37 @@ class CourseSettingController extends Controller
         $category->total_quizzes = $category->QuizzesCoun;
         $category->save();
     }
+
+    protected function saveOrUpdateCourseTimetable($course, $timetable)
+    {
+        $course->timeTables()->delete();
+        if ($timetable && is_array($timetable)) {
+            foreach ($timetable['start_date'] as $index => $startDate) {
+                $endDate = $timetable['end_date'][$index] ?? null;
+                $startTime = $timetable['start_time'][$index] ?? null;
+                $endTime = $timetable['end_time'][$index] ?? null;
+                $duration = $timetable['durations'][$index] ?? null;
+                $pdus = $timetable['pdus'][$index] ?? null;
+
+                if (is_null($endDate) && is_null($startDate) && is_null($duration) && is_null($pdus) && is_null($endTime)) {
+                    continue;
+                }
+
+                CourseTimeTable::create(
+                    [
+                        'course_id' => $course->id,
+                        'start_date' => $startDate,
+                        'start_time' => $startTime,
+                        'end_date' => $endDate,
+                        'end_time' => $endTime,
+                        'duration' => $duration,
+                        'pdus' => $pdus,
+                    ]
+                );
+
+            }
+        }
+    }
+
+
 }

@@ -1,5 +1,5 @@
 @extends(theme('layouts.dashboard_master'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{__('certificate.My Certificates')}} @endsection
+@section('title'){{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('certificate.My Certificates')}} @endsection
 @section('css') @endsection
 @section('js') @endsection
 

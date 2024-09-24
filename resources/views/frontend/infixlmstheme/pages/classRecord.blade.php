@@ -1,6 +1,6 @@
 @extends(theme('layouts.full_screen_master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{ $course->title}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{ $course->title}}
 @endsection
 @section('css')
     @if(isRtl())
@@ -124,7 +124,7 @@
                                 <div class="">
                                     <a class="logo_img" href="{{url('/')}}">
                                         <img class="p-2" src="{{getLogoImage(Settings('logo') )}}" width="150"
-                                             alt="{{ Settings('site_name')  }}">
+                                             alt="{{ __(Settings('site_name'))  }}">
                                     </a>
                                 </div>
                                 <div class="category_search d-none d-lg-flex category_box_iner">

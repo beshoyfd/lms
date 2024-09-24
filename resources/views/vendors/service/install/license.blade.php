@@ -14,33 +14,22 @@
             <div class="row">
                 <div class="col-md-12">
                     <form method="post" action="{{ route('service.license') }}" id="content_form">
-{{--                        <div class="form-group">--}}
-{{--                            <label class="required" for="access_code">{{ __('service::install.access_code') }}</label>--}}
-{{--                            <input type="text" class="form-control " name="access_code" id="access_code"  required="required" autofocus="" value="{{ old('access_code', request('access_code')) }}"  placeholder="{{ __('service::install.access_code') }}" >--}}
-{{--                            @if(request('message'))--}}
-{{--                                <span class="text-danger">{{ request('message') }}</span>--}}
-{{--                            @endif--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label class="required" for="envato_email">{{ __('service::install.envato_email') }}</label>--}}
-{{--                            <input type="email" class="form-control" name="envato_email" id="envato_email" value="{{ old('envato_email', request('envato_email')) }}" required="required" placeholder="{{ __('service::install.envato_email') }}" >--}}
-{{--                        </div>--}}
+                        <div class="form-group">
+                            <label class="required" for="access_code">{{ __('service::install.access_code') }}</label>
+                            <input type="text" class="form-control " name="access_code" id="access_code"  required="required" autofocus="" value="{{ old('access_code', request('access_code')) }}"  placeholder="{{ __('service::install.access_code') }}" >
+                            @if(request('message'))
+                                <span class="text-danger">{{ request('message') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="envato_email">{{ __('service::install.envato_email') }}</label>
+                            <input type="email" class="form-control" name="envato_email" id="envato_email" value="{{ old('envato_email', request('envato_email')) }}" required="required" placeholder="{{ __('service::install.envato_email') }}" >
+                        </div>
 
-{{--                        <div class="form-group">--}}
-{{--                            <label class="required" for="installed_domain">{{ __('service::install.installed_domain') }}</label>--}}
-{{--                            <input type="text" class="form-control" name="installed_domain" id="installed_domain" required="required" readonly value="{{ app_url() }}" >--}}
-{{--                        </div>--}}
-
-                        <input type="hidden" name="access_code" value="f3d5ea8f-27ab-4ef6-927f-675e3a0f69db">
-                        <input type="hidden" name="envato_email" value="info@digitalnests.com">
-                        <input type="hidden" name="installed_domain" value="{{ app_url() }}">
-
-                        <p class="text-center alert alert-success mt-40">
-                            License Verification Passed
-                        </p>
-
-
-
+                        <div class="form-group">
+                            <label class="required" for="installed_domain">{{ __('service::install.installed_domain') }}</label>
+                            <input type="text" class="form-control" name="installed_domain" id="installed_domain" required="required" readonly value="{{ app_url() }}" >
+                        </div>
                         @if($reinstall)
                             <div class="form-group">
                                 <label data-id="bg_option" class="primary_checkbox d-flex mr-12 ">

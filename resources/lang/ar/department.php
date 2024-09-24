@@ -1,4 +1,5 @@
 <?php
+
 return [
-"Department" => "الادارة",
+    'Department' => 'قسم',
 ];

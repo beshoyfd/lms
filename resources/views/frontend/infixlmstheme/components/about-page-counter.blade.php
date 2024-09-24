@@ -1,12 +1,12 @@
 <div>
     <style>
         .counter_area::before {
-            background-image: url('{{asset($about->image4)}}');
+
         }
     </style>
     <div class="counter_area">
         <div class="container">
-            <div class="row">
+            <div class="row ">
                 <div class="col-lg-7">
                     <div class="counter_wrapper">
                         <div class="single_counter">

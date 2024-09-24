@@ -157,7 +157,7 @@
                     <div class="box_header mt-3">
                         <div class="align-items-center d-flex justify-content-between main-title w-100">
                             <h3 class="mb-0 mr-30">{{__('profile.profile_settings')}}</h3>
-                            <div class="checkbox_wrap d-flex align-items-center text-end ml-auto">
+                            <div class="checkbox_wrap d align-items-center text-end ml-auto d-none">
                                 <label class="mb-0 me-1">{{ __('profile.active_offline_status') }}</label>
                                 <label for="offline_status" class="switch_toggle">
                                     <input {{@$user->userInfo->offline_status?'checked':""}}  type="checkbox"

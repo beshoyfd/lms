@@ -317,6 +317,20 @@ class Course extends Model
         return $price;
     }
 
+    public function getDiscountPercentage()
+    {
+        $price = $this->attributes['price'];
+        $discountPrice = $this->getDiscountPriceAttribute();
+
+        if ($price > 0) {
+            $discount = ($price - $discountPrice) / $price * 100;
+            return number_format($discount);
+        }
+
+        return 0;
+    }
+
+
     public function courseLevel()
     {
         return $this->belongsTo(CourseLevel::class, 'level')->withDefault([
@@ -942,14 +956,22 @@ class Course extends Model
     {
         return $this->hasMany(CertificateRecord::class, 'course_id', 'id');
     }
+
     public function instructor()
     {
         return $this->belongsTo(User::class, 'user_id', 'id')->withDefault([
             'name' => ' '
         ]);
     }
-    public function getModeOfDeliveryAttribute($value){
+
+    public function getModeOfDeliveryAttribute($value)
+    {
         return (int)$value;
+    }
+
+    public function timeTables()
+    {
+        return $this->hasMany(CourseTimeTable::class);
     }
 
 

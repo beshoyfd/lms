@@ -1,10 +1,11 @@
 <?php
+
 return [
-"failed" => "بيانات الاعتماد هذه لا تطابق سجلاتنا.",
-"throttle" => "يوجد عدد كبير جدا من محاولات بدء الاتصال. برجاء اعادة المحاولة مرة أخرى في : ثواني.",
-"Your verification code does not matched" => "كود التحقق الخاص بك لا يتم مطابقته",
-"Your verification time is expired. Please resend code for login" => "انتهاء وقت التحقق الخاص بك. برجاء اعادة ارسال الكود لبدء الاتصال",
-"Permission denied" => "تم رفض التصريح",
-"multiple_device_login_error_msg" => "لقد قمت بالفعل ببدء الاتصال ببعض الأجهزة الأخرى ، هل ترغب في انهاء الاتصال من هناك وبدء الاتصال هنا ؟",
-"Force login" => "بدء الاتصال بالقوة",
+    'failed' => 'هذه البيانات لا تتطابق مع سجلاتنا.',
+    'throttle' => 'عدد محاولات تسجيل الدخول كثيرة جدًا. يرجى المحاولة مرة أخرى بعد :seconds ثانية.',
+    'Your verification code does not matched' => 'رمز التحقق الخاص بك لا يتطابق',
+    'Your verification time is expired. Please resend code for login' => 'انتهت صلاحية وقت التحقق الخاص بك. يرجى إعادة إرسال الرمز لتسجيل الدخول',
+    'Permission denied' => 'تم رفض الإذن',
+    'multiple_device_login_error_msg' => 'أنت مسجل الدخول بالفعل على جهاز آخر، هل ترغب في تسجيل الخروج من هناك وتسجيل الدخول هنا؟',
+    'Force login' => 'تسجيل الدخول بالقوة',
 ];

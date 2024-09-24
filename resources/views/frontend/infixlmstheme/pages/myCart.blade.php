@@ -2,14 +2,14 @@
     if(auth()->user()->role_id == 3){
         $extend_file = theme('layouts.dashboard_master');
     }else{
-        $extend_file = theme('layouts.master');
+        $extend_file = theme('layouts.master-front');
     }
 @endphp
 
 @extends($extend_file)
 
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | {{__('coupons.My Cart')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('coupons.My Cart')}}
 @endsection
 @section('css') @endsection
 

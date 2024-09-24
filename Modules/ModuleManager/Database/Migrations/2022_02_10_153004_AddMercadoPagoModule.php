@@ -10,7 +10,7 @@ class AddMercadoPagoModule extends Migration
         $totalCount = \Illuminate\Support\Facades\DB::table('modules')->count();
         $newModule = new \Modules\ModuleManager\Entities\Module();
         $newModule->name = 'MercadoPago';
-        $newModule->details = 'MercadoPago module for Infix LMS';
+        $newModule->details = 'MercadoPago module for FOL EDU';
         $newModule->status = 0;
         $newModule->order = $totalCount;
         $newModule->save();

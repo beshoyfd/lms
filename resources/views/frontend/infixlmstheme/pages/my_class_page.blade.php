@@ -1,7 +1,7 @@
 @extends(theme('layouts.dashboard_master'))
 
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} |
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} |
     @if( routeIs('myclass'))
         {{__('class.My Class')}}
     @else

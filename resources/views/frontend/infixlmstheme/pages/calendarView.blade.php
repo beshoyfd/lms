@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'Infix LMS'}} | Calendar
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | Calendar
 @endsection
 @section('css')
     <link rel="stylesheet"

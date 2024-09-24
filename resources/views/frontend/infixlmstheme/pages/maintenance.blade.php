@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <title>
-        {{Settings('site_title')}} | {{$maintain->maintenance_title}}
+        {{__(Settings('site_title'))}} | {{$maintain->maintenance_title}}
     </title>
 
 

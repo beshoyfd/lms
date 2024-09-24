@@ -203,6 +203,8 @@ class AppServiceProvider extends ServiceProvider
                 theme('partials._dashboard_menu'),
                 theme('pages.fullscreen_video'),
                 theme('pages.index'),
+                theme('pages.about'),
+                theme('pages.contact'),
                 theme('pages.courses'),
                 theme('pages.free_courses'),
                 theme('partials._menu'),
@@ -247,6 +249,7 @@ class AppServiceProvider extends ServiceProvider
                         return collect();
                     }
                 });
+
                 $view->with($data);
             });
             View::composer([

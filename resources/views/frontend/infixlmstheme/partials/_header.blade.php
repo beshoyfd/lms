@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="en" itemscope
+<html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="{{app()->getLocale()}}" itemscope
       itemtype="{{url('/')}}">
 
 <head>
@@ -12,12 +12,12 @@
 
     <meta property="og:url" content="{{url()->current()}}"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="@yield('meta_title',Settings('site_title'));"/>
+    <meta property="og:title" content="@yield('meta_title',__(Settings('site_title')));"/>
     <meta property="og:description" content="@yield('meta_description',Settings('footer_about_description'))"/>
     <meta property="og:image" content="@yield('og_image',Settings('logo'))"/>
     <meta property="og:type" content="website">
     <meta property="og:image:type" content="image/png"/>
-    <meta name="title" content="@yield('meta_title',Settings('site_title'));">
+    <meta name="title" content="@yield('meta_title',__(Settings('site_title')));">
     <meta name="description" content="{{Settings('meta_description')}}">
     <meta name="keywords" content="{{Settings('meta_keywords')}}">
     <title>
@@ -39,7 +39,7 @@
         </script>
     @endif
     <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="{{ Settings('site_name')  }}">
+    <meta itemprop="name" content="{{ __(Settings('site_name'))  }}">
 
     <meta itemprop="image" content="{{asset(Settings('logo') )}}">
     @if(routeIs('frontendHomePage'))
@@ -56,7 +56,7 @@
         <meta property="og:description" content="{{ $course->meta_description  }}">
         <meta itemprop="keywords" content="{{ $course->meta_keywords }}">
     @endif
-    <meta itemprop="author" content="{{Settings('site_name')}}">
+    <meta itemprop="author" content="{{__(Settings('site_name'))}}">
 
     <!-- Facebook Meta Tags -->
 
@@ -167,6 +167,21 @@
     @yield('css')
 
     <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme/css/custom.css') }}">
+
+
+    @if(app()->getLocale() == 'ar')
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@200;300;400;500;700;800;900&display=swap');
+
+            body{
+                font-family: "Almarai", sans-serif;
+                direction: rtl;
+                a{
+                    direction: rtl;
+                }
+            }
+        </style>
+    @endif
 </head>
 
 <body>
