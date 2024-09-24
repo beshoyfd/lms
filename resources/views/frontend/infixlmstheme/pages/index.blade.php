@@ -22,7 +22,7 @@
             <section class="row justify-content-center align-items-center">
                 <div class="text-center col-md-6">
                     <div class="position-relative mx-auto my-3" >
-                        <h1 style="color:#2a3261;">{{ __("JOY Of Learning") }}</h1>
+                        <h1 style="color:#2a3261;">{{ __("JOY OF LEARNING") }}</h1>
                         <h2 style="color:#CD191D; z-index:99;" class="mb-4">{{ __("The High Institute of the Joy of Science for Training") }}</h2>
                         <h3 class=" position-relative z-2 mb-0" style="color:#2a3261;">{{__('A comprehensive educational organization just for you.')}}</h3>
                         <div class="text-secondary-brand position-absolute bottom-0 start-50 translate-middle-x w-100 mt-md-3 ">
