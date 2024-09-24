@@ -1,6 +1,6 @@
 @extends(theme('layouts.full_screen_master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{ $course->title}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{ $course->title}}
 @endsection
 @section('css')
     @if(isRtl())
@@ -1132,7 +1132,7 @@
             @endif
             @if ($lesson->host == 'XAPI' || $lesson->host == 'XAPI-AwsS3')
                 <iframe id="video-id" class="video_iframe"
-                        src="{{ asset($lesson->video_url) }}?actor=%7B%22mbox%22%3A%22mailto%3A{{ Settings('email') }}%22%2C%22name%22%3A%22{{ Settings('site_title') }}%22%2C%22objectType%22%3A%22Agent%22%7D&amp;endpoint={{ url('xapi') }}&amp;course_id={{ $course->id }}&amp;lesson_id={{ $lesson->id }}&amp;next_lesson={{ $lesson_ids[$current_index + 1] ?? '' }}"></iframe>
+                        src="{{ asset($lesson->video_url) }}?actor=%7B%22mbox%22%3A%22mailto%3A{{ Settings('email') }}%22%2C%22name%22%3A%22{{ __(Settings('site_title')) }}%22%2C%22objectType%22%3A%22Agent%22%7D&amp;endpoint={{ url('xapi') }}&amp;course_id={{ $course->id }}&amp;lesson_id={{ $lesson->id }}&amp;next_lesson={{ $lesson_ids[$current_index + 1] ?? '' }}"></iframe>
             @endif
             @if ($lesson->host == 'SCORM' || $lesson->host == 'SCORM-AwsS3')
                 @if (!empty($lesson->video_url))

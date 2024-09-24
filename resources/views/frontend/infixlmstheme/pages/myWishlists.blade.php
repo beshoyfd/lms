@@ -1,6 +1,6 @@
 @extends(theme('layouts.dashboard_master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('frontend.Wishlist')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('frontend.Wishlist')}}
 @endsection
 @section('css') @endsection
 @section('js') @endsection

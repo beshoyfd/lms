@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('appointment.Appointment')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('appointment.Appointment')}}
 @endsection
 @section('css')
     @if(isRtl())

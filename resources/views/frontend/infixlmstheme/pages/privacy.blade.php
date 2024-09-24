@@ -1,5 +1,5 @@
 @extends(theme('layouts.master'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{$privacy_policy->page_banner_title}} @endsection
+@section('title'){{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{$privacy_policy->page_banner_title}} @endsection
 @section('css') @endsection
 @section('js')
     <script src="{{asset('public/frontend/infixlmstheme/js/scrollIt.js')}}"></script>

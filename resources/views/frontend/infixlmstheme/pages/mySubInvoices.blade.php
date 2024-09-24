@@ -1,6 +1,6 @@
 @extends(theme('layouts.dashboard_master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | Invoice
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | Invoice
 @endsection
 @section('css')
     <link href="{{asset('public/frontend/infixlmstheme/css/my_invoice.css')}}{{assetVersion()}}" rel="stylesheet"/>

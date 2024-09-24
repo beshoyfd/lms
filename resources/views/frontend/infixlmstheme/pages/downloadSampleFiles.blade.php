@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} |  {{$course->title}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} |  {{$course->title}}
 @endsection
 @section('og_image')
     {{getCourseImage($course->image)}}

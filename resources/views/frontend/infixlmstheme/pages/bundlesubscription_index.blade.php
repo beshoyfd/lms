@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('frontend.Bundle')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('frontend.Bundle')}}
 @endsection
 @section('css')
     <link href="{{asset('public/frontend/infixlmstheme/css/package.css')}}" rel="stylesheet">

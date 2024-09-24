@@ -9,7 +9,7 @@
 @extends($extend_file)
 
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('coupons.My Cart')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('coupons.My Cart')}}
 @endsection
 @section('css') @endsection
 

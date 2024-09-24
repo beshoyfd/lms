@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('certificate.Certificate')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('certificate.Certificate')}}
 @endsection
 @section('css') @endsection
 @section('js')

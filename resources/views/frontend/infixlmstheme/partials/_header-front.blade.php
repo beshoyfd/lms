@@ -13,12 +13,12 @@
 
     <meta property="og:url" content="{{url()->current()}}"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="@yield('meta_title',Settings('site_title'));"/>
+    <meta property="og:title" content="@yield('meta_title',__(Settings('site_title')));"/>
     <meta property="og:description" content="@yield('meta_description',Settings('footer_about_description'))"/>
     <meta property="og:image" content="@yield('og_image',Settings('logo'))"/>
     <meta property="og:type" content="website">
     <meta property="og:image:type" content="image/png"/>
-    <meta name="title" content="@yield('meta_title',Settings('site_title'));">
+    <meta name="title" content="@yield('meta_title',__(Settings('site_title')));">
     <meta name="description" content="{{Settings('meta_description')}}">
     <meta name="keywords" content="{{Settings('meta_keywords')}}">
     <title>

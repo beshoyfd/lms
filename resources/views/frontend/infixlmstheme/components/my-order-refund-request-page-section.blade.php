@@ -50,7 +50,7 @@
                                                                     {{ __('product.seller') }}
                                                                     : </h4>
                                                                 <p class="font_14 f_w_400 m-0 lh-base">
-                                                                    {{ Settings('site_title') }}
+                                                                    {{ __(Settings('site_title')) }}
                                                                 </p>
                                                             </div>
 

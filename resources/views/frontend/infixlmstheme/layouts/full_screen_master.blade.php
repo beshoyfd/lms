@@ -6,7 +6,7 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-        {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}}
+        {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}}
     </title>
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="{{ __(Settings('site_name'))  }}">
@@ -15,7 +15,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <!-- Facebook Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ Settings('site_title')  }}">
+    <meta property="og:title" content="{{ __(Settings('site_title'))  }}">
     <meta property="og:description" content="{{ Settings('meta_description')  }}">
     <meta property="og:image" content="{{asset(Settings('logo') )}}"/>
     <meta property="og:image:type" content="image/png"/>

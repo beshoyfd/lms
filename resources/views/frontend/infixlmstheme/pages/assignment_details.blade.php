@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('assignment.Assignment')}}
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('assignment.Assignment')}}
 @endsection
 @section('css')
     <link href="{{asset('public/backend/css/summernote-bs4.min.css/')}}" rel="stylesheet">

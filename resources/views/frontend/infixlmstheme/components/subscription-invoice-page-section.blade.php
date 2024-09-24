@@ -66,7 +66,7 @@
                                             <p class="invoice_grid"
                                                style="font-size:14px; font-weight: 400; color:#3C4777;">
                                                 <span
-                                                    class="black_color">{{__('student.Company')}}: </span><span>{{Settings('site_title') }}</span>
+                                                    class="black_color">{{__('student.Company')}}: </span><span>{{__(Settings('site_title')) }}</span>
                                             </p>
                                             <p class="invoice_grid"
                                                style="font-size:14px; font-weight: 400; color:#3C4777;">
