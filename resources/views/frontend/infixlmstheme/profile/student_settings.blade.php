@@ -330,7 +330,7 @@
                 <h3 class="mb-0 fw-bold">{{__('profile.profile_settings')}}</h3>
                 <div class="d-flex align-items-center ms-auto  pe-0 pr-lg-4">
                     <p class="mb-0 me-2">{{ __('profile.active_offline_status') }}</p>
-                    <label class="lmsSwitch_toggle d-flex align-items-center ms-auto" for="autoNext">
+                    <label class="lmsSwitch_toggle d align-items-center ms-auto d-none" for="autoNext">
                         <input value="1" name="offline_status"
                                {{@$user->userInfo->offline_status?'checked':""}}  class="offline_status_change"
                                type="checkbox" id="autoNext">

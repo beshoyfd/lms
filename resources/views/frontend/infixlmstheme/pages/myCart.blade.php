@@ -2,7 +2,7 @@
     if(auth()->user()->role_id == 3){
         $extend_file = theme('layouts.dashboard_master');
     }else{
-        $extend_file = theme('layouts.master');
+        $extend_file = theme('layouts.master-front');
     }
 @endphp
 

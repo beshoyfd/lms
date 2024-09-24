@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'Image Gallery' => 'Image Gallery',
-    'Manage Gallery' => 'Manage Gallery',
-    'Add New Image' => 'Add New Image',
-    'Update Image' => 'Update Image',
-    'Add' => 'Add',
-    'Title' => 'Title',
-    'Image' => 'Image',
-    'Recommended size 200px x 200px' => 'Recommended size 200px x 200px',
-    'Recommended size 370px x 250px' => 'Recommended size 370px x 250px',
-    'Description' => 'Description',
-    'Status' => 'Status',
-    'Sorry ! Your gallery is empty' => 'Sorry ! Your gallery is empty',
+    'Image Gallery' => 'معرض الصور',
+    'Manage Gallery' => 'إدارة المعرض',
+    'Add New Image' => 'إضافة صورة جديدة',
+    'Update Image' => 'تحديث الصورة',
+    'Add' => 'إضافة',
+    'Title' => 'العنوان',
+    'Image' => 'الصورة',
+    'Recommended size 200px x 200px' => 'الحجم الموصى به 200 بكسل × 200 بكسل',
+    'Recommended size 370px x 250px' => 'الحجم الموصى به 370 بكسل × 250 بكسل',
+    'Description' => 'الوصف',
+    'Status' => 'الحالة',
+    'Sorry ! Your gallery is empty' => 'عذرًا! معرضك فارغ',
 ];

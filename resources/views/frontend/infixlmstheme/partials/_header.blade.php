@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="en" itemscope
+<html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="{{app()->getLocale()}}" itemscope
       itemtype="{{url('/')}}">
 
 <head>
@@ -167,6 +167,21 @@
     @yield('css')
 
     <link rel="stylesheet" href="{{ asset('public/frontend/infixlmstheme/css/custom.css') }}">
+
+
+    @if(app()->getLocale() == 'ar')
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@200;300;400;500;700;800;900&display=swap');
+
+            body{
+                font-family: "Almarai", sans-serif;
+                direction: rtl;
+                a{
+                    direction: rtl;
+                }
+            }
+        </style>
+    @endif
 </head>
 
 <body>

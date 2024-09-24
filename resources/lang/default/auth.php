@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'Your verification code does not matched' => 'Your verification code does not matched',
-    'Your verification time is expired. Please resend code for login' => 'Your verification time is expired. Please resend code for login',
-    'Permission denied' => 'Permission denied',
-    'multiple_device_login_error_msg' => 'You are already logged in to some other device, do you wish to log out from there and log in here?',
-    'Force login' => 'Force login',
+    'failed' => 'بيانات الاعتماد هذه لا تتطابق مع سجلاتنا.',
+    'throttle' => 'عدد محاولات تسجيل الدخول كثيرة جدًا. يرجى المحاولة مرة أخرى بعد :seconds ثانية.',
+    'Your verification code does not matched' => 'رمز التحقق الخاص بك غير متطابق',
+    'Your verification time is expired. Please resend code for login' => 'انتهت صلاحية وقت التحقق الخاص بك. يرجى إعادة إرسال الرمز لتسجيل الدخول',
+    'Permission denied' => 'تم رفض الإذن',
+    'multiple_device_login_error_msg' => 'أنت مسجل الدخول بالفعل على جهاز آخر، هل ترغب في تسجيل الخروج من هناك وتسجيل الدخول هنا؟',
+    'Force login' => 'تسجيل الدخول بالقوة',
 ];

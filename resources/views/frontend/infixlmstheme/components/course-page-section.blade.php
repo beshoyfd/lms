@@ -24,7 +24,7 @@
     }
 
     .dis__label {
-        top: -67px;
+        top: 0;
         right: 0;
         background: #d02d2d;
         padding: 18px 2px;
@@ -36,6 +36,9 @@
         font-size: 12px;
     }
 
+    .rateing .fa-star{
+        color: orange;
+    }
 </style>
 
 <div class="row pb-2 pb-sm-4">
@@ -87,14 +90,20 @@
                     <div class="col pb-2 pb-sm-3">
                         <div class="card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
                             <span
-                                class="badge bg-danger bg-opacity-10 text-danger position-absolute top-0 start-0 mt-3 ms-3">{{$course->category?->name}}</span>
+                                class="badge bg-danger bg-opacity-10 text-danger position-absolute top-0  mt-3 ms-3">{{$course->category?->name}}</span>
 
                             <a
                                 href="{{route('bookmarkSave',[$course->id])}}"
-                                class="btn btn-icon btn-sm {{$isBookmarked ? 'btn-danger bg-danger' : 'btn-light bg-light'}} border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-3 z-5 {{$isBookmarked ? '' : 'opacity-0'}}"
+                                class="btn btn-icon btn-sm {{$isBookmarked ? 'btn-danger bg-danger' : 'btn-light bg-light'}} border-0 rounded-circle position-absolute top-0 end-0 mt-3 me-5 z-5 {{$isBookmarked ? '' : 'opacity-0'}}"
                                 type="button" aria-label="{{__('Add to Favorites')}}">
                                 <i class="ai-heart fs-xl {{$isBookmarked ?  'text-white' : 'text-nav' }}"></i>
                             </a>
+
+                            @if($course->getDiscountPercentage())
+                                <span class="position-absolute dis__label " style="{{isRtl() ? 'right:unset;left:0;' : ''}}height: 47px;">
+                                {{$course->getDiscountPercentage()}}%</span>
+                            @endif
+
                             <div class="swiper swiper-nav-onhover"
                                  data-swiper-options='{"loop": true, "navigation": {"prevEl": ".btn-prev", "nextEl": ".btn-next"}}'>
                                 <a class="swiper-wrapper"
@@ -103,7 +112,7 @@
                                         <img class="d-block mx-auto"
                                              src="{{ getCourseImage($course->thumbnail) }}"
                                              width="226"
-                                             style="height: 200px;"
+
                                              alt="Product">
                                     </div>
                                 </a>
@@ -117,9 +126,12 @@
                                     type="button" aria-label="Next">
                                     <i class="ai-chevron-right fs-xl text-nav"></i>
                                 </button>
+
                             </div>
 
-                            <div class="course_less_students d-flex justify-content-between boxx bg-primary mt-n1 rounded-1" style="padding: 3px 4px;position:absolute;">
+                            <div class="course_less_students d-flex justify-content-between boxx bg-primary mt-n1 rounded-1" style="padding: 2px 9px;
+  position: absolute;
+  width: 100%;left:0">
                             <span class=" text-white rounded-3 p-1"> <i class="fa fa-list"></i> {{$course->total_lessons}}
                                 {{__('frontend.Lessons')}}</span>
 
@@ -136,12 +148,9 @@
 
 
                             </div>
+
                         </div>
                         <div class="d-flex mb-1 position-relative">
-                            @if($course->getDiscountPercentage())
-                            <span class="position-absolute dis__label">
-                                {{$course->getDiscountPercentage()}}%</span>
-                            @endif
                             <h3 class="h6 mb-0">
                                 <a href="{{courseDetailsUrl(@$course->id,@$course->type,@$course->slug)}}">
                                     {{$course->title}}
@@ -150,9 +159,8 @@
 
                         </div>
                         <div class="d-flex align-items-center">
-{{--                            <x-price-tag :price="$course->price"--}}
-{{--                                         :discount="$course->discount_price"/>--}}
-                            Soon
+                            <x-price-tag :price="$course->price"
+                                         :discount="$course->discount_price"/>
                         </div>
 
 
@@ -162,10 +170,10 @@
                                     @if(!$course->isLoginUserEnrolled && !$course->isLoginUserCart)
                                         <div class="nav ms-auto" data-bs-toggle="tooltip"
                                              data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
-                                             data-bs-placement="left" title="Add to cart">
+                                             data-bs-placement="left" title="{{__("Add to cart")}}">
                                             <a class="nav-link fs-lg py-2 px-1 cart_store"
                                                href="{{route('addToCart',[@$course->id])}}"
-                                               aria-label="Add to Cart">
+                                               aria-label="{{__("Add to cart")}}">
                                                 <i class="ai-cart"></i>
                                             </a>
                                         </div>
@@ -175,10 +183,10 @@
                                     @if(!$course->isGuestUserCart)
                                         <div class="nav ms-auto" data-bs-toggle="tooltip"
                                              data-bs-template='<div class="tooltip fs-xs" role="tooltip"><div class="tooltip-inner bg-light text-body-secondary p-0"></div></div>'
-                                             data-bs-placement="left" title="Add to cart">
+                                             data-bs-placement="left" title="{{__("Add to cart")}}">
                                             <a class="nav-link fs-lg py-2 px-1 cart_store"
                                                href="{{route('addToCart',[@$course->id])}}"
-                                               aria-label="Add to Cart">
+                                               aria-label="{{__("Add to cart")}}">
                                                 <i class="ai-cart"></i>
                                             </a>
                                         </div>
@@ -186,7 +194,6 @@
                                 @endguest
                             @endif
                         </div>
-
 
                     </div>
                 @endforeach
@@ -199,7 +206,7 @@
         <div class="row gy-3 align-items-center pt-3 pt-sm-4 mt-md-2">
             <div class="col col-md-4 col-6 order-md-1 order-1">
                 <div class="d-flex align-items-center">
-                    <span class="text-body-secondary fs-sm">Show</span>
+                    <span class="text-body-secondary fs-sm">{{__("Show")}}</span>
                     <select onchange="filterData('pg_size', this.value)" id="pg_size"
                             class="form-select form-select-flush w-auto">
                         <option {{request()->pg_size == 12 ? 'selected' : ''}} value="12">12</option>
@@ -211,8 +218,7 @@
             </div>
             <div class="col col-md-4 col-12 order-md-2 order-3 text-center">
                 @if ($courses->currentPage() < $courses->lastPage())
-                    <button class="btn btn-primary w-md-auto w-100" onclick="loadMoreCourse()" type="button">Load more
-                        courses
+                    <button class="btn btn-primary w-md-auto w-100" onclick="loadMoreCourse()" type="button">{{__("Load More Courses")}}
                     </button>
                 @endif
             </div>

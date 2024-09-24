@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-lg fixed-top">
+<header class="navbar navbar-expand-lg fixed-top p-0 m-0">
     <div class="container">
 
         <a class="navbar-brand " href="{{url('/')}}">
@@ -7,7 +7,7 @@
                   <img src="{{asset($logo)}}" width="100">
               </span>
             @endif
-            <span class="d-none d-sm-inline">{{__("FOL EDU")}}</span>
+{{--            <span class="d-none d-sm-inline">{{__("JOY")}}</span>--}}
         </a>
 
         <div class="nav align-items-center order-lg-2 ms-n1 me-2 me-sm-0">
@@ -88,72 +88,73 @@
                 @endif
 
             @guest
+                    <a class="btn btn-sm btn-primary ms-2" href="{{url('login')}}">{{__('Sign In')}}</a>
+            @else
 
-                <a class="btn btn-sm btn-primary ms-2" href="{{url('login')}}">{{__('Sign In')}}</a>
-                @else
-
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle px-4 text-black" type="button"
-                                data-bs-toggle="dropdown"
-                                data-bs-auto-close="outside" aria-expanded="false">
-                        <span style="    font-size: 1rem;">{{auth()->user()->name}}
-                        <i class="ai-user" style="    font-size: 1.25rem;"></i></span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end my-1">
-
-                            @if(Auth::user()->role_id==3)
-                                <a class="dropdown-item pb-1"
-                                   href="{{route('studentDashboard')}}">{{__('dashboard.Dashboard')}}</a>
-                                <a class="dropdown-item pb-1"
-                                   href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
-                                <a class="dropdown-item pb-1"
-                                   href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
-
-                                @if(isModuleActive('Affiliate') && auth()->user()->affiliate_request!=1)
-                                    <a href="{{routeIsExist('affiliate.users.request')?route('affiliate.users.request'):''}}">{{__('frontend.Join Affiliate Program')}}</a>
-                                @endif
-                            @else
-                                <a class="dropdown-item pb-1"
-                                   href="{{route('dashboard')}}">{{__('dashboard.Dashboard')}}</a>
-                                <a class="dropdown-item pb-1"
-                                   href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>
-
-                                <a class="dropdown-item pb-1"
-                                   href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
-                            @endif
-                            @if(isModuleActive('UserType'))
-                                @foreach(auth()->user()->userRoles as $role)
-                                    @php
-                                        if ($role->id==auth()->user()->role_id){
-                                            continue;
-                                        }
-                                    @endphp
-                                    <a class="dropdown-item pb-1" href="{{route('usertype.changePanel',$role->id)}}">
-                                        {{__('common.Switch to')}} {{$role->name}}
-                                    </a>
-                                @endforeach
-                            @endif
-                            <a class="dropdown-item pb-1" href="{{route('logout')}}">{{__('frontend.Log Out')}}</a>
-
-                        </div>
-                    </div>
-
-                @endguest
-
-
-                <div class="dropdown ms-2">
-                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"
+                <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle px-4 text-black" type="button"
+                            data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" aria-expanded="false">
-                        <img class="me-2" src="/public/frontend2/img/flags/uk.png" width="18" alt="English">
-                        {{__('English')}}
+                        {{auth()->user()->name}}
+                        <img src="{{auth()->user()->image}}" style="border-radius: 50%;width:25px;height:25px;margin-left: 7px">
                     </button>
                     <div class="dropdown-menu dropdown-menu-end my-1">
-                        <a class="dropdown-item pb-1" href="#" {{route('changeLanguage', 'ar')}}>
-                            <img class="me-2" src="/public/frontend2/img/flags/ar.png" width="18" alt="Arabic">
-                            {{__('Arabic')}}
-                        </a>
+
+                        @if(Auth::user()->role_id==3)
+                            <a class="dropdown-item pb-1"
+                               href="{{route('studentDashboard')}}">{{__('dashboard.Dashboard')}}</a>
+{{--                            <a class="dropdown-item pb-1"--}}
+{{--                               href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>--}}
+                            <a class="dropdown-item pb-1"
+                               href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+
+                            @if(isModuleActive('Affiliate') && auth()->user()->affiliate_request!=1)
+                                <a href="{{routeIsExist('affiliate.users.request')?route('affiliate.users.request'):''}}">{{__('frontend.Join Affiliate Program')}}</a>
+                            @endif
+                        @else
+                            <a class="dropdown-item pb-1"
+                               href="{{route('dashboard')}}">{{__('dashboard.Dashboard')}}</a>
+{{--                            <a class="dropdown-item pb-1"--}}
+{{--                               href="{{auth()->user()->username?route('profileUniqueUrl',auth()->user()->username):''}}">{{__('frontendmanage.My Profile')}}</a>--}}
+
+                            <a class="dropdown-item pb-1"
+                               href="{{route('users.settings')}}">{{__('frontend.Account Settings')}}</a>
+                        @endif
+                        @if(isModuleActive('UserType'))
+                            @foreach(auth()->user()->userRoles as $role)
+                                @php
+                                    if ($role->id==auth()->user()->role_id){
+                                        continue;
+                                    }
+                                @endphp
+                                <a class="dropdown-item pb-1" href="{{route('usertype.changePanel',$role->id)}}">
+                                    {{__('common.Switch to')}} {{$role->name}}
+                                </a>
+                            @endforeach
+                        @endif
+                        <a class="dropdown-item pb-1" href="{{route('logout')}}">{{__('frontend.Log Out')}}</a>
+
                     </div>
                 </div>
+
+            @endguest
+
+            <div class="dropdown ms-2">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle px-4" type="button"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside" aria-expanded="false">
+                    <img class="me-2" src="/public/frontend2/img/flags/{{app()->getLocale()}}.png" width="18" alt="{{app()->getLocale()}}">
+                    {{ str()->upper(app()->getLocale()) }}
+                </button>
+                <div class="dropdown-menu dropdown-menu-end my-1">
+                    @foreach(getLanguageList() as $lang)
+                    <a class="dropdown-item pb-1" href="{{route('changeLanguage', $lang->code)}}">
+                        <img class="me-2" src="/public/frontend2/img/flags/{{$lang->code}}.png" width="18" alt="{{$lang->native}}">
+                        {{$lang->native}}
+                    </a>
+                    @endforeach
+                </div>
+            </div>
 
 
         </div>

@@ -1,10 +1,9 @@
 <?php
 return [
-    "welcome_description" => "Thank you for choosing InfixLMS for learning management system.
-     Please follow the steps to complete InfixLMS installation!",
-    'install_with_seed'=>'Install with demo data',
-    'phone'=>'Phone',
-    'address'=>'Address',
-    'site_title'=>'Site Title',
-
+    "welcome_description" => "شكرًا لاختيارك InfixLMS لنظام إدارة التعلم. يرجى اتباع الخطوات لإكمال تثبيت InfixLMS!",
+    'install_with_seed' => 'التثبيت مع بيانات تجريبية',
+    'phone' => 'الهاتف',
+    'address' => 'العنوان',
+    'site_title' => 'عنوان الموقع',
 ];
+?>

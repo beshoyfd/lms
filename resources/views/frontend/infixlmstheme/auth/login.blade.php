@@ -6,8 +6,8 @@
 
             <!-- Home button -->
             <a class="text-nav btn btn-icon bg-light border rounded-circle position-absolute top-0 end-0 p-0 mt-3 me-3 mt-sm-4 me-sm-4"
-               href="{{url('/')}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Back to home"
-               aria-label="Back to home">
+               href="{{url('/')}}" data-bs-toggle="tooltip" data-bs-placement="left" title="{{__('Back to home')}}"
+               aria-label="{{__('Back to home')}}">
                 <i class="ai-home"></i>
             </a>
 
@@ -19,7 +19,7 @@
                     </a>
                 </div>
                 <div class="w-100 mt-auto" style="max-width: 526px;">
-                    <h1>{{__('Sign in to FOL EDU')}}</h1>
+                    <h1>{{__('Sign in to JOY Of Learning')}}</h1>
 
                     @if(Settings('student_reg')==1 && saasPlanCheck('student')==false)
                         <p class="pb-3 mb-3 mb-lg-4">{{__("frontend.Don’t have an account")}}?<a
