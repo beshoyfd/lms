@@ -28,7 +28,7 @@
                                     <tbody>
                                     <td>
                                         <img style="width: 108px" src="{{getCourseImage(Settings('logo') )}}"
-                                             alt="{{ Settings('site_name')  }}">
+                                             alt="{{ __(Settings('site_name'))  }}">
                                     </td>
                                     <td style="text-align: right">
                                         <h3 class="invoice_no black_color" style=" margin-bottom: 10px" ;>

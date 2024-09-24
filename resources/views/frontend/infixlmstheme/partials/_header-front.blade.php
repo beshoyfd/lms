@@ -40,7 +40,7 @@
         </script>
 @endif
 <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="{{ Settings('site_name')  }}">
+    <meta itemprop="name" content="{{ __(Settings('site_name'))  }}">
     <meta itemprop="image" content="{{asset(Settings('logo') )}}">
     @if(routeIs('frontendHomePage'))
         <meta itemprop="description" content="{{ Settings('meta_description')  }}">
@@ -56,7 +56,7 @@
         <meta property="og:description" content="{{ $course->meta_description  }}">
         <meta itemprop="keywords" content="{{ $course->meta_keywords }}">
     @endif
-    <meta itemprop="author" content="{{Settings('site_name')}}">
+    <meta itemprop="author" content="{{__(Settings('site_name'))}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset(Settings('favicon') )}}">
 
     @if(!empty(Settings('facebook_pixel')))

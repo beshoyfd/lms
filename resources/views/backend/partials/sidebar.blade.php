@@ -4,12 +4,12 @@
     <!-- sidebar part here -->
 <nav id="sidebar" class="sidebar  {{$user->sidebar!=1?'d-none':''}}">
 
-    <div class="sidebar-header update_sidebar text-center">
+    <div class="sidebar-header update_sidebar text-center p-2">
         <a class="large_logo margin_auto" href="{{ url('/') }}" style="margin:auto;">
-            <img src="{{ getLogoImage(Settings('logo2')) }}" alt="" style="max-height: 80px;">
+            <img src="{{ getLogoImage(Settings('logo2')) }}" alt="" style="max-height: 115px;">
         </a>
         <a class="mini_logo margin_auto" href="{{ url('/') }}" style="margin:auto;">
-            <img src="{{ getLogoImage(Settings('logo2')) }}" alt="" style="max-height: 80px;">
+            <img src="{{ getLogoImage(Settings('logo2')) }}" alt="" style="max-height: 115px;">
         </a>
         <a id="close_sidebar" class="d-lg-none">
             <i class="ti-close"></i>

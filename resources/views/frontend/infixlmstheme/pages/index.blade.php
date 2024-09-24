@@ -23,7 +23,7 @@
                 <div class="text-center col-md-6">
                     <div class="position-relative mx-auto my-3" >
                         <h1 style="color:#2a3261;">{{ __("JOY Of Learning") }}</h1>
-                        <h2 style="color:#CD191D; z-index:99;" class="mb-4">{{ __("Fun Science High Training Institute") }}</h2>
+                        <h2 style="color:#CD191D; z-index:99;" class="mb-4">{{ __("The High Institute of the Joy of Science for Training") }}</h2>
                         <h3 class=" position-relative z-2 mb-0" style="color:#2a3261;">{{__('A comprehensive educational organization just for you.')}}</h3>
                         <div class="text-secondary-brand position-absolute bottom-0 start-50 translate-middle-x w-100 mt-md-3 ">
                             <svg width="608" height="66" viewBox="0 0 608 66" fill="#CD191D"
@@ -36,7 +36,7 @@
                     <a class="btn btn-lg btn-primary" href="{{route('courses')}}">{{__('Explore Courses')}}</a>
                 </div>
                 <div class="col-md-6 shadow-lg border-2 rounded-1"  >
-                    <video src="https://file-examples.com/storage/fe40e015d566f1504935cfd/2017/04/file_example_MP4_1280_10MG.mp4" controls autoplay class="img-fluid rounded-1">
+                    <video src="{{url("/uploads/video.mp4")}}" controls autoplay class="img-fluid rounded-1">
                         Your browser does not support the video tag.
                     </video>
                 </div>
