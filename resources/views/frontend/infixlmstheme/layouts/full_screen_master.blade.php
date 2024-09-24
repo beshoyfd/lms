@@ -9,7 +9,7 @@
         {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}}
     </title>
     <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="{{ Settings('site_name')  }}">
+    <meta itemprop="name" content="{{ __(Settings('site_name'))  }}">
     <meta itemprop="description" content="{{ Settings('meta_description')  }}">
     <meta itemprop="image" content="{{asset(Settings('logo') )}}">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>

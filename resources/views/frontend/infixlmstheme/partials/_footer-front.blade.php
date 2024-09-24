@@ -58,7 +58,7 @@
                   <img src="{{Settings('logo2')}}" width="150" alt="">
               </span>
                     <div>
-                        <span class="text-light opacity-90 ">{{Settings('site_name')}}</span>
+                        <span class="text-light opacity-90 ">{{__(Settings('site_name'))}}</span>
                         <div class="copyright_text  mt-2 text-white" style="font-size: 1rem;">
                             <p>{!! function_exists('footerSettings')?footerSettings('footer_copy_right'):''  !!}</p>
                         </div>
