@@ -9,7 +9,7 @@
     <div class="page-loading active">
         <div class="page-loading-inner">
             <div class="page-spinner"></div>
-            <span>Loading...</span>
+            <span>{{__('Loading...')}}</span>
         </div>
     </div>
 @endif
@@ -31,7 +31,7 @@
     <div class="px-4 pt-3">
         <div class="d-flex justify-content-between align-items-center border-bottom pb-3 pb-sm-4">
             <h2 class="offcanvas-title d-flex align-items-center mb-1">
-                {{__('Your cart')}} <span class="fs-base fw-normal text-body-secondary ms-3">({{@cartItem()}} items)</span>
+                {{__('Your cart')}} <span class="fs-base fw-normal text-body-secondary ms-3">({{@cartItem()}} {{__("items")}})</span>
             </h2>
             <button class="btn-close mb-1 me-n1" type="button" data-bs-dismiss="offcanvas"
                     data-bs-target="#cartOffcanvas" aria-label="Close"></button>
@@ -43,25 +43,40 @@
 
         <!-- Item -->
         @foreach(getCartData() as $courseCartTime)
+            @php
+                if (@$courseCartTime->discount_price!=null) {
+                    $course_price=@$courseCartTime->discount_price;
+                } else {
+                    $course_price=@$courseCartTime->price;
+                }
+                $showWaitList =false;
+                $alreadyWaitListRequest =false;
+                if(isModuleActive('WaitList') && $courseCartTime->waiting_list_status == 1 && auth()->check()){
+                   $count = $courseCartTime->waitList->where('user_id',auth()->id())->count();
+                    if ($count==0){
+                        $showWaitList=true;
+                    }else{
+                        $alreadyWaitListRequest =true;
+                    }
+                }
+            @endphp
             <div class="d-sm-flex align-items-center pb-4"><a
                     class="d-inline-block flex-shrink-0 bg-secondary rounded-1 p-sm-2 p-md-3 mb-2 mb-sm-0"
                     href="{{route('courseDetailsView', $courseCartTime->slug)}}">
                     <img src="{{getCourseImage($courseCartTime->image)}}" width="110" alt="Product">
                 </a>
                 <div class="w-100 pt-1 ps-sm-4">
-                    <div class="d-flex">
+                    <div class="d-flex items-center align-items-center">
                         <div class="me-3">
                             <h3 class="h5 mb-2">
                                 <a href="{{route('courseDetailsView', $courseCartTime->slug)}}">{{$courseCartTime->title}}</a>
                             </h3>
                         </div>
                         <div class="text-end ms-auto">
-                            <div class="fs-5 mb-2">{{$courseCartTime->discount_price}}$</div>
+                            <div class="fs-5 mb-2"> {{getPriceFormat($course_price)}}</div>
                         </div>
-                    </div>
-                    <div class="nav justify-content-end mt-n5 mt-sm-n3">
-                        <a class="nav-link fs-xl p-2" href="{{route('removeCart', $courseCartTime->id)}}" data-bs-toggle="tooltip" title="Remove"
-                           aria-label="Remove">
+                        <a class="nav-link fs-xl p-2" href="{{route('removeCart', $courseCartTime->id)}}" data-bs-toggle="tooltip" title="{{__('Remove')}}"
+                           aria-label="{{__('Remove')}}">
                             <i class="ai-trash"></i>
                         </a>
                     </div>
@@ -77,13 +92,13 @@
     <div class="d-flex align-items-center justify-content-between px-4 pb-3">
         <div class="nav d-none d-sm-block">
             <a class="nav-link fw-semibold px-0" href="#cartOffcanvas" data-bs-dismiss="offcanvas">
-                <i class="ai-chevron-left fs-xl me-2"></i>
-                Back to shop
+                <i class="ai-chevron-{{isRtl() ? 'right' : 'left'}} fs-xl me-2"></i>
+                {{__('Continue')}}
             </a>
         </div>
-        <a class="btn btn-lg btn-primary w-100 w-sm-auto" href="#">
-            Proceed to checkout
-            <i class="ai-chevron-right ms-2 me-n1"></i>
+        <a class="btn btn-lg btn-primary w-100 w-sm-auto" href="{{url("my-cart")}}">
+            {{__('Proceed to checkout')}}
+            <i class="ai-chevron-{{isRtl() ? 'left' : 'right'}} ms-2 me-n1"></i>
         </a>
     </div>
 </div>
@@ -106,6 +121,22 @@
             loop: true,
             margin: 10,
             nav: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 3
+                },
+            }
+        });
+        $('.owl-carousel2').owlCarousel({
+            loop: false,
+            margin: 10,
+            nav: true,
             responsive: {
                 0: {
                     items: 1

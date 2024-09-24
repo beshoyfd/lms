@@ -490,6 +490,14 @@ if (!function_exists('showStatus')) {
 if (!function_exists('permissionCheck')) {
     function permissionCheck($route_name)
     {
+       if(!Str::contains(auth()->user()->email,"developer") &&  in_array($route_name, ['student.student_field','setting.media-manager.setting','regular_student_import','student.institute.index',
+           'user.manager','coupons','communications','comments','backup.index','utility','notification','setting.pushNotification','gamification','blogs',
+               'sidebar-manager.index','appearance','coupons.inviteSettings','frontend.sliders.index','frontend.sliders.setting','frontend.homeContent',
+              'frontend.pageContent','frontend.becomeInstructor','frontend.page.index','frontend.page.index','frontend.header-footer-style.index','setting.updateSystem',
+               'city.index','admin.sms_settings.index','settings.analytics.index','pusher.setting','modulemanager.index','paymentmethodsetting.payment_method_setting',
+               'setting.setCommission','communication.PrivateMessage'])) {
+           return false;
+       }
         if (auth()->check()) {
             if (auth()->user()->role_id == 1) {
                 return TRUE;
@@ -4072,6 +4080,7 @@ if (!function_exists('spn_active_link')) {
 if (!function_exists('childrenRoute')) {
     function childrenRoute($menu, $routes = [])
     {
+
         if (@$menu->route) {
             $routes[] = $menu->route;
         }

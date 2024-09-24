@@ -20,7 +20,7 @@
 <div class="container">
 
     <!-- Statistics -->
-    <section class="bg-secondary position-relative py-4 py-md-5">
+    <section class="bg-secondary position-relative py-2 py-md-2">
         <div class="container position-relative z-2">
             <div class="row">
                 <div class="course__details_title">
@@ -77,16 +77,13 @@
             </div>
 
 
-            <div class="text-center">
-                <img src="{{getCourseImage($course->image)}}" class="img-fluid" alt="{{$course->title}}">
-            </div>
 
         </div>
     </section>
 
 
     <!-- Target audience -->
-    <section class="pt-5 mt-xl-3 mt-xxl-5">
+    <section class="">
         <div class="row pt-1 pt-sm-3 pt-md-4 pt-lg-5 mt-xl-2">
             <div class="col-lg-8 col-xl-7 offset-xl-1">
                 <div class="ps-lg-4 ps-xl-0">
@@ -862,6 +859,10 @@
             </div>
 
             <div class="col-lg-4">
+                <div class="text-center">
+                    <img src="{{getCourseImage($course->image)}}" class="img-fluid rounded-1" alt="{{$course->title}}">
+                </div>
+
                 <div class="sidebar__widget mb_30">
                     @if(isModuleActive('EarlyBird') && Auth::check() && !$isEnrolled)
                         @includeIf(theme('partials._early_bird_offer'), ['price_plans' => $course->pricePlans, 'product' => $course])
@@ -871,8 +872,17 @@
                         <div id="price-container">
                             <h3 id="price_show_tag">
                                 {{getPriceFormat($course_price)}}
-                                <del><small>{{getPriceFormat($course->price)}}</small></del>
+                                @if($course->price)
+                                    <del><small>{{getPriceFormat($course->price)}}</small></del>
+                                @endif
                             </h3>
+                            <p class="mt-2 mb-4">
+                                @if($course->getDiscountPercentage())
+                                    <span class="position-absolute badge bg-danger text-white">
+                                        {{__('common.Discount')}}
+                                {{$course->getDiscountPercentage()}}%</span>
+                                @endif
+                            </p>
                             <div class="price_loader"></div>
                         </div>
                         <p>

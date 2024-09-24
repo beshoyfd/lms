@@ -37,6 +37,18 @@ class Permission extends Model
         return $this->belongsTo(Permission::class, 'parent_route', 'route');
     }
 
+    public function getNameAttribute($value)
+    {
+
+        if(!is_array($value) && app()->getLocale() == 'ar'){
+            $jsonTranslate = __($value);
+            if(!is_array($jsonTranslate))
+               return $jsonTranslate;
+        }
+
+        return $value;
+    }
+
 
     public static function boot()
     {

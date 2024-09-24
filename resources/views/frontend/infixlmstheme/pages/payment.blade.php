@@ -1,4 +1,4 @@
-@extends(theme('layouts.master'))
+@extends(theme('layouts.dashboard_master'))
 @section('title')
     {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | @lang('frontendmanage.Payment Method')
 @endsection

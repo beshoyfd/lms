@@ -14,10 +14,15 @@
 
             <!-- Sign up form -->
             <div class="d-flex flex-column align-items-center w-lg-50 h-100 px-3 px-lg-5 pt-5">
+                <div class="logo">
+                    <a href="{{ url('/') }}">
+                        <img style="width: 190px" src="{{asset(Settings('logo') )}} " alt="">
+                    </a>
+                </div>
                 <div class="w-100 mt-auto" style="max-width: 526px;">
-                    <h1>{{__('common.Sign Up Details')}}</h1>
-                    <p class="pb-3 mb-3 mb-lg-4">Have an account already?&nbsp;&nbsp;<a href="{{route('login')}}">Sign
-                            in here!</a></p>
+                    <h1>{{__('Sign up to JOY Of Learning')}}</h1>
+                    <p class="pb-3 mb-3 mb-lg-4">{{__("Have an account already?")}}&nbsp;&nbsp;<a href="{{route('login')}}">{{__("Sign
+                            in here!")}}</a></p>
                     <form action="{{route('register')}}" method="POST" id="regForm" novalidate>
                         @csrf
                         <div class="row">
@@ -237,7 +242,7 @@
 
 
                         <!-- Sign in with social account -->
-                        <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">Or sign in with your social account</h2>
+                        <h2 class="h6 text-center pt-3 pt-lg-4 mb-4">{{__("Or sign up with your social account")}}</h2>
                         <div class="row row-cols-1 row-cols-sm-2 gy-3">
                             <div class="col">
                                 <a class="btn btn-icon btn-outline-secondary btn-google btn-lg w-100" href="#">

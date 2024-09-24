@@ -1,11 +1,11 @@
 <?php
 return [
-    'Noticeboard' => 'Noticeboard',
-    'Sender' => 'Sender',
-    'Type' => 'Type',
-    'Send At' => 'Send At',
-    'Notice Type' => 'Notice Type',
-    'Message' => 'Message',
-    'General' => 'General',
-    'Notice' => 'Notice'
+    'Noticeboard' => 'لوحة الإعلانات',
+    'Sender' => 'المرسل',
+    'Type' => 'النوع',
+    'Send At' => 'تاريخ الإرسال',
+    'Notice Type' => 'نوع الإشعار',
+    'Message' => 'الرسالة',
+    'General' => 'عام',
+    'Notice' => 'إشعار'
 ];

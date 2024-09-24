@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'Group' => 'Group',
-    'Policy' => 'Policy',
-    'Function' => 'Function',
-    'Add Instructor' => 'Add Instructor',
-    'Assign Policy' => 'Assign Policy',
-    'Group Policy' => 'Group Policy',
-    'Assign Courses' => 'Assign Courses'
+    'Group' => 'مجموعة',
+    'Policy' => 'سياسة',
+    'Function' => 'وظيفة',
+    'Add Instructor' => 'إضافة مدرب',
+    'Assign Policy' => 'تعيين سياسة',
+    'Group Policy' => 'سياسة المجموعة',
+    'Assign Courses' => 'تعيين الدورات'
 ];

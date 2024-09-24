@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+
+<html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="{{app()->getLocale()}}" itemscope
+      itemtype="{{url('/')}}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,9 +24,29 @@
     <!-- Font icons -->
     <link rel="stylesheet" href="/public/frontend2/icons/around-icons.min.css">
 
-    <!-- Theme styles + Bootstrap -->
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    @if(app()->getLocale() == 'ar')
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@200;300;400;500;700;800;900&display=swap');
+
+            body{
+                font-family: "Almarai", sans-serif;
+                direction: rtl;
+                a{
+                    direction: rtl;
+                }
+            }
+        </style>
+    @endif
+
+
+    <link rel="stylesheet" media="screen"
+          href="/public/frontend2/css/theme_{{app()->getLocale()}}.min.css{{assetVersion()}}">
+    <link rel="stylesheet" media="screen"
+          href="/public/frontend2/css/custom_{{app()->getLocale()}}.css{{assetVersion()}}">
 
 </head>
 

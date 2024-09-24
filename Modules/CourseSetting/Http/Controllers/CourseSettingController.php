@@ -1173,7 +1173,7 @@ class CourseSettingController extends Controller
 
         $hasCourse = CourseEnrolled::where('course_id', $id)->count();
         if ($hasCourse != 0) {
-            Toastr::error(trans('frontend.Course Already Enrolled By').' ' . $hasCourse . ' '.trans('frontend.Student'), trans('common.Failed'));
+            Toastr::error(trans('frontend.Course Already Enrolled By') . ' ' . $hasCourse . ' ' . trans('frontend.Student'), trans('common.Failed'));
             return redirect()->back();
         }
 
@@ -1568,6 +1568,10 @@ class CourseSettingController extends Controller
                 $duration = $timetable['durations'][$index] ?? null;
                 $pdus = $timetable['pdus'][$index] ?? null;
 
+                if (is_null($endDate) && is_null($startDate) && is_null($duration) && is_null($pdus) && is_null($endTime)) {
+                    continue;
+                }
+
                 CourseTimeTable::create(
                     [
                         'course_id' => $course->id,
@@ -1579,6 +1583,7 @@ class CourseSettingController extends Controller
                         'pdus' => $pdus,
                     ]
                 );
+
             }
         }
     }

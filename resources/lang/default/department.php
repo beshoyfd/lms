@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'Department' => 'Department',
+    'Department' => 'القسم',
 ];

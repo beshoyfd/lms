@@ -1,6 +1,6 @@
 <!-- frontend2 -->
 <!doctype html>
-<html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="en" itemscope
+<html dir="{{isRtl()?'rtl':''}}" class="{{isRtl()?'rtl':''}}" lang="{{app()->getLocale()}}" itemscope
       itemtype="{{url('/')}}">
 
 <head>
@@ -24,8 +24,8 @@
     <title>
         @yield('title')
     </title>
-    @if(!empty(Settings('google_analytics') ))
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+@if(!empty(Settings('google_analytics') ))
+    <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id={{Settings('google_analytics') }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -38,8 +38,8 @@
 
             gtag('config', '{{Settings('google_analytics') }}');
         </script>
-    @endif
-    <!-- Google / Search Engine Tags -->
+@endif
+<!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="{{ Settings('site_name')  }}">
     <meta itemprop="image" content="{{asset(Settings('logo') )}}">
     @if(routeIs('frontendHomePage'))
@@ -60,7 +60,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{asset(Settings('favicon') )}}">
 
     @if(!empty(Settings('facebook_pixel')))
-        <!-- Facebook Pixel Code -->
+    <!-- Facebook Pixel Code -->
         <script>
             !function (f, b, e, v, n, t, s) {
                 if (f.fbq) return;
@@ -106,7 +106,8 @@
     <!-- Import Google font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" id="google-font">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+          rel="stylesheet" id="google-font">
 
     <!-- Vendor styles -->
     <link rel="stylesheet" media="screen" href="/public/frontend2/vendor/aos/dist/aos.css">
@@ -117,16 +118,31 @@
     <link rel="stylesheet" href="/public/frontend2/icons/around-icons.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/theme.min.css">
-    <link rel="stylesheet" media="screen" href="/public/frontend2/css/custom.css?v=1.41">
+    <link rel="stylesheet" media="screen"
+          href="/public/frontend2/css/theme_{{app()->getLocale()}}.min.css{{assetVersion()}}">
+    <link rel="stylesheet" media="screen"
+          href="/public/frontend2/css/custom_{{app()->getLocale()}}.css{{assetVersion()}}">
 
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    @if(app()->getLocale() == 'ar')
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@200;300;400;500;700;800;900&display=swap');
 
+            body{
+                font-family: "Almarai", sans-serif;
+                direction: rtl;
+                a{
+                    direction: rtl;
+                }
+            }
+        </style>
+    @endif
 
 
     @yield('css')

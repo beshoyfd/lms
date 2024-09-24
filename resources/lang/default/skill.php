@@ -1,19 +1,18 @@
 <?php
 
 return [
-    'Skill & Pathway' => 'Skill & Pathway',
-    'Skill' => 'Skill',
-    'My Skill' => 'My Skill',
-    'Browse Badge file' => 'Browse Badge file',
-    'Skill List' => 'Skill List',
-    'Badge' => 'Badge',
-    'Pathway' => 'Pathway',
-    'Group' => 'Group',
-    'Group List' => 'Group List',
-    'Group Student List' => 'Group Student List',
-    'Sub Groups' => 'Sub Groups',
-    'Assign Students' => 'Assign Students',
-    'Pathway List' => 'Pathway List',
-    'Course/Class/Quiz Select at least one' => 'Course/Class/Quiz Select at least one'
+    'Skill & Pathway' => 'المهارة والمسار',
+    'Skill' => 'المهارة',
+    'My Skill' => 'مهارتي',
+    'Browse Badge file' => 'تصفح ملف الشارة',
+    'Skill List' => 'قائمة المهارات',
+    'Badge' => 'شارة',
+    'Pathway' => 'المسار',
+    'Group' => 'مجموعة',
+    'Group List' => 'قائمة المجموعات',
+    'Group Student List' => 'قائمة طلاب المجموعة',
+    'Sub Groups' => 'المجموعات الفرعية',
+    'Assign Students' => 'تعيين الطلاب',
+    'Pathway List' => 'قائمة المسارات',
+    'Course/Class/Quiz Select at least one' => 'الدورة/الفصل/الاختبار اختر واحدًا على الأقل'
 ];
-

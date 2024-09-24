@@ -1,12 +1,12 @@
 <?php
 return [
-    'Sponsor Saved Successfully' => 'Sponsor Saved Successfully',
-    'Sponsor Deleted Successfully' => 'Sponsor Deleted Successfully',
-    'Sponsor Updated Successfully' => 'Sponsor Updated Successfully',
-    'Sponsors' => 'Sponsors',
-    'Add New Sponsor' => 'Add New Sponsor',
-    'Image' => 'Image',
-    'Title' => 'Title',
-    'Sponsor List' => 'Sponsor List',
-    'Frontend CMS' => 'Frontend CMS',
+    'Sponsor Saved Successfully' => 'تم حفظ الراعي بنجاح',
+    'Sponsor Deleted Successfully' => 'تم حذف الراعي بنجاح',
+    'Sponsor Updated Successfully' => 'تم تحديث الراعي ��نجاح',
+    'Sponsors' => 'الرعاة',
+    'Add New Sponsor' => 'إضافة راعي جديد',
+    'Image' => 'صورة',
+    'Title' => 'العنوان',
+    'Sponsor List' => 'قائمة الرعاة',
+    'Frontend CMS' => 'نظام إدارة المحتوى للواجهة الأمامية',
 ];
