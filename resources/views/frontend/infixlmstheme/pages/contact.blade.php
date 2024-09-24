@@ -1,5 +1,5 @@
 @extends(theme('layouts.master-front'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('frontend.Contact Us')}} @endsection
+@section('title'){{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('frontend.Contact Us')}} @endsection
 @section('css') @endsection
 
 @section('mainContent')

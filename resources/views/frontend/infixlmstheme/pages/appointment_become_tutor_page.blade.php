@@ -1,7 +1,7 @@
 <!-- hero area:start -->
 @extends(theme('layouts.master'))
 @section('title')
-    {{ Settings('site_title') ? Settings('site_title') : 'FOL EDU' }} | {{ __('appointment.Become Instructor') }}
+    {{ __(Settings('site_title')) ? __(Settings('site_title')) : 'JOY' }} | {{ __('appointment.Become Instructor') }}
 @endsection
 @section('css')
     <link rel="stylesheet"

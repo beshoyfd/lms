@@ -1,5 +1,5 @@
 @extends(theme('layouts.master'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | @if( routeIs('myClasses'))
+@section('title'){{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | @if( routeIs('myClasses'))
     {{__('courses.Live Class')}}
 @elseif( routeIs('myQuizzes'))
     {{__('courses.My Quizzes')}}

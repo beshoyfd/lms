@@ -73,7 +73,7 @@
                                     $registration_data['google2fa_secret'] =$user ->google2fa_secret;
                                 }
 
-                                $QR_Image = $google2fa->getQRCodeInline(Settings('site_title'), $user->email, $registration_data['google2fa_secret']);
+                                $QR_Image = $google2fa->getQRCodeInline(__(Settings('site_title')), $user->email, $registration_data['google2fa_secret']);
                             @endphp
 
                             <p>{{__('setting.Set up your two factor authentication by scanning the barcode below. Alternatively, you can use the code')}}

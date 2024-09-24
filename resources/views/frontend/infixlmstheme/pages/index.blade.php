@@ -1,5 +1,5 @@
 @extends(theme('layouts.master-front'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('frontendmanage.Home')}} @endsection
+@section('title'){{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('frontendmanage.Home')}} @endsection
 
 @section('mainContent')
 
@@ -36,7 +36,7 @@
                     <a class="btn btn-lg btn-primary" href="{{route('courses')}}">{{__('Explore Courses')}}</a>
                 </div>
                 <div class="col-md-6 shadow-lg border-2 rounded-1"  >
-                    <video src="{{url("/uploads/video.mp4")}}" controls autoplay class="img-fluid rounded-1">
+                    <video src="{{url("/public/uploads/video.mp4")}}" controls autoplay class="img-fluid rounded-1">
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -69,7 +69,7 @@
                                         <div class="image" >
                                             <img loading="lazy" alt="{{$cat->name}}" style="margin: 0 auto"
                                                  src="{{asset($cat->thumbnail)}}"
-                                                 class="w-50">
+                                                >
 
                                         </div>
                                         <a style="background: {{$randomColor}};text-decoration: none;"

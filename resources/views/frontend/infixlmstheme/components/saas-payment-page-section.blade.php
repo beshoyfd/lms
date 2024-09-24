@@ -265,7 +265,7 @@
                                                                         src="https://checkout.razorpay.com/v1/checkout.js"
                                                                         data-key="{{ getMainPaymentEnv('RAZOR_KEY') }}"
                                                                         data-amount="{{ convertCurrency(Settings('currency_code') ??'BDT', 'INR', $plan->price)*100}}"
-                                                                        data-name="{{Settings('site_title') }}"
+                                                                        data-name="{{__(Settings('site_title')) }}"
                                                                         data-description="Cart Payment"
                                                                         data-image="{{asset(Settings('favicon') )}}"
                                                                         data-prefill.name="{{ @Auth::user()->username }}"

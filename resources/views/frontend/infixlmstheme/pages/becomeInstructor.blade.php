@@ -1,5 +1,5 @@
 @extends(theme('layouts.master'))
-@section('title'){{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} | {{__('frontendmanage.Become Instructor')}} @endsection
+@section('title'){{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} | {{__('frontendmanage.Become Instructor')}} @endsection
 @section('css') @endsection
 @section('js')
     <script src="{{asset('public/frontend/infixlmstheme/js/become_instructor.js')}}"></script>

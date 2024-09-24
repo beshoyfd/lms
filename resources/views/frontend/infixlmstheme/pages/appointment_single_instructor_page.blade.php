@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{ Settings('site_title') ? Settings('site_title') : 'FOL EDU' }} | {{ $instructor->name }}
+    {{ __(Settings('site_title')) ? __(Settings('site_title')) : 'JOY' }} | {{ $instructor->name }}
 @endsection
 @section('css')
 

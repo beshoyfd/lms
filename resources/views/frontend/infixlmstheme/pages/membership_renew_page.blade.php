@@ -1,6 +1,6 @@
 @extends(theme('layouts.master'))
 @section('title')
-    {{Settings('site_title')  ? Settings('site_title')  : 'FOL EDU'}} |
+    {{__(Settings('site_title'))  ? __(Settings('site_title'))  : 'JOY'}} |
     @if( routeIs('myclass'))
         {{__('class.My Class')}}
     @else
